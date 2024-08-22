@@ -1,0 +1,211 @@
+/* payback */
+.payback_main_wrap {
+  height: calc(100vh - 70px);
+  font-size: 1.4em;
+  background: url("@/assets/image/bg01.png") center center no-repeat;
+  background-size: 55%;
+}
+.payback_main_wrap p {
+  margin-bottom: 15px;
+  letter-spacing: 0.8px;
+}
+.explan_area {
+  padding: 50px 0 0 40px;
+}
+
+.middle_area {
+  position: absolute;
+  left: 200px;
+  top: 40%;
+  text-align: center;
+}
+.middle_area span {
+  font-size: 2.5em;
+  font-family: var(--main-font-Mont);
+  text-shadow: 0px 0px 8px #00ffa3;
+}
+.exchange_area {
+  position: absolute;
+  right: 200px;
+}
+.exchange_area li {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  margin-bottom: 1.5em;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .payback_main_wrap {
+        background-size: 65%;
+      }
+      .middle_area {
+        left: 50px;
+      }
+      .exchange_area {
+        right: 100px;
+      }
+}
+@media (max-width: 767px) {
+    .payback_main_wrap {
+        background-size: 75%;
+      }
+      .middle_area {
+        position: static;
+      }
+      .exchange_area {
+        position: static;
+      }
+      .exchange_area li {
+        padding: 20px;
+        width: 80%;
+      }
+      .exchange_area li img.logo_s {
+        width: 30%;
+      }
+      .exchange_area li img.logo_l {
+        width: 70%;
+      }
+}
+
+
+
+.payback_sub_title {
+  margin-top: 50px;
+  gap: 2em;
+}
+.payback_sub_title p{
+  font-size: 2em;
+}
+.payback_sub_title button{
+  font-size: 1.8em;
+  padding: 10px 30px;
+  color : #fff;
+  border-radius: 15px;
+}
+.recieve_wrap .warning_txt{
+  margin : 80px auto;
+  width: 520px;
+  line-height: 1.5em;
+}
+.uid_area label{
+  margin-right: 30px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.uid_area input{
+  width: 50%;
+  max-width: 400px;
+  min-width: 200px;
+  background-color: transparent;
+  border-radius: 10px;
+  color:#fff;
+  font-size: 1.5em;
+  letter-spacing: 0.5px;
+  padding : 10px; 
+  height: 60px;
+}
+.recieve_wrap .btn_area button{
+  font-size: 1.3em;
+  width: 300px;
+  padding : 10px 0;
+  border-radius: 8px;
+  margin: 80px 0;
+  color:#fff;
+}
+.recieve_wrap ul{
+  gap: 20px;
+  padding-bottom: 50px;
+}
+.recieve_wrap ul li{
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  gap: 25px;
+  font-size: 1.3em;
+  border-radius: 15px;
+}
+.recieve_wrap ul li button{
+  background-color: transparent;
+}
+@media (min-width: 722px) and (max-width: 865px) {
+  .payback_sub_title{
+    flex-wrap: wrap;
+  }
+  .payback_sub_title button{
+    width: 70%;
+  }
+  .recieve_wrap .warning_txt{
+    width: 90%;
+  }
+  .uid_area input{
+    height: 50px;
+  }
+  .recieve_wrap .btn_area button{
+    width: 70%;
+  }
+  .recieve_wrap ul{
+    gap: 10px;
+  }
+  .recieve_wrap ul li{
+    padding: 20px;
+    gap: 15px;
+    font-size: 1.1em;
+  }
+}
+@media (max-width: 721px) {
+  .payback_sub_title {
+    flex-wrap: wrap;
+    gap:1.5em
+  }
+  .payback_sub_title p{
+    font-size: 1.7em;
+  }
+  .payback_sub_title button{
+    font-size: 1.5em;
+    width: 90%;
+  }
+  .recieve_wrap .warning_txt{
+    margin : 50px auto;
+    width: 90%;
+  }
+  .uid_area{
+    flex-direction: column;
+  }
+  .uid_area label{
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .uid_area input{
+    width: 90%;
+    height: 50px;
+  }
+  .recieve_wrap .btn_area button{
+    font-size: 1.3em;
+    width: 90%;
+    margin: 30px 0;
+  }
+  .recieve_wrap ul{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .recieve_wrap ul li{
+    width: 90%;
+    padding: 30px 20px;
+    gap: 10px;
+    font-size: 1.2em;
+  }
+  .recieve_wrap ul li p {
+    width: 50%;
+    min-width: 91px;
+  }
+}
+@media (max-width: 480px) {
+  .recieve_wrap img.logo_s{
+    width: 50px;
+  }
+  .recieve_wrap img.logo_l{
+    width: 100px;
+  }
+  .recieve_wrap ul li img{
+    width: 25px;
+  }
+}

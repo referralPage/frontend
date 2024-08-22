@@ -1,0 +1,78 @@
+{
+    "dashboard" : {
+        "daysOperation" : "가동 일수",
+        "currentBalance" : "현재 잔액",
+        "avDailyProfit" : "일간 평균 수익률",
+        "avWeeklyProfit" : "주간 평균 수익률",
+        "monthProfit" : "이번 달 수익률",
+        "startingAmount" : "시작 금액",
+        "currentDeposit" : "현재 보증금",
+        "currentProfit" : "현재 수익금",
+        "estimatedDeduction" : "예상 차감액",
+        "estimatedAdditionalCharge" : "예상 추가 충전금",
+        "currentPosition" : "현재 포지션",
+        "unrealizedProfit" : "미실현 손익"
+    },
+    "profit" : {
+        "totalPNL" : "총 PNL",
+        "cumulativeProfit" : "누적 수익율",
+        "avMonthlyProfit" : "월간 평균 수익율",
+        "avWeeklyProfit" : "주간 평균 수익율",
+        "avDailyProfit" : "일간 평균 수익율",
+        "transactionHistory" : "거래 로그",
+        "currency" : "통화",
+        "previousPrice" : "시작 금액",
+        "currentPrice" : "현재 금액",
+        "date" : "체결일자"
+    },
+    "deposit" : {
+        "requiredAmount" : "초기 보증금",
+        "currentAmount" : "현재 보증금",
+        "insufficientAmount" : "필요 보증금",
+        "date" : "일자"
+    },
+    "common" : {
+        "dashboardTitle" : "대시보드",
+        "position" : "포지션",
+        "profitTitle" : "수익율",
+        "term" : "회차",
+        "type" : "포지션",
+        "coin" : "코인",
+        "quantity" : "수량",
+        "change" : "증감액",
+        "balance" : "잔액",
+        "apply" : "적용",
+        "confirm" : "확인",
+        "cancel" : "취소", 
+        "dateWarningMsg" : "날짜를 정확하게 입력해주세요."
+    },
+    "info" : {
+        "infoTxt01" : "7년 이상의 빅데이터와 딥러닝 시스템을 기반으로",
+        "infoTxt02" : "27개국 20,000명 이상이 사용하고 있습니다.",
+        "infoTxt03" : "FX 자동 거래 봇!",
+        "infoTxt04" : "GOYA AI 알고리즘 기반",
+        "infoTxt05" : "외환거래에서 Goya FX Bot과 연동하여 보다 높은 수익률 달성",
+        "infoTxt06" : "매년 자동 거래로!"
+    },
+    "guide" : {
+        "step01" : "FP Markets 계좌 개설",
+        "step02" : "운영을 위한 시드머니 충전",
+        "step03" : "보증금 충전",
+        "step04" : "거래 연결",
+        "stepGuide01" : "계정 가이드",
+        "stepGuide02" : "시드머니 충전 안내",
+        "stepGuide03" : "보증금 충전 안내",
+        "stepGuide04" : "거래 연결 안내",
+        "singUp" : "가입하러 가기",
+        "charge" : "충전하러 가기",
+        "operate" : "FX 봇 운영",
+        "videoGuide" : "비디오 가이드"
+    },
+    "modal" : {
+        "dateWarnig" : "<p>날짜를 정확하게 입력해주세요.</p>",
+        "msgCode01" : "<p>성공적으로 등록되었습니다.</p>",
+        "msgCode02" : "<p>이미 등록된 UID 입니다.</p>",
+        "msgCode03" : "<p>올바르지 않은 UID 입니다.</p>",
+        "msgCode04" : "<p>올바른 레퍼럴코드로 가입되지 않은 UID 입니다. <br/> 탈퇴 후 올바른 레퍼럴 코드로 재 가입 해주시기 바랍니다.</p>"
+    }
+}
