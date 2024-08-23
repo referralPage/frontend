@@ -43,11 +43,11 @@
   let langArr = ref([
     {
       abbr : "en",
-      displayed : "english",
+      displayed : "EN",
     },
     {
       abbr : "ko",
-      displayed : "한국어",
+      displayed : "KO",
     },
   ]);
   let selectLang = ref(localStorage.getItem("localeLangDisplayed"));

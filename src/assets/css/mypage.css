@@ -21,7 +21,7 @@
   font-size: 20px;
   margin: 0;
 }
-.payback_info{
+.payback_info {
   font-size: 1.5em;
   margin: 40px 0;
 }
@@ -65,19 +65,18 @@
 .pf_chart > ul > li {
   position: relative;
   width: 10%;
-  /* width: 100%; */
   height: 150px;
   margin: 0;
-  /* margin-left: 3px; */
   padding: 0;
   background: transparent !important;
   border-radius: 0 !important;
-  overflow: hidden;
 }
 .pf_chart > ul > li i {
   position: absolute;
-  bottom: 0;
-  left: 5px;
+  bottom: -10px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
   display: block;
   color: var(--color-gray1);
   text-align: center;
@@ -191,7 +190,7 @@
   line-height: normal;
 }
 .pf_calendar_table tr > td {
-  padding: 10px;
+  padding: 8px;
   text-align: center;
   font-weight: 500;
   border: solid 1px #3a3939;
@@ -308,18 +307,19 @@
   font-weight: 500;
   line-height: normal;
 }
-.tab_ctgy{
+.tab_ctgy {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 50px;
 }
-.tab_ctgy li{
+.tab_ctgy li {
   background-color: rgba(29, 29, 43, 0.9);
   width: 100%;
   text-align: center;
-  padding:5px 10px;
-  color : var(--color-gray1);
+  padding: 5px 10px;
+  color: var(--color-gray1);
   border-radius: 5px;
+  cursor: pointer;
 }
 ul.payback_list_head {
   display: flex;
@@ -446,7 +446,6 @@ ul.payback_list_box li em:nth-child(6) {
 @media (max-width: 1279px) {
   .pf_chart > ul > li i {
     font-size: 12px;
-    left: 0;
   }
   .pf_calendar_table tr > th {
     padding: 10px 5px;
@@ -478,8 +477,6 @@ ul.payback_list_box li em:nth-child(6) {
 @media (max-width: 920px) {
   .pf_chart > ul > li i {
     font-size: 10px;
-    bottom: 0;
-    left: 0;
   }
   .pf_chart > ul > li .bar em {
     font-size: 11px;
@@ -516,69 +513,147 @@ ul.payback_list_box li em:nth-child(6) {
     height: auto;
     padding: 40px 15px 30px 15px;
   }
+  .payback_list_head_area{
+    width: 100%;
+    overflow-x: scroll;
+  }
   ul.payback_list_head {
     height: auto;
+    width: auto;
+    min-width: 100vw;
+    padding-right: 15px;
   }
-  .month_payback{
-    margin:30px 0;
+  ul.payback_list_head li {
+    width: auto;
+  }
+  ul.payback_list_box li{
+    width: auto;
+    min-width: 100vw;
+    padding-right: 15px;
+  }
+  .nodata{
+    display: block;
+    width: 100vw;
+  }
+  .month_payback {
+    margin: 30px 0;
     flex-direction: column;
   }
   .month_txt {
     font-size: 1.5em;
   }
-  .month_txt .txt_blue{
+  .month_txt .txt_blue {
     font-size: 1.7em;
   }
-}
-@media (max-width: 480px) {
-  .pf_calendar {
-    height: auto;
-    padding-top: 20px;
+  .pf_list_search{
+    margin-bottom: 30px;
   }
-  .pf_calendar_table tr > th {
-    font-size: 12px;
-  }
-  .pf_calendar_table tr > td {
-    padding: 6px;
-  }
-  .pf_list_search h5 {
-    display: none;
-  }
-  .pf_list_search input[type="date"] {
+  .pf_list_search input[type="date"],
+  .pf_list_search input[type="month"] {
     font-size: 12px;
     padding-left: 3px;
     margin: 0 5px;
   }
-  .pf_list_search{
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .pf_list_search h5 {
+    display: none;
   }
-  .pf_list_search button{
-    margin:10px;
+}
+@media (max-width: 480px) {
+  .mypage_ul{
+    padding: 20px 0 0 0;
   }
-  .payback_list_head{
-    overflow-x: scroll;
+  .mypage_ul > li{
+    height: 400px;
+    padding:20px 10px;
   }
-  ul.payback_list_head li{
-    min-width: 50px;
-
+  .pf_calendar {
+    height: auto;
+    padding-top: 20px;
   }
-  ul.payback_list_head li a {
+  .pf_chart > ul > li{
+    padding: 0 0 20px 0;  
+    overflow:visible;
+  }
+  .pf_chart > ul > li i {
+    bottom: -10px;
+  }
+  .pf_calendar_table tr > th {
+    font-size: 10px;
+  }
+  .pf_calendar_table tr > td {
+    padding: 4px;
     font-size: 11px;
-
+  }
+  .pf_list_search .btn_search{
+    width: 100%;
+  }
+  .pf_list_search {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pf_list_search button {
+    margin: 10px;
+  }
+  ul.payback_list_head li {
+    min-width: 70px;
   }
   ul.payback_list_box li em {
     font-size: 12px;
-    min-width: 50px;
+    min-width: 70px;
   }
-  .month_exchange img.logo_s{
+  .nodata{
+    display: block;
+    width: 100vw;
+  }
+  .month_exchange img.logo_s {
     width: 50px;
   }
   .tab_ctgy {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
-  .tab_ctgy li{
+  .tab_ctgy li {
     width: 20%;
   }
+  .pf_list_search input[type="date"],
+  .pf_list_search input[type="month"] {
+    width: 100%;
+  }
+}
+@media (max-width: 418px) {
+  ul.payback_list_head {
+    min-width: auto;
+  }
+  ul.payback_list_head li{
+    background: rgba(29, 29, 43, 0.5);
+    -webkit-backdrop-filter: blur(3.5px);
+    backdrop-filter: blur(3.5px);
+  }
+  ul.payback_list_head li:last-child{
+    /* padding-right: 15px; */
+  }
+  ul.payback_list_box li{
+    min-width: auto;
+    padding-right: 0;
+  }
+}
+
+
+.blur_area{
+  position: fixed;
+  z-index: 5;
+  width: calc(90% - 70px);
+  max-width: 1420px;
+  height: calc(100% - 70px);
+  background: rgba(29, 29, 43, 0.5);
+  backdrop-filter: blur(10px);
+  
+}
+.blur_area.hd{
+  visibility: hidden;
+}
+.blur_area p{
+  font-size: 2em;
+  text-align: center;
+  line-height: 1.8em;
 }

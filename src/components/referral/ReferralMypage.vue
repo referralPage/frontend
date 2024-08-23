@@ -1,8 +1,12 @@
 <template>
-  <!-- <div v-if="!isDashboardChk">
+  <!-- <div>
     <div class="loading_spinner">
       <div class="loading_circle"></div>
     </div>
+  </div> -->
+  <!-- <div class="blur_area flex_col_c_c">
+    <p>레퍼럴 페이백 등록 후 이용이 가능합니다.</p>
+    <p>신청 페이지에서 레퍼럴 페이백 신청 후 이용 부탁드립니다.</p>
   </div> -->
   <div class="mypage_wrap">
     <ul class="mypage_ul">
@@ -13,30 +17,12 @@
         </div>
         <!--수익차트-->
         <div class="pf_chart">
-          <ul>
-            <li>
-              <div class="bar" :style="styledObj(50)">
-                <em>50%</em>
+          <ul :style="chartStyle()">
+            <li v-for="bar in barList" :key="bar.height">
+              <div class="bar" :style="styledObj(bar.height)">
+                <em>{{ bar.height }}%</em>
               </div>
-              <i>24-01</i>
-            </li>
-            <li>
-              <div class="bar" :style="styledObj(5)">
-                <em>5%</em>
-              </div>
-              <i>24-02</i>
-            </li>
-            <li>
-              <div class="bar" :style="styledObj(40)">
-                <em>40%</em>
-              </div>
-              <i>24-03</i>
-            </li>
-            <li>
-              <div class="bar" :style="styledObj(20)">
-                <em>20%</em>
-              </div>
-              <i>24-04</i>
+              <i>{{ bar.date }}</i>
             </li>
             <!-- <li v-for="day in dashboard?.days" :key="day">
             <div
@@ -117,7 +103,8 @@
         <h3 class="sub_title">Referral History</h3>
         <div class="pf_list_search">
           <h5>Search for Date</h5>
-          <input type="month" v-model="start_date" :max="toDate" /> -
+          <input type="month" v-model="start_date" :max="toDate" />
+          <span class="input_hypen">-</span>
           <input type="month" v-model="end_date" :max="toDate" />
           <button type="button" class="btn_search" @click="historySearch">
             Search
@@ -126,22 +113,31 @@
       </div>
     </form>
     <ul class="tab_ctgy flex_row_c">
-      <li v-for="tab in tabList" :key="tab.type">{{ tab.displayed }}</li>
+      <li
+        v-for="tab in tabList"
+        :key="tab.type"
+        @click="selectDateBtn(tab.type)"
+      >
+        {{ tab.displayed }}
+      </li>
     </ul>
-    <ul class="payback_list_head">
-      <li>날짜<i></i></li>
-      <li>거래소<i></i></li>
-      <li>지급액<i></i></li>
-      <li>지급일자<i></i></li>
-      <li>지급내역<i></i></li>
-      <li>비고<i></i></li>
-    </ul>
-    <ul class="payback_list_box">
+    <div class="payback_list_head_area" @scroll="syncScroll('head', 'content')">
+      <ul class="payback_list_head">
+        <li>날짜<i></i></li>
+        <li>거래소<i></i></li>
+        <li>지급액<i></i></li>
+        <li>지급일자<i></i></li>
+        <li>지급내역<i></i></li>
+        <li>비고<i></i></li>
+      </ul>
+    </div>
+
+    <ul class="payback_list_box" @scroll="syncScroll('content', 'head')">
       <li>
         <span class="nodata">No data!</span>
       </li>
       <li>
-        <em>2024.09.10</em>
+        <em>24.09.10</em>
         <em>okx</em>
         <em>135.2</em>
         <em>24.09.10</em>
@@ -149,7 +145,7 @@
         <em>지급 확정</em>
       </li>
       <li>
-        <em>2024.09.10</em>
+        <em>24.09.10</em>
         <em>tobbit</em>
         <em>135.2</em>
         <em>24.09.10</em>
@@ -157,7 +153,7 @@
         <em>예상지급</em>
       </li>
       <li>
-        <em>2024.09.10</em>
+        <em>24.09.10</em>
         <em>tobbit</em>
         <em>135.2</em>
         <em>24.09.10</em>
@@ -165,7 +161,7 @@
         <em>예상지급</em>
       </li>
       <li>
-        <em>2024.09.10</em>
+        <em>24.09.10</em>
         <em>tobbit</em>
         <em>135.2</em>
         <em>24.09.10</em>
@@ -173,7 +169,7 @@
         <em>예상지급</em>
       </li>
       <li>
-        <em>2024.09.10</em>
+        <em>24.09.10</em>
         <em>tobbit</em>
         <em>135.2</em>
         <em>24.09.10</em>
@@ -182,7 +178,7 @@
       </li>
     </ul>
   </div>
-  <ModalMsg v-if="modalState" :msg = msg />
+  <ModalMsg v-if="modalState" :msg="msg" />
 </template>
 
 <script setup>
@@ -196,9 +192,14 @@ const store = useStore();
 const exchangeArr = [...exchangeList];
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
-const modalState = computed(()=>{
+const modalState = computed(() => {
   return store.state.referral.modalState;
 });
+const barList = [
+  { date: "24-01", height: "50" },
+  { date: "24-02", height: "20" },
+  { date: "24-03", height: "80" },
+];
 const msg = "dateWarnig";
 let tabList = [
   { type: "year", displayed: "1년" },
@@ -222,11 +223,59 @@ const styledObj = (profit) => {
     height: profit + "%",
   };
 };
+const chartStyle = () => {
+  if (barList.length < 3) {
+    return { justifyContent: "flex-start", gap: "50px" };
+  }
+  return;
+};
 function selectCalender() {
   console.log(select);
   // calender 컴포넌트에서 해도댐
   // store.commit("userinfo/setCalendarInfo", select);
 }
+
+const selectDateBtn = (type) => {
+  let selectDate = {
+    start_date: nowDate,
+    end_date: nowDate,
+  };
+  let today = new Date();
+  switch (type) {
+    case "year":
+      selectDate.start_date = today.setFullYear(today.getFullYear() - 1);
+      break;
+    case "month_6":
+      selectDate.start_date = today.setMonth(today.getMonth() - 6);
+      break;
+    case "month_3":
+      selectDate.start_date = today.setMonth(today.getMonth() - 3);
+      break;
+    case "month_pre":
+      selectDate.end_date = today.setDate(0);
+      today.setMonth(today.getMonth() - 1);
+      selectDate.start_date = today.setDate(1);
+      break;
+    case "month_curr":
+      selectDate.end_date = new Date();
+      selectDate.start_date = today.setDate(1);
+      break;
+    case "date_curr":
+      selectDate.start_date = new Date();
+      selectDate.end_date = new Date();
+      break;
+    case "all":
+      console.log("all"); //flag값 다르게
+      break;
+  }
+  selectDate.start_date = new Date(selectDate.start_date)
+    .toISOString()
+    .slice(0, 10);
+  selectDate.end_date = new Date(selectDate.end_date)
+    .toISOString()
+    .slice(0, 10);
+  console.log(selectDate);
+};
 
 const historySearch = async () => {
   // let info = {
@@ -264,6 +313,19 @@ exchangeArr.forEach((obj) => {
       ? okxPayback
       : bingxPayback;
 });
+let listHeadScroll = 0;
+let listContScroll = 0;
+function syncScroll(el1, el2) {
+  const listHead = document.querySelector(".payback_list_head_area ");
+  const listCont = document.querySelector(".payback_list_box ");
+  if (listHead.scrollLeft !== listHeadScroll || listCont.scrollLeft !== listContScroll) {
+    el1 == "head" ? (el1 = listHead) : (el1 = listCont);
+    el2 == "head" ? (el2 = listHead) : (el2 = listCont);
+    el2.scrollLeft = el1.scrollLeft;
+    listHeadScroll = listHead.scrollLeft;
+    listContScroll = listCont.scrollLeft;
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

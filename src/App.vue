@@ -12,6 +12,7 @@
 import "@/assets/css/reset.css";
 import "@/assets/css/style.css";
 import "@/assets/css/font.css";
+import "@/assets/js/script.js";
 import { useI18n } from "vue-i18n";
 import TheHeader from "./components/comn/TheHeader.vue";
 import TheSideMenu from "./components/comn/TheSideMenu.vue";

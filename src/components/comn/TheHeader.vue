@@ -5,20 +5,25 @@
     </div>
     <div class="header_title pr">
       <h1>Referral {{ mainPath==='payback' ? 'Payback' : 'My Page' }} </h1>
-      <span class="time_area">[24.07.01 00:00]</span>
+      <span class="time_area">[{{nowDate}}]</span>
     </div>
-    <div class="header_locale">KR</div>
+    <div class="header_locale">
+      <TheLanguage />
+    </div>
   </header>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-
+import TheLanguage from './TheLanguage.vue';
+import { localeToUTC } from "@/utils/common.js";
 const route = useRoute();
 const mainPath = computed(()=>{
   return route.path.split("/")[1];
 })
+let locale = navigator.language.split("-")[1];
+let nowDate = localeToUTC(locale);
 </script>
 
 <style lang="scss" scoped></style>

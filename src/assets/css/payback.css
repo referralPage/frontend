@@ -199,6 +199,9 @@
   }
 }
 @media (max-width: 480px) {
+  .explan_area {
+    padding: 30px 20px;
+  }
   .recieve_wrap img.logo_s{
     width: 50px;
   }

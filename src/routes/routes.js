@@ -1,4 +1,5 @@
 import PaybackView from "@/components/referral/ReferralPayback.vue";
+import ApplyView from "@/components/referral/ReferralSubscript.vue";
 import MypageView from "@/components/referral/ReferralMypage.vue";
 
 const routes = [
@@ -7,6 +8,12 @@ const routes = [
     path: "/payback",
     name: "PaybackView",
     component: PaybackView,
+    props: true,
+  },
+  {
+    path: "/apply",
+    name: "ApplyView",
+    component: ApplyView,
     props: true,
   },
   {
