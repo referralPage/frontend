@@ -42,6 +42,7 @@ const enrollCheck = (exchange) => {
   //등록됐는지 체크하고, 등록됐을 시 '이미 등록되었습니다.' 팝업 띄우기
   // 안됐을 시 페이백 신청 페이지로 변경
   store.commit("referral/selectExchange", exchange);
+  store.commit("referral/setExchangeFlag");
   router.push("/apply");
 };
 </script>

@@ -10,9 +10,13 @@
             {{$t(`common['${props.msg}']`)}}
           </p>
         </div> -->
-        <div class="con_wrap" v-html="$t(`modal['${props.msg}']`)"></div>
+        <div class="con_wrap">
+          <p>{{ $t(`modal['${props.msg}']`) }}</p>
+        </div>
         <div class="btn_bottom">
-          <button class="btn_gray" @click="closeModal">{{$t("common['confirm']")}}</button>
+          <button class="btn_gray" @click="closeModal">
+            {{ $t("common['confirm']") }}
+          </button>
         </div>
       </div>
     </div>
@@ -20,7 +24,7 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex';
+import { useStore } from "vuex";
 
 const store = useStore();
 const props = defineProps({
@@ -31,6 +35,4 @@ const closeModal = () => {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -62,8 +62,8 @@
   
   //created;
   if (!selectLang.value) {
-    localStorage.setItem("localeLang", "en");
-    localStorage.setItem("localeLangDisplayed", "english");
+    localStorage.setItem("localeLang", "ko");
+    localStorage.setItem("localeLangDisplayed", "KO");
     selectLang.value = localStorage.getItem("localeLangDisplayed");
   }
   </script>

@@ -16,17 +16,21 @@
 </template>
 
 <script setup>
-import { autoLeftPad } from '@/utils/common';
-import { onMounted, watch } from 'vue';
-
+import { autoLeftPad, numSign, } from "@/utils/common";
+import { computed, onMounted, watch } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
 const props = defineProps({
-   select: {type : Object},
+  select: { type: Object },
 });
-async function buildCalendar() {  
-  let doMonth = new Date(props.select.year, props.select.month -1, 1);
+const calenderInfo = computed(() => {
+  return store.state.referral.calenderInfo;
+});
+async function buildCalendar() {
+  let doMonth = new Date(props.select.year, props.select.month - 1, 1);
   let lastDate = new Date(props.select.year, props.select.month, 0);
   let tbCalendar = document.querySelector(".pf_calendar_table > tbody");
-//   await store.dispatch("userinfo/loadCalendar");
+  await store.dispatch("referral/getCalendar");
   while (tbCalendar.rows.length > 0) {
     tbCalendar.deleteRow(tbCalendar.rows.length - 1);
   }
@@ -40,31 +44,31 @@ async function buildCalendar() {
     let column = row.insertCell();
     // 날짜 데이터 삽입
     if (Math.sign(day) == 1 && lastDate.getDate() >= day) {
-      //   let selectDate = `${doMonth.getFullYear()}-${autoLeftPad(
-      //     doMonth.getMonth() + 1,
-      //     2
-      //   )}-${autoLeftPad(day, 2)}`;
+      let selectDate = `${doMonth.getFullYear()}-${autoLeftPad(
+        doMonth.getMonth() + 1,
+        2
+      )}-${autoLeftPad(day, 2)}`;
       column.innerText = autoLeftPad(day, 2);
+      const calenderData = calenderInfo.value.find(
+        (obj) => obj.date === selectDate
+      );
       let data = document.createElement("em");
-      data.textContent = day;
-      column.appendChild(data);
-      //   if (calendar.value[selectDate] == 0 || calendar.value[selectDate]) {
-      //     if (String(calendar.value[selectDate]).charAt(0) == "-") {
-      //       data.classList.add("txt_minus");
-      //       calendar.value[selectDate] = numSign(calendar.value[selectDate], 0);
-      //     } else if (calendar.value[selectDate] == 0) {
-      //       data.classList.add("txt_zero");
-      //     } else {
-      //       data.classList.add("txt_plus");
-      //       calendar.value[selectDate] = numSign(calendar.value[selectDate], 0);
-      //     }
-      //     data.textContent = `${calendar.value[selectDate]}$`;
-      //     column.appendChild(data);
-      //   } else {
-      //     data.textContent = "-";
-      //     data.classList.add("dn");
-      //     column.appendChild(data);
-      //   }
+      if (calenderData || calenderData?.total_profit == 0) {
+        if (String(calenderData?.total_profit).charAt(0) == "-") {
+          data.classList.add("txt_minus");
+        } else if (calenderData?.total_profit == 0) {
+          data.classList.add("txt_zero");
+        } else {
+          data.classList.add("txt_plus");
+          calenderData.total_profit = numSign(calenderData.total_profit, 2)
+        }
+        data.textContent = `${calenderData?.total_profit}$`;
+        column.appendChild(data);
+      } else {
+        data.textContent = "-";
+        data.classList.add("txt_gray");
+        column.appendChild(data);
+      }
       column.style.color = "#fff";
       //일요일
       if (dom % 7 == 1) {
@@ -76,24 +80,20 @@ async function buildCalendar() {
         row = tbCalendar.insertRow();
       }
     }
-    //현재 날짜
-    // if (
-    //   props.today.getFullYear() == nowDate.getFullYear() &&
-    //   props.today.getMonth() == nowDate.getMonth() &&
-    //   nowDate.getDate() == day
-    // ) {
-    //   column.style.backgroundColor = "#4D4DFF";
-
-    // }
     dom++;
   }
 }
-onMounted(()=>{
-    buildCalendar();
+onMounted(() => {
+  store.commit("referral/setCalenderDate", props.select);
+  buildCalendar();
 });
-watch(props.select,()=>{
-    buildCalendar();
+watch(props.select,  () => {
+  store.commit("referral/setCalenderDate", props.select);
+  buildCalendar();
 });
+// defineExpose({
+//   buildCalendar
+// });
 </script>
 
 <style lang="scss" scoped></style>

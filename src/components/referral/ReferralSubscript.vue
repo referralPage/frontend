@@ -23,9 +23,9 @@
     </p>
     <div class="uid_area flex_row_c_c">
       <label for="userUid"
-        >{{ exchange.name.toUpperCase() }} 거래소 본인 UID :
+        >{{ exchange.name }} 거래소 본인 UID :
       </label>
-      <input type="text" id="userUid" name="userUid" />
+      <input type="number" id="userUid" name="userUid" v-model="userUid"/>
     </div>
     <div class="btn_area flex_row_c_c">
       <button class="gradient_blue" @click="enrollBtn">신청하기</button>
@@ -33,7 +33,7 @@
     <div>
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
-          <p>{{ exchange.name.toUpperCase() }} 가입 방법</p>
+          <p>{{ exchange.name}} 가입 방법</p>
           <button>
             <img src="@/assets/image/download_icon.png" alt="download" />
           </button>
@@ -42,7 +42,7 @@
           </button>
         </li>
         <li class="flex_row_c_c">
-          <p>{{ exchange.name.toUpperCase() }} UID 확인 방법</p>
+          <p>{{ exchange.name }} UID 확인 방법</p>
           <button>
             <img src="@/assets/image/download_icon.png" alt="download" />
           </button>
@@ -60,22 +60,31 @@
 import { computed } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const store = useStore();
 const exchange = computed(()=>{
     return store.state.referral.exchange;
-})
+});
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
-let msgCode = "";
+const uidState = computed(()=>{
+    return store.state.referral.uidState;
+});
+let msgCode = "msgCode0"; //입력하지않았을 때
+let userUid = "";
 
 const enrollBtn = () => {
   store.commit("referral/changeModalState", true);
-  //msg code 1 =성공적으로 등록 code 2 = 이미 등록, 3 = 올바르지않은uid, 4 = 올바르지않은 레퍼럴코드
-  msgCode = "msgCode01";
-  // msg = "이미 등록된 UID 입니다.";
-  // msg = "올바르지 않은 UID 입니다";
-  // msg = "성공적으로 등록되었습니다.";
-  // msg = "올바른 레퍼럴코드로 가입되지 않은 UID 입니다. 탈퇴 후 올바른 레퍼럴 코드로 재 가입 해주시기 바랍니다";
+  store.commit("referral/setUId", userUid);
+  store.dispatch("referral/postUid");
+  console.log(uidState.value);
+  msgCode = `msgCode0${uidState.value}`;
+  //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
 };
+
+if(Object.keys(exchange.value).length === 0) {
+  router.push("/payback");
+}
 </script>

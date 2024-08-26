@@ -16,7 +16,7 @@
 .middle_area {
   position: absolute;
   left: 200px;
-  top: 40%;
+  top: 45%;
   text-align: center;
 }
 .middle_area span {
@@ -30,8 +30,8 @@
 }
 .exchange_area li {
   background-color: rgba(0, 0, 0, 0.4);
-  padding: 30px;
-  margin-bottom: 1.5em;
+  padding: 25px;
+  margin-bottom: 1.1em;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -40,6 +40,7 @@
       }
       .middle_area {
         left: 50px;
+        top:40%;
       }
       .exchange_area {
         right: 100px;
@@ -58,6 +59,7 @@
       .exchange_area li {
         padding: 20px;
         width: 80%;
+        max-width: 300px;
       }
       .exchange_area li img.logo_s {
         width: 30%;
