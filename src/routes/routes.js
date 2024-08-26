@@ -22,6 +22,7 @@ const routes = [
     component: MypageView,
     props: true,
   },
+  { path: "/:pathMatch(.*)*", redirect: "/payback" },
 ];
 
 export default routes;

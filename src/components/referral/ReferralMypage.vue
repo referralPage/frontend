@@ -4,11 +4,11 @@
       <div class="loading_circle"></div>
     </div>
   </div>
-  <!-- <div class="blur_area flex_col_c_c">
+  <div class="blur_area flex_col_c_c" v-if="isNotSubscript">
     <p>레퍼럴 페이백 등록 후 이용이 가능합니다.</p>
     <p>신청 페이지에서 레퍼럴 페이백 신청 후 이용 부탁드립니다.</p>
-  </div> -->
-  <div class="mypage_wrap" v-else>
+  </div>
+  <div class="mypage_wrap" v-if="!allLoading">
     <ul class="mypage_ul">
       <li>
         <h3 class="title">My Referral Payback</h3>
@@ -159,6 +159,9 @@ const store = useStore();
 const exchangeArr = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
+const isNotSubscript = computed(()=>{
+  return store.state.referral.retri_id ? false : true;
+})
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
