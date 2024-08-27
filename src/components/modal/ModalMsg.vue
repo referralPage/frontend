@@ -39,7 +39,7 @@ const closeModal = () => {
 };
 onMounted(() => {
   if (props.msg == "noLogin") {
-    console.log(redirect_url.value);
+    // console.log(redirect_url.value);
     setInterval(() => {
       second.value === 0 ? 0 : second.value--;
     }, 1000);
