@@ -38,6 +38,9 @@ const getProfitApi = async (retri_id) => {
     const response = await API.get(`profit?retri_id=${retri_id}`);
     return response.data;
   } catch (error) {
+    if(error.response.status === 500){
+      return error.response;
+    }
     return;
   }
 };

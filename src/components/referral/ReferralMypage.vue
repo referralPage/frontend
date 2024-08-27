@@ -4,7 +4,7 @@
       <div class="loading_circle"></div>
     </div>
   </div>
-  <div class="blur_area flex_col_c_c" v-if="isNotSubscript">
+  <div class="blur_area flex_col_c_c" v-if="isNotReferral">
     <p>레퍼럴 페이백 등록 후 이용이 가능합니다.</p>
     <p>신청 페이지에서 레퍼럴 페이백 신청 후 이용 부탁드립니다.</p>
   </div>
@@ -120,11 +120,11 @@
     </div>
     <div class="list_loading" v-if="listLoading">
       <div class="loading_spinner">
-          <div class="loading_circle"></div>
-        </div>
+        <div class="loading_circle"></div>
+      </div>
     </div>
 
-    <ul class="payback_list_box" @scroll="syncScroll('content', 'head')" v-else >
+    <ul class="payback_list_box" @scroll="syncScroll('content', 'head')" v-else>
       <li class="nodata_list" v-if="paybackList.length == 0">
         <span class="nodata">No data!</span>
       </li>
@@ -153,15 +153,12 @@ import TheCalender from "@/components/comn/TheCalender.vue";
 import ThePaging from "@/components/comn/ThePaging.vue";
 import exchangeList from "@/utils/exchangeList";
 import { formatNum, preDate } from "@/utils/common";
-import { computed, onBeforeMount, reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const exchangeArr = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
-const isNotSubscript = computed(()=>{
-  return store.state.referral.retri_id ? false : true;
-})
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
@@ -183,9 +180,12 @@ const totalPages = computed(() => {
 const listLoading = computed(() => {
   return store.state.referral.listLoading;
 });
+const isNotReferral = computed(() => {
+  return store.state.referral.isNotReferral;
+});
 const msg = "dateWarnig";
 let allLoading = ref(false);
-let max_profit ;
+let max_profit;
 let tabList = [
   { type: "year", displayed: "1년" },
   { type: "month_6", displayed: "6개월" },
@@ -206,7 +206,7 @@ let yearArr = [nowDate.getFullYear(), nowDate.getFullYear() - 1];
 const styledObj = (profit) => {
   return {
     // 최고값을 기준으로 백분율
-    height: profit / max_profit * 100 + "%",
+    height: (profit / max_profit) * 100 + "%",
   };
 };
 const chartStyle = () => {
@@ -216,6 +216,7 @@ const chartStyle = () => {
   return;
 };
 const selectDateBtn = async (type) => {
+  await store.dispatch("retriAuth/postCheckLogin");
   let selectDate = {
     start_date: nowDate,
     end_date: nowDate,
@@ -259,7 +260,7 @@ const selectDateBtn = async (type) => {
   await store.dispatch("referral/getPaybackReport");
 };
 
-const changeDate = () => {
+const changeDate = async () => {
   let date = new Date(end_date.value);
   date.setMonth(date.getMonth() + 1);
   date.setDate(0);
@@ -277,12 +278,14 @@ const historySearch = async () => {
   } else {
     changeDate();
     store.commit("referral/setPage", 1);
+    await store.dispatch("retriAuth/postCheckLogin");
     await store.dispatch("referral/getPaybackReport");
   }
 };
 
 const changePage = async (str) => {
   store.commit("referral/setPage", str);
+  await store.dispatch("retriAuth/postCheckLogin");
   await store.dispatch("referral/getPaybackReport");
   // const listItem = document.querySelector(".payback_list_box");
   // console.log(listItem);
@@ -305,7 +308,9 @@ function syncScroll(el1, el2) {
   }
 }
 allLoading.value = true;
-onBeforeMount(async () => {
+const createdFecth = async () => {
+  await store.dispatch("retriAuth/getLoadUser");
+  await store.dispatch("retriAuth/postCheckLogin");
   changeDate();
   store.commit("referral/setPage", 1);
   await Promise.all([
@@ -331,10 +336,10 @@ onBeforeMount(async () => {
     }
   });
   let numArr = [];
-  monthlyInfo.value.monthly_data.forEach(item=>{
-    numArr.push( item.total_profit);
+  monthlyInfo.value.monthly_data.forEach((item) => {
+    numArr.push(item.total_profit);
   });
   max_profit = Math.max(...numArr);
-});
-
+};
+createdFecth();
 </script>

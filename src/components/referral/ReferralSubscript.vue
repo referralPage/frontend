@@ -86,6 +86,12 @@ const enrollBtn = async () => {
 if(Object.keys(exchange.value).length === 0) {
   router.push("/payback");
 }
+const createdFecth = async () =>{
+  // await store.dispatch("retriAuth/postRetriAuth");
+  await store.dispatch("retriAuth/getLoadUser");
+  await store.dispatch("retriAuth/postCheckLogin");
+}
+createdFecth();
 
 
 </script>

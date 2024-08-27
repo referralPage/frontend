@@ -23,7 +23,7 @@ export default {
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
-        sessionStorage.setItem("retri_id", response.result.retri_id);
+        localStorage.setItem("retri_id", response.result.retri_id);
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
       } catch (error) {

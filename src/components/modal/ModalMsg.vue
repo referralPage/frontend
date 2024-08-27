@@ -15,7 +15,9 @@
         </div>
         <div class="btn_bottom">
           <button class="btn_gray" @click="closeModal">
-            {{ props.msg ==="noLogin" ? `${second}s` : $t("common['confirm']") }}
+            {{
+              props.msg === "noLogin" ? `${second}s` : $t("common['confirm']")
+            }}
           </button>
         </div>
       </div>
@@ -37,6 +39,9 @@ const redirect_url = computed(() => {
 const closeModal = () => {
   store.commit("referral/changeModalState", false);
 };
+const redirect = () => {
+  location.href = redirect_url.value;
+};
 onMounted(() => {
   if (props.msg == "noLogin") {
     // console.log(redirect_url.value);
@@ -44,8 +49,10 @@ onMounted(() => {
       second.value === 0 ? 0 : second.value--;
     }, 1000);
     setTimeout(() => {
-      location.href=redirect_url.value;
+      redirect;
     }, 3000);
+  } else {
+    clearTimeout(redirect);
   }
 });
 </script>

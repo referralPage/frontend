@@ -9,7 +9,6 @@ export default {
       exchange: {},
       exchangeFlag: "",
       // retri_id: "retri1",
-      retri_id: sessionStorage.getItem("retri_id"),
       uid: "",
       calenderDate: "",
       totalPages: 1,
@@ -19,10 +18,19 @@ export default {
       end_date: "",
       type: "",
       listLoading: false,
+      isNotReferral: false,
       // res
       uidState: "",
       calenderInfo: [],
-      monthlyInfo: {},
+      monthlyInfo: {
+        total_accumulated_profit: 0,
+        monthly_data: [
+          {
+            total_profit: 0,
+            month: "0000",
+          },
+        ],
+      },
       profitInfo: {},
       paybackList: [],
     };
@@ -87,7 +95,7 @@ export default {
     async postUid(context) {
       try {
         let info = {
-          retri_id: context.state.retri_id,
+          retri_id: localStorage.getItem("retri_id"),
           UID: context.state.uid,
           exchange: context.state.exchangeFlag,
           datetime: new Date().toISOString(),
@@ -106,18 +114,20 @@ export default {
     },
     async getMonthlyProfit(context) {
       try {
-        let retri_id = context.state.retri_id;
+        let retri_id = localStorage.getItem("retri_id");
         let response = await api.getMonthlyProfitApi(retri_id);
-        context.state.monthlyInfo = response;
-        context.state.monthlyInfo.monthly_data =
-          response.monthly_data.reverse();
+        if (response.status === 200) {
+          context.state.monthlyInfo = response;
+          context.state.monthlyInfo.monthly_data =
+            response.monthly_data.reverse();
+        }
       } catch (error) {
         return;
       }
     },
     async getCalendar(context) {
       try {
-        let retri_id = context.state.retri_id;
+        let retri_id = localStorage.getItem("retri_id");
         let year_month = context.state.calenderDate;
         let response = await api.getCalendarApi(retri_id, year_month);
         context.state.calenderInfo = response.result;
@@ -127,9 +137,13 @@ export default {
     },
     async getProfit(context) {
       try {
-        let retri_id = context.state.retri_id;
+        let retri_id = localStorage.getItem("retri_id");
         let response = await api.getProfitApi(retri_id);
-        context.state.profitInfo = response.result[0];
+        if (response.status === 500) {
+          context.state.isNotReferral = true;
+        } else {
+          context.state.profitInfo = response.result[0];
+        }
       } catch (error) {
         return;
       }
@@ -138,7 +152,7 @@ export default {
       try {
         context.state.listLoading = true;
         let info = {
-          retri_id: context.state.retri_id,
+          retri_id: localStorage.getItem("retri_id"),
           page: context.state.page,
           per_page: context.state.per_page,
           start_date: context.state.start_date,

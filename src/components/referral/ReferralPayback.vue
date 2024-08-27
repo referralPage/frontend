@@ -45,4 +45,9 @@ const enrollCheck = (exchange) => {
   store.commit("referral/setExchangeFlag");
   router.push("/apply");
 };
+const createdFecth = async () =>{
+  await store.dispatch("retriAuth/getLoadUser");
+  await store.dispatch("retriAuth/postCheckLogin");
+}
+createdFecth();
 </script>
