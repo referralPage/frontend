@@ -336,4 +336,5 @@ onBeforeMount(async () => {
   });
   max_profit = Math.max(...numArr);
 });
+
 </script>

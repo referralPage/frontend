@@ -32,6 +32,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   padding: 25px;
   margin-bottom: 1.1em;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {

@@ -8,7 +8,8 @@ export default {
       modalState: false,
       exchange: {},
       exchangeFlag: "",
-      retri_id: "retri1",
+      // retri_id: "retri1",
+      retri_id: sessionStorage.getItem("retri_id"),
       uid: "",
       calenderDate: "",
       totalPages: 1,
@@ -98,6 +99,7 @@ export default {
         if (response.status === 500) {
           context.state.uidState = 4;
         }
+        console.log(context.state.uidState);
       } catch (error) {
         return;
       }
