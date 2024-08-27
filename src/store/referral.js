@@ -9,6 +9,8 @@ export default {
       exchange: {},
       exchangeFlag: "",
       // retri_id: "retri1",
+      retri_id: "",
+      session_id: "",
       uid: "",
       calenderDate: "",
       totalPages: 1,
@@ -19,6 +21,10 @@ export default {
       type: "",
       listLoading: false,
       isNotReferral: false,
+      status: "",
+      region_code: "",
+      loginStatus: 200,
+      setting : false,
       // res
       uidState: "",
       calenderInfo: [],
@@ -90,12 +96,15 @@ export default {
         state.page = 1;
       }
     },
+    initSetting(state,payload){
+      state.setting  = payload;
+    }
   },
   actions: {
     async postUid(context) {
       try {
         let info = {
-          retri_id: localStorage.getItem("retri_id"),
+          retri_id: context.state.retri_id,
           UID: context.state.uid,
           exchange: context.state.exchangeFlag,
           datetime: new Date().toISOString(),
@@ -114,7 +123,7 @@ export default {
     },
     async getMonthlyProfit(context) {
       try {
-        let retri_id = localStorage.getItem("retri_id");
+        let retri_id = context.state.retri_id;
         let response = await api.getMonthlyProfitApi(retri_id);
         if (response.status === 200) {
           context.state.monthlyInfo = response;
@@ -127,7 +136,7 @@ export default {
     },
     async getCalendar(context) {
       try {
-        let retri_id = localStorage.getItem("retri_id");
+        let retri_id = context.state.retri_id;
         let year_month = context.state.calenderDate;
         let response = await api.getCalendarApi(retri_id, year_month);
         context.state.calenderInfo = response.result;
@@ -137,7 +146,7 @@ export default {
     },
     async getProfit(context) {
       try {
-        let retri_id = localStorage.getItem("retri_id");
+        let retri_id = context.state.retri_id;
         let response = await api.getProfitApi(retri_id);
         if (response.status === 500) {
           context.state.isNotReferral = true;
@@ -152,7 +161,7 @@ export default {
       try {
         context.state.listLoading = true;
         let info = {
-          retri_id: localStorage.getItem("retri_id"),
+          retri_id: context.state.retri_id,
           page: context.state.page,
           per_page: context.state.per_page,
           start_date: context.state.start_date,
@@ -166,6 +175,36 @@ export default {
         setTimeout(() => {
           context.state.listLoading = false;
         }, 200);
+      } catch (error) {
+        return;
+      }
+    },
+    async postRetriAuth(context) {
+      try {
+        let response = await api.postRetriAuthApi();
+        context.state.status = response.status;
+      } catch (error) {
+        return;
+      }
+    },
+    async getLoadUser(context) {
+      try {
+        let response = await api.getLoadUserApi();
+        context.state.region_code = response.result.na_code;
+        context.state.session_id = response.result.session_id;
+        context.state.retri_id = response.result.retri_id;
+      } catch (error) {
+        return;
+      }
+    },
+    async postCheckLogin(context) {
+      try {
+        let info = {
+          session_id: context.state.session_id,
+        };
+        console.log(context.state.session_id);
+        let response = await api.postCheckLoginApi(info);
+        context.state.loginStatus = response.status;
       } catch (error) {
         return;
       }

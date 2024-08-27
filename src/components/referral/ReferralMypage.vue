@@ -202,7 +202,6 @@ let select = reactive({
 let start_date = ref(preDate(new Date(), "month").toISOString().slice(0, 7));
 let end_date = ref(toDate);
 let yearArr = [nowDate.getFullYear(), nowDate.getFullYear() - 1];
-
 const styledObj = (profit) => {
   return {
     // 최고값을 기준으로 백분율
@@ -216,7 +215,7 @@ const chartStyle = () => {
   return;
 };
 const selectDateBtn = async (type) => {
-  await store.dispatch("retriAuth/postCheckLogin");
+  await store.dispatch("referral/postCheckLogin");
   let selectDate = {
     start_date: nowDate,
     end_date: nowDate,
@@ -278,14 +277,14 @@ const historySearch = async () => {
   } else {
     changeDate();
     store.commit("referral/setPage", 1);
-    await store.dispatch("retriAuth/postCheckLogin");
+    await store.dispatch("referral/postCheckLogin");
     await store.dispatch("referral/getPaybackReport");
   }
 };
 
 const changePage = async (str) => {
   store.commit("referral/setPage", str);
-  await store.dispatch("retriAuth/postCheckLogin");
+  await store.dispatch("referral/postCheckLogin");
   await store.dispatch("referral/getPaybackReport");
   // const listItem = document.querySelector(".payback_list_box");
   // console.log(listItem);
@@ -308,9 +307,8 @@ function syncScroll(el1, el2) {
   }
 }
 allLoading.value = true;
-const createdFecth = async () => {
-  await store.dispatch("retriAuth/getLoadUser");
-  await store.dispatch("retriAuth/postCheckLogin");
+const createdFn = async () => {
+  await store.dispatch("referral/postCheckLogin");
   changeDate();
   store.commit("referral/setPage", 1);
   await Promise.all([
@@ -341,5 +339,10 @@ const createdFecth = async () => {
   });
   max_profit = Math.max(...numArr);
 };
-createdFecth();
+
+store.watch((state)=>{
+  if(state.referral.setting){
+    createdFn();
+  } 
+},createdFn);
 </script>

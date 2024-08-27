@@ -26,30 +26,27 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const props = defineProps({
   msg: { type: String },
 });
 let second = ref(3);
-const redirect_url = computed(() => {
-  return store.state.retriAuth.redirect_url;
-});
 const closeModal = () => {
   store.commit("referral/changeModalState", false);
 };
 const redirect = () => {
-  location.href = redirect_url.value;
+  console.log('bb');
+  location.href = "https://retri.io";
 };
 onMounted(() => {
   if (props.msg == "noLogin") {
-    // console.log(redirect_url.value);
     setInterval(() => {
       second.value === 0 ? 0 : second.value--;
     }, 1000);
     setTimeout(() => {
-      redirect;
+      redirect();
     }, 3000);
   } else {
     clearTimeout(redirect);

@@ -86,12 +86,14 @@ const enrollBtn = async () => {
 if(Object.keys(exchange.value).length === 0) {
   router.push("/payback");
 }
-const createdFecth = async () =>{
-  // await store.dispatch("retriAuth/postRetriAuth");
-  await store.dispatch("retriAuth/getLoadUser");
-  await store.dispatch("retriAuth/postCheckLogin");
+const createdFn = async () =>{
+  await store.dispatch("referral/postCheckLogin");
 }
-createdFecth();
+store.watch((state)=>{
+  if(state.referral.setting){
+    createdFn();
+  } 
+},createdFn);
 
 
 </script>
