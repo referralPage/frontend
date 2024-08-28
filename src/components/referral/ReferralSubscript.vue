@@ -24,7 +24,7 @@
         id="userUid"
         name="userUid"
         :value="userUid"
-        @input = "checkNumber"
+        @input="checkNumber"
       />
     </div>
     <div class="btn_area flex_row_c_c">
@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { computed, } from "vue";
+import { computed } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -72,7 +72,12 @@ const modalState = computed(() => {
 const uidState = computed(() => {
   return store.state.referral.uidState;
 });
-
+const session_id = computed(() => {
+  return store.state.referral.session_id;
+});
+const retri_id = computed(() => {
+  return store.state.referral.retri_id;
+});
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {
@@ -90,6 +95,9 @@ if (Object.keys(exchange.value).length === 0) {
 }
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
+  if (!session_id.value || !retri_id.value) {
+    router.push("/404");
+  }
 };
 store.watch((state) => {
   if (state.referral.setting) {
