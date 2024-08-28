@@ -1,11 +1,12 @@
 import axios from "axios";
-
+axios.defaults.withCredentials = true;
 export const API = axios.create({
   // baseURL: "http://3.35.18.18/",
   baseURL: "https://referral.retri.xyz/",
   headers: {
     Accept: "*/*",
   },
+  // withCredentials: true,
 });
 
 // Function to set the Authorization token

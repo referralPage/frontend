@@ -8,7 +8,6 @@
       <ModalMsg msg="noLogin" v-if="!loginStatus"/>
     </div>
   </div>
-  
 </template>
 <script setup>
 import "@/assets/css/reset.css";
@@ -21,15 +20,22 @@ import TheSideMenu from "./components/comn/TheSideMenu.vue";
 import { computed, } from "vue";
 import { useStore } from "vuex";
 import ModalMsg from "./components/modal/ModalMsg.vue";
+// import { useRouter } from "vue-router";
 const { t, locale } = useI18n({ useScope: "global" });
 const store = useStore();
+// const router =useRouter();
 const loginStatus = computed(()=>{
   return store.state.referral.loginStatus === 200 ? true : false;
 });
-const createdFn = async () =>{
+// router.beforeEach((to,from,next) => {
+//     console.log(from.path + ' -> ' + to.path);
+//     next();
+// })
+const createdFetch = async () =>{
   await store.dispatch("referral/postRetriAuth");
   await store.dispatch("referral/getLoadUser");
   store.commit("referral/initSetting",true);
 }
-createdFn();
+createdFetch();
+
 </script>
