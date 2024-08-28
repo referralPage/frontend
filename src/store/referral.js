@@ -24,19 +24,11 @@ export default {
       status: "",
       region_code: "",
       loginStatus: 200,
-      setting : false,
+      setting: false,
       // res
       uidState: "",
       calenderInfo: [],
-      monthlyInfo: {
-        total_accumulated_profit: 0,
-        monthly_data: [
-          {
-            total_profit: 0,
-            month: "0000",
-          },
-        ],
-      },
+      monthlyInfo: {},
       profitInfo: {},
       paybackList: [],
     };
@@ -96,9 +88,9 @@ export default {
         state.page = 1;
       }
     },
-    initSetting(state,payload){
-      state.setting  = payload;
-    }
+    initSetting(state, payload) {
+      state.setting = payload;
+    },
   },
   actions: {
     async postUid(context) {
@@ -126,11 +118,20 @@ export default {
         let retri_id = context.state.retri_id;
         let response = await api.getMonthlyProfitApi(retri_id);
         if (response.status === 200) {
-          context.state.monthlyInfo = response;
+          context.state.monthlyInfo = response.data;
           context.state.monthlyInfo.monthly_data =
-            response.monthly_data.reverse();
+            response.data.monthly_data.reverse();
         }
       } catch (error) {
+        context.state.monthlyInfo = {
+          total_accumulated_profit: 0,
+          monthly_data: [
+            {
+              total_profit: 0,
+              month: "0000",
+            },
+          ],
+        };
         return;
       }
     },

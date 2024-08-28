@@ -16,7 +16,7 @@ const postUidApi = async (info) => {
 const getMonthlyProfitApi = async (retri_id) => {
   try {
     const response = await API.get(`monthly-profit?retri_id=${retri_id}`);
-    return response.data;
+    return response;
   } catch (error) {
     return;
   }
