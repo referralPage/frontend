@@ -20,11 +20,11 @@
     <div class="uid_area flex_row_c_c">
       <label for="userUid">{{ exchange.name }} 거래소 본인 UID : </label>
       <input
-        type="text"
+        type="number"
         id="userUid"
         name="userUid"
-        v-model="userUid"
-        @keydown="checkNumber"
+        :value="userUid"
+        @input = "checkNumber"
       />
     </div>
     <div class="btn_area flex_row_c_c">
@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -75,9 +75,7 @@ const uidState = computed(() => {
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {
-  if (!/^\d$/.test(e.key)) {
-    e.preventDefault();
-  }
+  userUid = e.target.value;
 };
 const enrollBtn = async () => {
   store.commit("referral/setUId", userUid);
