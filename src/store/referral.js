@@ -184,6 +184,7 @@ export default {
       try {
         let response = await api.postRetriAuthApi();
         context.state.status = response.status;
+        console.log(response.status);
       } catch (error) {
         return;
       }
@@ -194,6 +195,7 @@ export default {
         context.state.region_code = response.result.na_code;
         // context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
+        console.log(response);
       } catch (error) {
         return;
       }
@@ -206,6 +208,7 @@ export default {
         // console.log(context.state.session_id);
         let response = await api.getCheckLoginApi();
         context.state.loginStatus = response.status;
+        console.log(response);
       } catch (error) {
         return;
       }
