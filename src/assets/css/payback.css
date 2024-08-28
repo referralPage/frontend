@@ -44,7 +44,10 @@
         top:40%;
       }
       .exchange_area {
-        right: 100px;
+        right: 80px;
+      }
+      .exchange_area li {
+        padding:20px;
       }
 }
 @media (max-width: 767px) {
