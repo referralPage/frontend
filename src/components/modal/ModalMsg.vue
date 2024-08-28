@@ -37,7 +37,7 @@ const closeModal = () => {
   store.commit("referral/changeModalState", false);
 };
 const redirect = () => {
-  console.log('bb');
+  // console.log('bb');
   location.href = "https://retri.io";
 };
 onMounted(() => {

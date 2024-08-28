@@ -232,8 +232,13 @@ input.checkbox_type0:checked {
     font-size: 14px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 481px)and (max-width: 767px)  {
   body{
     font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  body{
+    font-size: 12px;
   }
 }

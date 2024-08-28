@@ -116,7 +116,7 @@ export default {
         if (response.status === 500) {
           context.state.uidState = 4;
         }
-        console.log(context.state.uidState);
+        // console.log(context.state.uidState);
       } catch (error) {
         return;
       }
@@ -202,7 +202,7 @@ export default {
         let info = {
           session_id: context.state.session_id,
         };
-        console.log(context.state.session_id);
+        // console.log(context.state.session_id);
         let response = await api.postCheckLoginApi(info);
         context.state.loginStatus = response.status;
       } catch (error) {

@@ -81,7 +81,7 @@ form {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 1.6em;
+  font-size: 1.8em;
 }
 .gradient_green{
   background: var(--green_gradient);
@@ -91,11 +91,11 @@ form {
 }
 
 img.logo_s {
-  width: 50px;
+  width: 70px;
   margin-right: 10px;
 }
 img.logo_l {
-  width: 120px;
+  width: 150px;
 }
 
 /* header & aside */
