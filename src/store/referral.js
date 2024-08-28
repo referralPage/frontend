@@ -203,6 +203,7 @@ export default {
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
+        console.log(response);
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
