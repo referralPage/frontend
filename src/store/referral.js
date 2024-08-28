@@ -193,7 +193,7 @@ export default {
       try {
         let response = await api.getLoadUserApi();
         context.state.region_code = response.result.na_code;
-        context.state.session_id = response.result.session_id;
+        // context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
       } catch (error) {
         return;
@@ -201,11 +201,11 @@ export default {
     },
     async postCheckLogin(context) {
       try {
-        let info = {
-          session_id: context.state.session_id,
-        };
+        // let info = {
+        //   session_id: context.state.session_id,
+        // };
         // console.log(context.state.session_id);
-        let response = await api.postCheckLoginApi(info);
+        let response = await api.getCheckLoginApi();
         context.state.loginStatus = response.status;
       } catch (error) {
         return;
