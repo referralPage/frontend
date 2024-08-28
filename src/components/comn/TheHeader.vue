@@ -4,7 +4,7 @@
         <img src="@/assets/image/logo.png" alt="retri logo" />
     </div>
     <div class="header_title pr">
-      <h1>Referral {{ mainPath==='payback' ? 'Payback' : 'My Page' }} </h1>
+      <h1>Referral {{ mainPath==='mypage' ? 'My Page' : 'Payback' }} </h1>
       <span class="time_area">[{{nowDate}}]</span>
     </div>
     <div class="header_locale">

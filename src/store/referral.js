@@ -31,6 +31,7 @@ export default {
       monthlyInfo: {},
       profitInfo: {},
       paybackList: [],
+      postStatus : 1,
     };
   },
   mutations: {
@@ -93,6 +94,16 @@ export default {
     },
   },
   actions: {
+    async getCheckApproval(context) {
+      try {
+        let retri_id = context.state.retri_id;
+        let exchange = context.state.exchangeFlag;
+        let response = await api.getCheckApprovalApi(retri_id,exchange);
+        context.state.postStatus = response.status;
+      } catch (error) {
+        return;
+      }
+    },
     async postUid(context) {
       try {
         let info = {
@@ -180,20 +191,20 @@ export default {
         return;
       }
     },
-    async postRetriAuth(context) {
-      try {
-        let response = await api.postRetriAuthApi();
-        context.state.status = response.status;
-        //console.log(response.status);
-      } catch (error) {
-        return;
-      }
-    },
+    // async postRetriAuth(context) {
+    //   try {
+    //     let response = await api.postRetriAuthApi();
+    //     context.state.status = response.status;
+    //     //console.log(response.status);
+    //   } catch (error) {
+    //     return;
+    //   }
+    // },
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
         context.state.region_code = response.result.na_code;
-        // context.state.session_id = response.result.session_id;
+        context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
         //console.log(response);
       } catch (error) {

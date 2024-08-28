@@ -132,6 +132,13 @@
 .recieve_wrap ul li button{
   background-color: transparent;
 }
+.status_txt{
+  margin: 100px 0;
+}
+.status_txt p{
+  font-size: 2em;
+  text-align: center;
+}
 @media (min-width: 722px) and (max-width: 865px) {
   .payback_sub_title{
     flex-wrap: wrap;

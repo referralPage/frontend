@@ -72,6 +72,7 @@ const modalState = computed(() => {
 const uidState = computed(() => {
   return store.state.referral.uidState;
 });
+
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {
@@ -82,9 +83,8 @@ const enrollBtn = async () => {
   await store.dispatch("referral/postUid");
   store.commit("referral/changeModalState", true);
   msgCode = `msgCode0${uidState.value}`;
-  //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
+  //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패
 };
-
 if (Object.keys(exchange.value).length === 0) {
   router.push("/payback");
 }

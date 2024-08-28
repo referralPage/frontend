@@ -1,5 +1,15 @@
 import { API } from "./apiAuth";
-
+// 승인 대기 상태 확인 api
+const getCheckApprovalApi = async (retri_id, exchange) => {
+  try {
+    const response = await API.get(
+      `check-approval?retri_id=${retri_id}&exchange=${exchange}`
+    );
+    return response.data;
+  } catch (error) {
+    return;
+  }
+};
 // uid 등록 api
 const postUidApi = async (info) => {
   try {
@@ -38,7 +48,7 @@ const getProfitApi = async (retri_id) => {
     const response = await API.get(`profit?retri_id=${retri_id}`);
     return response.data;
   } catch (error) {
-    if(error.response.status === 500){
+    if (error.response.status === 500) {
       return error.response;
     }
     return;
@@ -75,14 +85,14 @@ const getMonthProfitApi = async () => {
 };
 
 // 리트리 인증 api
-const postRetriAuthApi = async () => {
-  try {
-    const response = await API.post("retri_auth");
-    return response;
-  } catch (error) {
-    return;
-  }
-};
+// const postRetriAuthApi = async () => {
+//   try {
+//     const response = await API.post("retri_auth");
+//     return response;
+//   } catch (error) {
+//     return;
+//   }
+// };
 
 // 로그인 한 유저 정보 조회 api
 const getLoadUserApi = async () => {
@@ -100,21 +110,22 @@ const getCheckLoginApi = async () => {
     const response = await API.get("check_login");
     return response;
   } catch (error) {
-      if(error.response.status === 409){
-          return error.response;
-      }
+    if (error.response.status === 409) {
+      return error.response;
+    }
     return;
   }
 };
 
 export default {
+  getCheckApprovalApi,
   postUidApi,
   getMonthlyProfitApi,
   getCalendarApi,
   getProfitApi,
   getPaybackReportApi,
   getMonthProfitApi,
-  postRetriAuthApi,
+  // postRetriAuthApi,
   getLoadUserApi,
   getCheckLoginApi,
 };

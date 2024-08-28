@@ -30,21 +30,37 @@
       </li>
     </ul>
   </div>
+  <ModalMsg v-if="modalState" :msg="msgCode" />
 </template>
 
 <script setup>
+import ModalMsg from "@/components/modal/ModalMsg.vue";
 import exchangeList from "@/utils/exchangeList";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 const store = useStore();
 const router = useRouter();
-const enrollCheck = (exchange) => {
+const modalState = computed(() => {
+  return store.state.referral.modalState;
+});
+const postStatus = computed(() => {
+  return store.state.referral.postStatus;
+});
+let msgCode = "msgCode0"; //입력하지않았을 때
+const enrollCheck = async (exchange) => {
   createdFn();
-  //등록됐는지 체크하고, 등록됐을 시 '이미 등록되었습니다.' 팝업 띄우기
-  // 안됐을 시 페이백 신청 페이지로 변경
   store.commit("referral/selectExchange", exchange);
   store.commit("referral/setExchangeFlag");
-  router.push("/apply");
+  await store.dispatch("referral/getCheckApproval");
+  if(postStatus.value === 0){
+    router.push("/apply");
+  } else{
+    store.commit("referral/changeModalState", true);
+     msgCode = `msgCode0${postStatus.value}`;
+    //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
+  }
+  
 };
 const createdFn = async () =>{
   await store.dispatch("referral/postCheckLogin");
