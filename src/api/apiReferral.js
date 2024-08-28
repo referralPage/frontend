@@ -78,10 +78,8 @@ const getMonthProfitApi = async () => {
 const postRetriAuthApi = async () => {
   try {
     const response = await API.post("retri_auth");
-    console.log('aa');
     return response;
   } catch (error) {
-    console.log('aa');
     return;
   }
 };
@@ -90,10 +88,8 @@ const postRetriAuthApi = async () => {
 const getLoadUserApi = async () => {
   try {
     const response = await API.get("load_user");
-    console.log('bb');
     return response.data;
   } catch (error) {
-    console.log('bb');
     return;
   }
 };
@@ -102,10 +98,8 @@ const getLoadUserApi = async () => {
 const getCheckLoginApi = async () => {
   try {
     const response = await API.get("check_login");
-    console.log('cc');
     return response;
   } catch (error) {
-    console.log('cc');
       if(error.response.status === 409){
           return error.response;
       }

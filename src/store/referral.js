@@ -101,7 +101,6 @@ export default {
           exchange: context.state.exchangeFlag,
           datetime: new Date().toISOString(),
         };
-        console.log(info.UID);
         let response = await api.postUidApi(info);
         if (response.result) {
           context.state.uidState = response.result[0].status;
