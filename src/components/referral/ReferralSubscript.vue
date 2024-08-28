@@ -3,11 +3,11 @@
     <div class="payback_sub_title flex_row_c_c">
       <div class="flex_row_c_c">
         <img
-          class="logo_s"
+          class="logo_l"
           :src="exchange.logo"
           :alt="`${exchange.name} 로고`"
         />
-        <img class="logo_l" :src="exchange.text" :alt="exchange.name" />
+        <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
       </div>
       <p>레퍼럴 페이백 신청</p>
       <button class="gradient_green">지금 가입하기</button>

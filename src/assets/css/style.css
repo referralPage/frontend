@@ -91,11 +91,13 @@ form {
 }
 
 img.logo_s {
-  width: 70px;
+  width: 100px;
+  height: 40px;
   margin-right: 10px;
 }
 img.logo_l {
-  width: 150px;
+  width: 180px;
+  height: 60px;
 }
 
 /* header & aside */

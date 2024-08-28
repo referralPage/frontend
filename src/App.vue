@@ -5,7 +5,7 @@
     <TheSideMenu></TheSideMenu>
     <div class="main_wrap">
       <router-view></router-view>
-      <ModalMsg msg="noLogin" v-if="!loginStatus"/>
+      <!-- <ModalMsg msg="noLogin" v-if="!loginStatus"/> -->
     </div>
   </div>
 </template>
@@ -17,16 +17,16 @@ import "@/assets/js/script.js";
 import { useI18n } from "vue-i18n";
 import TheHeader from "./components/comn/TheHeader.vue";
 import TheSideMenu from "./components/comn/TheSideMenu.vue";
-import { computed, } from "vue";
+// import { computed, } from "vue";
 import { useStore } from "vuex";
-import ModalMsg from "./components/modal/ModalMsg.vue";
+// import ModalMsg from "./components/modal/ModalMsg.vue";
 // import { useRouter } from "vue-router";
 const { t, locale } = useI18n({ useScope: "global" });
 const store = useStore();
 // const router =useRouter();
-const loginStatus = computed(()=>{
-  return store.state.referral.loginStatus === 200 ? true : false;
-});
+// const loginStatus = computed(()=>{
+//   return store.state.referral.loginStatus === 200 ? true : false;
+// });
 // router.beforeEach((to,from,next) => {
 //     console.log(from.path + ' -> ' + to.path);
 //     next();

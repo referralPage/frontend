@@ -73,7 +73,7 @@
               :src="exchange.logo"
               :alt="`${exchange.name} logo`"
             />
-            <p>{{ exchange.name }}</p>
+            <!-- <p>{{ exchange.name }}</p> -->
             <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
               {{
                 exchange.payback !== "X"

@@ -18,15 +18,15 @@
         @click="enrollCheck(exchange)"
       >
         <img
-          class="logo_s"
+          class="logo_l"
           :src="exchange.logo"
           :alt="`${exchange.name} logo`"
         />
-        <img
+        <!-- <img
           class="logo_l"
           :src="exchange.text"
           :alt="`${exchange.name} logo`"
-        />
+        /> -->
       </li>
     </ul>
   </div>
