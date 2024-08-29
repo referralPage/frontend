@@ -102,7 +102,6 @@ const enrollBtn = async () => {
   await store.dispatch("referral/postUid");
   store.commit("referral/changeModalState", true);
   msgCode = `msgCode0${uidState.value}`;
-  //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패
 };
 let screenSize = ref("pc");
 

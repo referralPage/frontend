@@ -39,6 +39,9 @@ const closeModal = () => {
   if(props.exchange){
     router.push("/apply");
   }
+  if(props.msg == "msgCode01" || props.msg == "msgCode04"){
+    router.push("/payback");
+  }
 };
 const redirect = () => {
   location.href = "https://retri.io";
