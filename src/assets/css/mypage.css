@@ -684,7 +684,16 @@ ul.payback_list_box li em:nth-child(6) {
   visibility: hidden;
 }
 .blur_area p{
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
-  line-height: 1.8em;
+  line-height: 1.5em;
+  word-break: break-all;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .blur_area p{
+    font-size: 1.2em;
+    line-height: 1.3em;
+    padding: 10px;
+  }
 }
