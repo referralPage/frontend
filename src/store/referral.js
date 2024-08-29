@@ -204,16 +204,16 @@ export default {
     // },
     async getLoadUser(context) {
       try {
-        let response = await api.getLoadUserApi();
+        // let response = await api.getLoadUserApi();
 
-        // let response = {
-        //   "result": {
-        //     "user_id": "retri60",
-        //     "retri_id": "25576",
-        //     "session_id": "882288089",
-        //     "na_code": "KR"
-        //   }
-        // }
+        let response = {
+          "result": {
+            "user_id": "retri60",
+            "retri_id": "25576",
+            "session_id": "882288638",
+            "na_code": "KR"
+          }
+        }
 
         console.log(response);
         context.state.region_code = response.result.na_code;
@@ -236,9 +236,10 @@ export default {
         //   session_id: context.state.session_id,
         // };
         // console.log(context.state.session_id);
-        let response = await api.getCheckLoginApi();
-        context.state.loginStatus = response.status;
+        // let response = await api.getCheckLoginApi();
+        // context.state.loginStatus = response.status;
         //console.log(response);
+        context
       } catch (error) {
         return;
       }

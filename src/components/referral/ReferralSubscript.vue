@@ -9,16 +9,16 @@
         />
         <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
       </div>
-      <p>레퍼럴 페이백 신청</p>
-      <button class="gradient_green">지금 가입하기</button>
+      <p>{{$t('connectExc.paybackConnect')}}</p>
+      <button class="gradient_green">{{$t('connectExc.nowSign')}}</button>
     </div>
     <p class="warning_txt">
-      ※ 반드시 사이트에 있는 레퍼럴 코드로 가입한 후 UID 입력해주시기 바랍니다 ※
+      {{$t('connectExc.UIDGuide')}}
       <br />
       (다른 링크나 코드로 가입 시 페이백이 이루어지지 않습니다.)
     </p>
     <div class="uid_area flex_row_c_c">
-      <label for="userUid">{{ exchange.name }} 거래소 본인 UID : </label>
+      <label for="userUid">{{ exchange.name }} {{$t('connectExc.UIDInput')}}: </label>
       <input
         type="number"
         id="userUid"
@@ -28,12 +28,12 @@
       />
     </div>
     <div class="btn_area flex_row_c_c">
-      <button class="gradient_blue" @click="enrollBtn">신청하기</button>
+      <button class="gradient_blue" @click="enrollBtn">{{$t('connectExc.connectBtn')}}</button>
     </div>
     <div>
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
-          <p>{{ exchange.name }} 가입 방법</p>
+          <p>{{ exchange.name }} {{$t('connectExc.PCConnectGuide')}}</p>
           <button>
             <img src="@/assets/image/download_icon.png" alt="download" />
           </button>
@@ -42,11 +42,8 @@
           </button>
         </li>
         <li class="flex_row_c_c">
-          <p>{{ exchange.name }} UID 확인 방법</p>
-          <a href="@/assets/pdf/toobit/mo/toobit_mo_CN.pdf" download="toobit.pdf">as</a>
-          <button @click="downloadPDF(exchange.url)">
-            <img src="@/assets/image/download_icon.png" alt="download" />
-          </button>
+          <p>{{ exchange.name }} {{$t('connectExc.UIDCheckGuide')}}</p>
+          <a href="/pdf/toobit/mo/toobit_mo_CN.pdf" download="toobit.pdf"><img src="@/assets/image/download_icon.png" alt="download" /></a>
           <button>
             <img src="@/assets/image/youtube_icon.png" alt="youtube" />
           </button>
@@ -62,6 +59,7 @@ import { computed } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+// import axios from "axios";
 const router = useRouter();
 const store = useStore();
 const exchange = computed(() => {
