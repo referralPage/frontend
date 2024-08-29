@@ -200,7 +200,6 @@ export default {
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
-
         // let response = {
         //   "result": {
         //     "user_id": "retri60",
@@ -227,7 +226,6 @@ export default {
             load = false;
           }
         }
-        
 
         //console.log(response);
       } catch (error) {

@@ -36,93 +36,97 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .payback_main_wrap {
-        background-size: 65%;
-      }
-      .middle_area {
-        left: 50px;
-        top:40%;
-      }
-      .exchange_area {
-        right: 80px;
-      }
-      .exchange_area li {
-        padding:20px;
-      }
+  .payback_main_wrap {
+    background-size: 65%;
+  }
+  .middle_area {
+    left: 50px;
+    top: 40%;
+  }
+  .exchange_area {
+    right: 80px;
+  }
+  .exchange_area li {
+    padding: 20px;
+  }
 }
 @media (max-width: 767px) {
-    .payback_main_wrap {
-        background-size: 75%;
-      }
-      .middle_area {
-        position: static;
-      }
-      .exchange_area {
-        position: static;
-      }
-      .exchange_area li {
-        padding: 20px;
-        width: 80%;
-        max-width: 300px;
-      }
-      .exchange_area li img.logo_s {
-        width: 30%;
-      }
-      .exchange_area li img.logo_l {
-        width: 80%;
-      }
+  .payback_main_wrap {
+    background-size: 75%;
+  }
+  .middle_area {
+    position: static;
+  }
+  .exchange_area {
+    position: static;
+  }
+  .exchange_area li {
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+  }
+  .exchange_area li img.logo_s {
+    width: 30%;
+  }
+  .exchange_area li img.logo_l {
+    width: 80%;
+  }
 }
 
-
+.recieve_wrap {
+  width: 90%;
+  max-width: 1420px;
+  margin: 0 auto;
+}
 
 .payback_sub_title {
   margin-top: 50px;
   gap: 2em;
 }
-.payback_sub_title p{
+.payback_sub_title p {
   font-size: 2em;
 }
-.payback_sub_title button{
+.payback_sub_title button {
   font-size: 1.8em;
   padding: 10px 30px;
-  color : #fff;
+  color: #fff;
   border-radius: 15px;
 }
-.recieve_wrap .warning_txt{
-  margin : 80px auto;
+.recieve_wrap .warning_txt {
+  margin: 80px auto;
   width: 520px;
   line-height: 1.5em;
 }
-.uid_area label{
+.uid_area label {
   margin-right: 30px;
   font-size: 1.5em;
   font-weight: 700;
 }
-.uid_area input{
+.uid_area input {
   width: 50%;
   max-width: 400px;
   min-width: 200px;
   background-color: transparent;
   border-radius: 10px;
-  color:#fff;
+  color: #fff;
   font-size: 1.5em;
   letter-spacing: 0.5px;
-  padding : 10px; 
+  padding: 10px;
   height: 60px;
 }
-.recieve_wrap .btn_area button{
+.recieve_wrap .btn_area button {
   font-size: 1.3em;
   width: 300px;
-  padding : 10px 0;
+  padding: 10px 0;
   border-radius: 8px;
   margin: 80px 0;
-  color:#fff;
+  color: #fff;
 }
-.recieve_wrap ul{
+.recieve_wrap ul {
   gap: 20px;
   padding-bottom: 50px;
 }
-.recieve_wrap ul li{
+.recieve_wrap ul li {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 30px;
   gap: 20px;
@@ -131,41 +135,41 @@
   width: 50%;
   height: 120px;
 }
-.recieve_wrap ul li p{ 
+.recieve_wrap ul li p {
   width: 70%;
   word-break: break-all;
 }
-.recieve_wrap ul li button{
+.recieve_wrap ul li button {
   width: 45px;
   background-color: transparent;
 }
-.status_txt{
+.status_txt {
   margin: 100px 0;
 }
-.status_txt p{
+.status_txt p {
   font-size: 2em;
   text-align: center;
 }
 @media (min-width: 722px) and (max-width: 865px) {
-  .payback_sub_title{
+  .payback_sub_title {
     flex-wrap: wrap;
   }
-  .payback_sub_title button{
+  .payback_sub_title button {
     width: 70%;
   }
-  .recieve_wrap .warning_txt{
+  .recieve_wrap .warning_txt {
     width: 90%;
   }
-  .uid_area input{
+  .uid_area input {
     height: 50px;
   }
-  .recieve_wrap .btn_area button{
+  .recieve_wrap .btn_area button {
     width: 70%;
   }
-  .recieve_wrap ul{
+  .recieve_wrap ul {
     gap: 10px;
   }
-  .recieve_wrap ul li{
+  .recieve_wrap ul li {
     padding: 20px;
     gap: 15px;
     font-size: 1.1em;
@@ -174,47 +178,47 @@
 @media (max-width: 721px) {
   .payback_sub_title {
     flex-wrap: wrap;
-    gap:1.5em
+    gap: 1.5em;
   }
-  .payback_sub_title p{
+  .payback_sub_title p {
     font-size: 1.7em;
   }
-  .payback_sub_title button{
+  .payback_sub_title button {
     font-size: 1.5em;
     width: 90%;
   }
-  .recieve_wrap .warning_txt{
-    margin : 50px auto;
+  .recieve_wrap .warning_txt {
+    margin: 50px auto;
     width: 90%;
   }
-  .uid_area{
+  .uid_area {
     flex-direction: column;
   }
-  .uid_area label{
+  .uid_area label {
     margin-right: 0;
     margin-bottom: 20px;
   }
-  .uid_area input{
+  .uid_area input {
     width: 90%;
     height: 50px;
   }
-  .recieve_wrap .btn_area button{
+  .recieve_wrap .btn_area button {
     font-size: 1.3em;
     width: 90%;
     margin: 30px 0;
   }
-  .recieve_wrap ul{
+  .recieve_wrap ul {
     flex-direction: column;
     gap: 20px;
   }
-  .recieve_wrap ul li{
+  .recieve_wrap ul li {
     width: 90%;
     padding: 30px 20px;
     gap: 10px;
     font-size: 1.2em;
   }
-  .recieve_wrap ul li{
-    padding : 10px;
+  .recieve_wrap ul li {
+    padding: 10px;
     height: auto;
   }
   .recieve_wrap ul li p {
@@ -226,16 +230,16 @@
   .explan_area {
     padding: 30px 20px;
   }
-  .recieve_wrap img.logo_s{
+  .recieve_wrap img.logo_s {
     width: 50px;
   }
-  .recieve_wrap img.logo_l{
+  .recieve_wrap img.logo_l {
     width: 100px;
   }
-  .recieve_wrap ul li img{
+  .recieve_wrap ul li img {
     width: 25px;
   }
-  .recieve_wrap ul li button{
+  .recieve_wrap ul li button {
     width: auto;
   }
 }
