@@ -198,15 +198,6 @@ export default {
         return;
       }
     },
-    // async postRetriAuth(context) {
-    //   try {
-    //     let response = await api.postRetriAuthApi();
-    //     context.state.status = response.status;
-    //     //console.log(response.status);
-    //   } catch (error) {
-    //     return;
-    //   }
-    // },
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
