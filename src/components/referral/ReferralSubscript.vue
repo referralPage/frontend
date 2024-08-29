@@ -41,7 +41,7 @@
           <button>
             <a
               :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
-              download=""
+              :download="`${exchange.name}_pdf`"
             >
               <img src="@/assets/image/download_icon.png" alt="download"
             /></a>
@@ -54,7 +54,7 @@
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
           <a
             :href="`/uid/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
-            download=""
+            :download="`${exchange.name}_uid`"
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>
           <!-- <button>
