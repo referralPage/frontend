@@ -78,9 +78,9 @@ import { useStore } from "vuex";
   };
   
   //created;
-  if (!selectLang.value) {
-    selectLang.value = localStorage.getItem("localeLangDisplayed");
-  }
+  // if (!selectLang.value) {
+  //   selectLang.value = localStorage.getItem("localeLangDisplayed");
+  // }
   store.commit("referral/setLanugage", localStorage.getItem("localeLangDisplayed"));
   </script>
   
