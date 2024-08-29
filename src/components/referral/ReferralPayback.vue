@@ -44,9 +44,9 @@ const router = useRouter();
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
-const postStatus = computed(() => {
-  return store.state.referral.postStatus;
-});
+// const postStatus = computed(() => {
+//   return store.state.referral.postStatus;
+// });
 // const session_id = computed(()=>{
 //   return store.state.referral.session_id;
 // });
@@ -59,13 +59,13 @@ const enrollCheck = async (exchange) => {
   store.commit("referral/selectExchange", exchange);
   store.commit("referral/setExchangeFlag");
   await store.dispatch("referral/getCheckApproval");
-  if(postStatus.value === 0){
+  // if(postStatus.value === 0){
     router.push("/apply");
-  } else{
-    store.commit("referral/changeModalState", true);
-     msgCode = `msgCode0${postStatus.value}`;
-    //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
-  }
+  // } else{
+  //   store.commit("referral/changeModalState", true);
+  //    msgCode = `msgCode0${postStatus.value}`;
+  //   //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
+  // }
   
 };
 const createdFn = async () =>{
