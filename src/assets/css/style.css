@@ -199,7 +199,7 @@ img.logo_l {
 
 .modal_pop_small .popup_block {
   width: 90%;
-  max-width: 450px;
+  max-width: 550px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
   outline: none;
   z-index: 12;

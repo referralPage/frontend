@@ -6,7 +6,7 @@
           <p>ReTri Referral {{ props.exchange }}</p>
         </div>
         <div class="con_wrap" v-if="props.msg === 'modalExchange'">
-          <p>{{ $t(`modalExchange['${props.exchange.toLowerCase()}']`) }}</p>
+          <p v-html="$t(`modalExchange['${props.exchange.toLowerCase()}']`)"></p>
         </div>
         <div class="con_wrap" v-else>
           <p>{{ $t(`modal['${props.msg}']`) }}</p>
