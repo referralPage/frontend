@@ -1,5 +1,6 @@
 import api from "@/api/apiReferral";
 import { autoLeftPad } from "@/utils/common";
+import { changeLang } from "@/utils/language.js";
 
 export default {
   namespaced: true,
@@ -203,11 +204,24 @@ export default {
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
+
+        // let response = {
+        //   "result": {
+        //     "user_id": "retri60",
+        //     "retri_id": "25576",
+        //     "session_id": "882288089",
+        //     "na_code": "KR"
+        //   }
+        // }
+
         console.log(response);
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
-        //console.log(response);
+
+        let lang = changeLang(context.state.region_code)
+        localStorage.setItem("localeLangDisplayed", context.state.region_code);
+        localStorage.setItem("localeLang", lang);
       } catch (error) {
         return;
       }
