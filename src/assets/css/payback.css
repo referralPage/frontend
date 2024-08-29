@@ -96,6 +96,7 @@
   margin: 80px auto;
   width: 520px;
   line-height: 1.5em;
+  word-break: break-all;
 }
 .uid_area label {
   margin-right: 30px;
