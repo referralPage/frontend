@@ -669,21 +669,22 @@ ul.payback_list_box li em:nth-child(6) {
   }
 }
 
+.mypage_wrap {
+  width: 90%;
+  max-width: 1420px;
+  margin: 0 auto;
+}
 
 .blur_area{
   position: fixed;
   z-index: 5;
-  width: calc(90% - 70px);
-  /* width: 100vw; */
-  max-width: 1420px;
+  width: calc(100% -70px);
   height: calc(100% - 70px);
   background: rgba(29, 29, 43, 0.5);
   backdrop-filter: blur(10px);
   overflow-y: auto;
-  padding :100px 20px;
-
+  padding :100px 40px;
   box-sizing: border-box;
-  
 }
 .blur_area.hd{
   visibility: hidden;
@@ -693,9 +694,12 @@ ul.payback_list_box li em:nth-child(6) {
   text-align: center;
   line-height: 1.5em;
   word-break: break-all;
-
 }
+
 @media (max-width: 768px) {
+  .blur_area{
+    padding : 70px 20px;
+  }
   .blur_area p{
     font-size: 1.2em;
     line-height: 1.3em;
