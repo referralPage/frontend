@@ -1,12 +1,12 @@
 <template>
   <div class="payback_main_wrap pr">
     <div class="explan_area">
-      <p class="gradient_yellow">레퍼럴 페이백 시스템</p>
-      <p>신청 후 거래할 때 마다 수수료를 페이백 받으세요.</p>
+      <p class="gradient_yellow">{{ $t("dashboardPrev['referralSystem']") }}</p>
+      <p>{{ $t("dashboardPrev['mainGuide']") }}</p>
     </div>
     <div class="middle_area">
       <p>
-        원하는 거래소를 선택하세요<br />
+        {{ $t("dashboardPrev['chooseExc']") }}<br />
         <span>ReTri</span>
       </p>
     </div>

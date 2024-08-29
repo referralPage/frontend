@@ -7,6 +7,7 @@
     "connectExc": {
         "paybackConnect": "Apply for Referral Payback",
         "nowSign": "Sign up now",
+        "notLinkPayback" : "(Payback will not be processed if you sign up using other links or codes.)",
         "UIDGuide": "※ Please make sure to sign up using the REFERRAL CODE on the site and enter your UID ※",
         "UIDInput": " Exchange UID:",
         "connectBtn": "Apply",
@@ -17,13 +18,13 @@
     "modal" : {
         "dateWarnig" : "날짜를 정확하게 입력해주세요.",
         "msgCode0" : "This UID is invalid.",
-        "msgCode01" : "등록 신청이 완료 되었습니다.",
+        "msgCode01" : "The registration application has been completed.",
         "msgCode02" : "성공적으로 등록되었습니다.",
-        "msgCode03" : "등록 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.",
-        "msgCode04" : "이미 등록된 UID입니다.",
-        "msgCode05" : "해당 거래소는 레퍼럴 신청 후 최대 2영업일 이내 레퍼럴 등록 완료됩니다.",
-        "msgCode06" : "이미 신청 완료된 UID 입니다.",
-        "msgCode07" : "해당 UID로 신청된 레퍼럴 내역이 존재하지 않습니다.",
+        "msgCode03" : "Registration application failed. Please try again later.",
+        "msgCode04" : "This UID is already registered.",
+        "msgCode05" : "For this exchange, Referral registration will be completed within 2 business days after application.",
+        "msgCode06" : "This UID has already been applied.",
+        "msgCode07" : "No referral application history exist for this UID.",
         "noLogin" : "중복 로그인이 확인되었습니다. 창을 종료합니다."
     },
     "modalExchange" : {
@@ -36,5 +37,8 @@
         "msg01" : "불편을 드려 죄송합니다.",
         "msg02" : "비정상적인 경로로 접근 하였습니다.",
         "msg03" : "확인을 누르시면 RETRI 페이지로 이동합니다."
+    },
+    "common" : {
+        "confirm" : "confirm"
     }
 }
