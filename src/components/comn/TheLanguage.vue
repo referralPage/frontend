@@ -47,8 +47,20 @@
     },
     {
       abbr : "ko",
-      displayed : "KO",
+      displayed : "KR",
     },
+    {
+      abbr : "zh",
+      displayed : "CN",
+    },
+    {
+      abbr : "ja",
+      displayed : "JP",
+    },
+    {
+      abbr : "vi",
+      displayed : "VN",
+    }
   ]);
   let selectLang = ref(localStorage.getItem("localeLangDisplayed"));
   

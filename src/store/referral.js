@@ -1,5 +1,6 @@
 import api from "@/api/apiReferral";
 import { autoLeftPad } from "@/utils/common";
+import { changeLang } from "@/utils/language.js";
 
 export default {
   namespaced: true,
@@ -207,6 +208,12 @@ export default {
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
+
+        
+        let lang = changeLang(context.state.region_code)
+        localStorage.setItem("localeLangDisplayed", context.state.region_code);
+        localStorage.setItem("localeLang", lang);
+
         //console.log(response);
       } catch (error) {
         return;
