@@ -117,6 +117,7 @@ export default {
           datetime: new Date().toISOString(),
         };
         let response = await api.postUidApi(info);
+        console.log(response.recode);
         if(response.recode === 0){
           context.state.uidState = 1; // msg 신청완료
         } else if (response.recode === 1){ 
