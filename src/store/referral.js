@@ -199,16 +199,16 @@ export default {
     },
     async getLoadUser(context) {
       try {
-        // let response = await api.getLoadUserApi();
+        let response = await api.getLoadUserApi();
 
-        let response = {
-          "result": {
-            "user_id": "retri60",
-            "retri_id": "25576",
-            "session_id": "882288638",
-            "na_code": "KR"
-          }
-        }
+        // let response = {
+        //   "result": {
+        //     "user_id": "retri60",
+        //     "retri_id": "25576",
+        //     "session_id": "882288638",
+        //     "na_code": "KR"
+        //   }
+        // }
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
