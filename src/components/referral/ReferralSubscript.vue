@@ -46,9 +46,9 @@
               <img src="@/assets/image/download_icon.png" alt="download"
             /></a>
           </button>
-          <button>
+          <!-- <button>
             <img src="@/assets/image/youtube_icon.png" alt="youtube" />
-          </button>
+          </button> -->
         </li>
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
@@ -57,9 +57,9 @@
             download=""
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>
-          <button>
+          <!-- <button>
             <img src="@/assets/image/youtube_icon.png" alt="youtube" />
-          </button>
+          </button> -->
         </li>
       </ul>
     </div>
