@@ -47,12 +47,12 @@ const modalState = computed(() => {
 const postStatus = computed(() => {
   return store.state.referral.postStatus;
 });
-const session_id = computed(()=>{
-  return store.state.referral.session_id;
-});
-const retri_id = computed(()=>{
-  return store.state.referral.retri_id;
-});
+// const session_id = computed(()=>{
+//   return store.state.referral.session_id;
+// });
+// const retri_id = computed(()=>{
+//   return store.state.referral.retri_id;
+// });
 let msgCode = "msgCode0"; //입력하지않았을 때
 const enrollCheck = async (exchange) => {
   await store.dispatch("referral/postCheckLogin");
@@ -69,9 +69,10 @@ const enrollCheck = async (exchange) => {
   
 };
 const createdFn = async () =>{
-  if(!session_id.value || !retri_id.value){
-    router.push('/404');
-  }
+  await store.dispatch("referral/postCheckLogin");
+  // if(!session_id.value || !retri_id.value){
+  //   router.push('/404');
+  // }
 }
 store.watch((state)=>{
   if(state.referral.setting){

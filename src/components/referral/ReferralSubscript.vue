@@ -72,12 +72,12 @@ const modalState = computed(() => {
 const uidState = computed(() => {
   return store.state.referral.uidState;
 });
-const session_id = computed(() => {
-  return store.state.referral.session_id;
-});
-const retri_id = computed(() => {
-  return store.state.referral.retri_id;
-});
+// const session_id = computed(() => {
+//   return store.state.referral.session_id;
+// });
+// const retri_id = computed(() => {
+//   return store.state.referral.retri_id;
+// });
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {
@@ -95,9 +95,9 @@ if (Object.keys(exchange.value).length === 0) {
 }
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-  if (!session_id.value || !retri_id.value) {
-    router.push("/404");
-  }
+  // if (!session_id.value || !retri_id.value) {
+  //   router.push("/404");
+  // }
 };
 store.watch((state) => {
   if (state.referral.setting) {
