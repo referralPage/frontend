@@ -45,7 +45,8 @@ h1 {
   font-family: var(--main-font-Mont);
 }
 p,
-select {
+select,
+button {
   font-family: var(--main-font-Medium), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif;
 }
 form {
