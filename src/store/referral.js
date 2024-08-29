@@ -93,6 +93,9 @@ export default {
     initSetting(state, payload) {
       state.setting = payload;
     },
+    setLanugage(state,payload){
+      state.region_code = payload;
+    }
   },
   actions: {
     async getCheckApproval(context) {
@@ -214,13 +217,9 @@ export default {
             "na_code": "KR"
           }
         }
-
-        console.log(response);
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
-
-        
         let lang = changeLang(context.state.region_code)
         localStorage.setItem("localeLangDisplayed", context.state.region_code);
         localStorage.setItem("localeLang", lang);
