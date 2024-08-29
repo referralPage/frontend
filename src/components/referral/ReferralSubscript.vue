@@ -18,7 +18,7 @@
       (다른 링크나 코드로 가입 시 페이백이 이루어지지 않습니다.)
     </p>
     <div class="uid_area flex_row_c_c">
-      <label for="userUid">{{ exchange.name }} {{$t('connectExc.UIDInput')}}: </label>
+      <label for="userUid">{{ exchange.name }} {{$t('connectExc.UIDInput')}} </label>
       <input
         type="number"
         id="userUid"
