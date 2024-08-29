@@ -40,5 +40,9 @@
     },
     "common" : {
         "confirm" : "confirm"
+    },
+    "mypage" : {
+        "infoTitle" : "-Preliminary Notice-",
+        "info" : "The referral system for the exchange is currently under development and is scheduled to open in September 2024 - However, to return as much as possible back to our members, we are opening the UID application process early. Please be aware that KYC verification may take more than 7 days for some exchanges. Familiarize yourself with the registration methods (for new and existing users) on each exchange. If you pre-register your UID, referrals will be accumulated from the registration point."
     }
 }

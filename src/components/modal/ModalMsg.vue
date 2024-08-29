@@ -44,7 +44,13 @@ const closeModal = () => {
   }
 };
 const redirect = () => {
-  location.href = "https://retri.io";
+  const screenWidth = window.innerWidth;
+  if (screenWidth < 640) {
+    location.href = "https://www.retri.io/m/";
+  } else {
+    location.href = "https://retri.io";
+  }
+  
 };
 onMounted(() => {
   if (props.msg == "noLogin") {

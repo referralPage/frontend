@@ -116,6 +116,7 @@ export default {
           exchange: context.state.exchangeFlag,
           datetime: new Date().toISOString(),
         };
+        console.log(info);
         let response = await api.postUidApi(info);
         console.log(response.recode);
         if(response.recode === 0){
