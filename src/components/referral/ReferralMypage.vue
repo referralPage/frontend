@@ -5,7 +5,7 @@
     </div>
   </div>
   <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
-  <div class="blur_area flex_col_c_c">
+  <div class="blur_area flex_col_c">
     <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
     <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
     <p>{{ $t(`prevGuide['guideMsg2']`) }}</p>
