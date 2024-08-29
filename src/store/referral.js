@@ -116,7 +116,6 @@ export default {
           exchange: context.state.exchangeFlag,
           datetime: new Date().toISOString(),
         };
-        console.log(info);
         let response = await api.postUidApi(info);
         if(response.reCode === 0){
           context.state.uidState = 1; // msg 신청완료
@@ -125,7 +124,6 @@ export default {
         } else if (response.reCode === 2){
           context.state.uidState = 3; // msg 등록실패
         }
-        // console.log(context.state.uidState);
       } catch (error) {
         return;
       }
@@ -209,19 +207,15 @@ export default {
         //     "na_code": "KR"
         //   }
         // }
-
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
-
         // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
         if (!document.referrer.includes('ref.retri.xyz')) {
           let lang = changeLang(context.state.region_code)
           localStorage.setItem("localeLangDisplayed", context.state.region_code);
           localStorage.setItem("localeLang", lang);
         }
-        
-
         //console.log(response);
       } catch (error) {
         return;
