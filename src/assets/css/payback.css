@@ -133,6 +133,7 @@
 }
 .recieve_wrap ul li p{ 
   width: 70%;
+  word-break: break-all;
 }
 .recieve_wrap ul li button{
   width: 45px;

@@ -156,7 +156,9 @@ import exchangeList from "@/utils/exchangeList";
 import { formatNum, preDate } from "@/utils/common";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 const store = useStore();
+const router =useRouter();
 const exchangeArr = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
@@ -181,12 +183,12 @@ const totalPages = computed(() => {
 const listLoading = computed(() => {
   return store.state.referral.listLoading;
 });
-// const session_id = computed(() => {
-//   return store.state.referral.session_id;
-// });
-// const retri_id = computed(() => {
-//   return store.state.referral.retri_id;
-// });
+const session_id = computed(() => {
+  return store.state.referral.session_id;
+});
+const retri_id = computed(() => {
+  return store.state.referral.retri_id;
+});
 // const isNotReferral = computed(() => {
 //   return store.state.referral.isNotReferral;
 // });
@@ -316,9 +318,9 @@ function syncScroll(el1, el2) {
 allLoading.value = true;
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-    // if (!session_id.value || !retri_id.value) {
-  //   router.push("/404");
-  // }
+    if (!session_id.value || !retri_id.value) {
+    router.push("/404");
+  }
   changeDate();
   store.commit("referral/setPage", 1);
   await Promise.all([
