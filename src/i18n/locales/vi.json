@@ -43,6 +43,9 @@
     },
     "prevGuide" : {
         "guideTitle" : "-Thông tin sơ bộ-",
-        "guideMsg" : "Hệ thống đăng ký thông qua link giới thiệu sàn giao dịch hiện đang được phát triển và dự kiến ​​mở vào tháng 9 năm 2024. Tuy nhiên, để trả lại nhiều lượt giao dịch thông qua mã giới thiệu nhất có thể cho các thành viên, phần đăng ký UID sẽ được mở trước tiên. Việc xác minh KYC có thể mất hơn 7 ngày cho mỗi sàn giao dịch, vì vậy vui lòng tự làm quen với các phương thức đăng ký thành viên mới và thành viên hiện tại cho mỗi sàn giao dịch. Nếu bạn đăng ký UID của bạn trước tiên, chúng tôi sẽ tích lũy tất cả các lượt giao dịch thông qua mã giới thiệu kể từ thời điểm đăng ký."
+        "guideMsg" : "Hệ thống đăng ký thông qua link giới thiệu sàn giao dịch hiện đang được phát triển và dự kiến ​​mở vào tháng 9 năm 2024. Tuy nhiên, để trả lại nhiều lượt giao dịch thông qua mã giới thiệu nhất có thể cho các thành viên, phần đăng ký UID sẽ được mở trước tiên. Việc xác minh KYC có thể mất hơn 7 ngày cho mỗi sàn giao dịch, vì vậy vui lòng tự làm quen với các phương thức đăng ký thành viên mới và thành viên hiện tại cho mỗi sàn giao dịch. Nếu bạn đăng ký UID của bạn trước tiên, chúng tôi sẽ tích lũy tất cả các lượt giao dịch thông qua mã giới thiệu kể từ thời điểm đăng ký.",
+        "guideMsg2" : "Nếu bạn đăng ký UID của một tài khoản chưa được đăng ký bằng mã giới thiệu do công ty cung cấp, thì số lượt giới thiệu có thể không được tích lũy ngay cả khi đã đăng ký đúng cách.",
+        "guideMsg3" : "Hãy nhớ tham khảo hướng dẫn sử dụng và kiểm tra xem bạn đã nhập mã giới thiệu khi đăng ký hay chưa.",
+        "guideMsg4" : "** Hãy cẩn thận vì công ty không chịu trách nhiệm nếu bạn nhập sai UID cho mã giới thiệu.**"
     }
 }
