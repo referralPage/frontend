@@ -118,7 +118,7 @@ export default {
           context.state.uidState = 1; // msg 신청완료
         } else if (response.recode === 1){ 
           context.state.uidState = 4; // msg 중복
-        } else if (response.recode === 3){
+        } else if (response.recode === 2){
           context.state.uidState = 3; // msg 등록실패
         }
         // console.log(context.state.uidState);
