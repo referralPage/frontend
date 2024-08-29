@@ -39,6 +39,7 @@
    * @selectLang 선택한 언어 display (localStorage 값 가져오기)
    * @choiceLang 선택한 언어로 변경 및 localStorage set 함수
    */
+
   let isClickLang = ref(false);
   let langArr = ref([
     {
@@ -62,6 +63,7 @@
       displayed : "VN",
     }
   ]);
+  
   let selectLang = ref(localStorage.getItem("localeLangDisplayed"));
   
   const choiceLang = ($i18n, selectLanguage) => {
@@ -74,8 +76,6 @@
   
   //created;
   if (!selectLang.value) {
-    localStorage.setItem("localeLang", "ko");
-    localStorage.setItem("localeLangDisplayed", "KO");
     selectLang.value = localStorage.getItem("localeLangDisplayed");
   }
   </script>

@@ -114,11 +114,12 @@ export default {
           datetime: new Date().toISOString(),
         };
         let response = await api.postUidApi(info);
-        if (response.result) {
-          context.state.uidState = response.result[0].status;
-        }
-        if (response.status === 500) {
-          context.state.uidState = 4;
+        if(response.recode === 0){
+          context.state.uidState = 1; // msg 신청완료
+        } else if (response.recode === 1){ 
+          context.state.uidState = 4; // msg 중복
+        } else if (response.recode === 3){
+          context.state.uidState = 3; // msg 등록실패
         }
         // console.log(context.state.uidState);
       } catch (error) {
@@ -204,6 +205,16 @@ export default {
     async getLoadUser(context) {
       try {
         let response = await api.getLoadUserApi();
+
+        // let response = {
+        //   "result": {
+        //     "user_id": "retri60",
+        //     "retri_id": "25576",
+        //     "session_id": "882288089",
+        //     "na_code": "KR"
+        //   }
+        // }
+
         console.log(response);
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;

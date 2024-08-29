@@ -43,7 +43,8 @@
         </li>
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} UID 확인 방법</p>
-          <button>
+          <a href="@/assets/pdf/toobit/mo/toobit_mo_CN.pdf" download="toobit.pdf">as</a>
+          <button @click="downloadPDF(exchange.url)">
             <img src="@/assets/image/download_icon.png" alt="download" />
           </button>
           <button>
@@ -99,6 +100,22 @@ const createdFn = async () => {
   //   router.push("/404");
   // }
 };
+// const downloadPDF = async () => {
+//   try {
+//     const response = await axios.get("/api/download", {
+//       responseType: "blob",
+//     });
+
+//     const url = window.URL.createObjectURL(new Blob([response.data]));
+//     const link = document.createElement("a");
+//     link.href = url;
+//     link.setAttribute("download", "file.pdf");
+//     document.body.appendChild(link);
+//     link.click();
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();
