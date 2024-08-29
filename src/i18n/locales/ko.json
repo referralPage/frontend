@@ -1,101 +1,44 @@
 {
-    "dashboard" : {
-        "daysOperation" : "가동 일수",
-        "currentBalance" : "현재 잔액",
-        "avDailyProfit" : "일간 평균 수익률",
-        "avWeeklyProfit" : "주간 평균 수익률",
-        "monthProfit" : "이번 달 수익률",
-        "startingAmount" : "시작 금액",
-        "currentDeposit" : "현재 보증금",
-        "currentProfit" : "현재 수익금",
-        "estimatedDeduction" : "예상 차감액",
-        "estimatedAdditionalCharge" : "예상 추가 충전금",
-        "currentPosition" : "현재 포지션",
-        "unrealizedProfit" : "미실현 손익"
-    },
     "dashboardPrev" : {
         "referralSystem": "레퍼럴 페이백 시스템",
         "mainGuide": "신청 후 거래할 때 마다 수수료를 페이백 받으세요.",
-        "chooseExc": "원하는 거래소를 선택하세요."
+        "chooseExc": "원하는 거래소를 선택하세요"
     },
     "connectExc": {
         "paybackConnect": "레퍼럴 페이백 신청",
         "nowSign": "지금 가입하기",
         "UIDGuide": "※ 반드시 사이트에 있는 레퍼럴 코드로 가입한 후 UID 입력해주시기 바랍니다 ※",
-        "UIDInput": "Toobit 거래소 본인 UID :",
+        "UIDInput": "거래소 본인 UID :",
         "connectBtn": "신청하기",
         "PCConnectGuide": "신규회원 &기존회원 가입방법(PC)",
         "MobileConnectGuide": "신규회원 &기존회원 가입방법(Mobile)",
         "UIDCheckGuide": "UID 확인방법"
     },
-    "profit" : {
-        "totalPNL" : "총 PNL",
-        "cumulativeProfit" : "누적 수익율",
-        "avMonthlyProfit" : "월간 평균 수익율",
-        "avWeeklyProfit" : "주간 평균 수익율",
-        "avDailyProfit" : "일간 평균 수익율",
-        "transactionHistory" : "거래 로그",
-        "currency" : "통화",
-        "previousPrice" : "시작 금액",
-        "currentPrice" : "현재 금액",
-        "date" : "체결일자"
-    },
-    "deposit" : {
-        "requiredAmount" : "초기 보증금",
-        "currentAmount" : "현재 보증금",
-        "insufficientAmount" : "필요 보증금",
-        "date" : "일자"
-    },
-    "common" : {
-        "dashboardTitle" : "대시보드",
-        "position" : "포지션",
-        "profitTitle" : "수익율",
-        "term" : "회차",
-        "type" : "포지션",
-        "coin" : "코인",
-        "quantity" : "수량",
-        "change" : "증감액",
-        "balance" : "잔액",
-        "apply" : "적용",
-        "confirm" : "확인",
-        "cancel" : "취소", 
-        "dateWarningMsg" : "날짜를 정확하게 입력해주세요."
-    },
-    "info" : {
-        "infoTxt01" : "7년 이상의 빅데이터와 딥러닝 시스템을 기반으로",
-        "infoTxt02" : "27개국 20,000명 이상이 사용하고 있습니다.",
-        "infoTxt03" : "FX 자동 거래 봇!",
-        "infoTxt04" : "GOYA AI 알고리즘 기반",
-        "infoTxt05" : "외환거래에서 Goya FX Bot과 연동하여 보다 높은 수익률 달성",
-        "infoTxt06" : "매년 자동 거래로!"
-    },
-    "guide" : {
-        "step01" : "FP Markets 계좌 개설",
-        "step02" : "운영을 위한 시드머니 충전",
-        "step03" : "보증금 충전",
-        "step04" : "거래 연결",
-        "stepGuide01" : "계정 가이드",
-        "stepGuide02" : "시드머니 충전 안내",
-        "stepGuide03" : "보증금 충전 안내",
-        "stepGuide04" : "거래 연결 안내",
-        "singUp" : "가입하러 가기",
-        "charge" : "충전하러 가기",
-        "operate" : "FX 봇 운영",
-        "videoGuide" : "비디오 가이드"
-    },
     "modal" : {
         "dateWarnig" : "날짜를 정확하게 입력해주세요.",
         "msgCode0" : "유효하지 않은 UID 입니다.",
-        "msgCode01" : "승인 대기 중입니다.",
+        "msgCode01" : "등록 신청이 완료 되었습니다.",
         "msgCode02" : "성공적으로 등록되었습니다.",
-        "msgCode03" : "유효하지 않은 UID 입니다. 탈퇴 후 올바른 레퍼럴 코드로 재 가입 해주시기 바랍니다.",
-        "msgCode04" : "이미 신청 완료된 UID 입니다.",
-        "msgCode05" : "이미 등록된 UID입니다.",
-        "msgCode06" : "등록 신청이 완료 되었습니다.",
-        "msgCode07" : "등록 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.",
-        "msgCode08" : "해당 거래소는 레퍼럴 신청 후 최대 2영업일 이내 레퍼럴 등록 완료됩니다.",
-        "msgCode09" : "레퍼럴 등록 승인 대기중입니다.",
-        "msgCode10" : "해당 UID로 신청된 레퍼럴 내역이 존재하지 않습니다.",
+        "msgCode03" : "등록 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.",
+        "msgCode04" : "이미 등록된 UID입니다.",
+        "msgCode05" : "해당 거래소는 레퍼럴 신청 후 최대 2영업일 이내 레퍼럴 등록 완료됩니다.",
+        "msgCode06" : "이미 신청 완료된 UID 입니다.",
+        "msgCode07" : "해당 UID로 신청된 레퍼럴 내역이 존재하지 않습니다.",
+        "msgCode08" : "레퍼럴 등록 승인 대기중입니다.",
         "noLogin" : "중복 로그인이 확인되었습니다. 창을 종료합니다."
+    },
+    "modalExchange" : {
+        "okx" : "기존회원의 경우 1회에 한해 회원탈뢰를 하실경우 KYC 인증을 다시 받으실 수 있습니다. 한번도 탈퇴한 기록이 없는 기존회원께서는 탈퇴를 진행하고 레퍼럴코드를 입력하여 신규가입한 계정의 UID를 입력하시면 됩니다.",
+        "bingx" : "기존 회원의 경우 레퍼럴 코드를 입력한 신규 계정을 생성하여 UID를 먼저 입력하시고 이후 기존계정에서 KYC를 신규계정으로 옮기실 권장 드립니다 (KYC 이동시 약 7일 소요예상)",
+        "deepcoin" : "기존회원의 경우 1회에 한해 회원탈뢰를 하실경우 KYC 인증을 다시 받으실 수 있습니다. 한번도 탈퇴한 기록이 없는 기존회원께서는 탈퇴를 진행하고 레퍼럴코드를 입력하여 신규가입한 계정의 UID를 입력하시면 됩니다.",
+        "toobit" : "기존회원의 경우UID를 확인하여 Telegram : https://t.me/retrics 로 보내주시면 레퍼럴 코드를 변경처리 해 드리겠습니다."
+    },
+    "noAccess" : {
+        "msg01" : "불편을 드려 죄송합니다.",
+        "msg02" : "비정상적인 경로로 접근 하였습니다.",
+        "msg03" : "확인을 누르시면 RETRI 페이지로 이동합니다."
+    },
+    "common" : {
+        "confirm" : "확인"
     }
 }
