@@ -8,6 +8,7 @@
         "paybackConnect": "申请推荐返现",
         "nowSign": "立即注册",
         "UIDGuide": "※ 请务必使用网站上的推荐码进行注册，然后输入您的UID ※",
+        "notLinkPayback" : "（如果您使用其他链接或代码注册，则不会获得返现。）",
         "UIDInput": "Toobit 交易所本人UID：",
         "connectBtn": "申请",
         "PCConnectGuide": "如何注册新入会员和现有会员（PC版）",
