@@ -1,6 +1,7 @@
 import api from "@/api/apiReferral";
 import { autoLeftPad } from "@/utils/common";
 import { changeLang } from "@/utils/language.js";
+import i18n from '@/i18n/index';
 
 export default {
   namespaced: true,
@@ -33,6 +34,7 @@ export default {
       profitInfo: {},
       paybackList: [],
       postStatus : 1,
+      loadCheck: false,
     };
   },
   mutations: {
@@ -210,12 +212,23 @@ export default {
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
+        let load = context.state.loadCheck
+
+
         // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
-        if (!document.referrer.includes('ref.retri.xyz')) {
+        if (!document.referrer.includes('local')) {
           let lang = changeLang(context.state.region_code)
           localStorage.setItem("localeLangDisplayed", context.state.region_code);
           localStorage.setItem("localeLang", lang);
+          i18n.locale = lang;
+          load = true;
+          if (load) {
+            location.reload();
+            load = false;
+          }
         }
+        
+
         //console.log(response);
       } catch (error) {
         return;

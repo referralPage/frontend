@@ -29,10 +29,12 @@
     </div>
     <!--언어설정 드롭다운메뉴:End-->
   </template>
-  
-  <script setup>
-  import { ref } from "vue";
+
+<script setup>
+import { ref } from "vue";
 import { useStore } from "vuex";
+// import i18n from '@/i18n/index';
+
   const store = useStore();
   /**
    * 언어선택탭 컴포넌트
@@ -83,4 +85,4 @@ import { useStore } from "vuex";
   // }
   store.commit("referral/setLanugage", localStorage.getItem("localeLangDisplayed"));
   </script>
-  
+
