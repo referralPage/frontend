@@ -6,8 +6,8 @@
   </div>
   <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
   <div class="blur_area flex_col_c_c">
-    <p>{{ $t(`mypage['infoTitle']`) }}</p>
-    <p>{{ $t(`mypage['info']`) }}</p>
+    <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
+    <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
   </div>
   <div class="mypage_wrap" v-if="!allLoading">
     <ul class="mypage_ul">
