@@ -234,13 +234,9 @@ export default {
     },
     async postCheckLogin(context) {
       try {
-        // let info = {
-        //   session_id: context.state.session_id,
-        // };
-        // console.log(context.state.session_id);
-        // let response = await api.getCheckLoginApi();
-        // context.state.loginStatus = response.status;
-        //console.log(response);
+        let response = await api.getCheckLoginApi();
+        context.state.loginStatus = response.status;
+        // console.log(response);
         context
       } catch (error) {
         return;
