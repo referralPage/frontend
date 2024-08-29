@@ -49,8 +49,8 @@ const createdFetch = async () =>{
   // await store.dispatch("referral/postRetriAuth");
   await store.dispatch("referral/getLoadUser");
   store.commit("referral/initSetting",true);
-  console.log(session_id.value);
-  console.log(retri_id.value);
+  // console.log(session_id.value);
+  // console.log(retri_id.value);
   if(!session_id.value || !retri_id.value){
     router.push('/404');
   }
