@@ -3,14 +3,12 @@
     <div class="modal_pop_small">
       <div class="smallPop popup_block">
         <div class="pop_title">
-          <p>ReTri Referral</p>
+          <p>ReTri Referral {{ props.exchange }}</p>
         </div>
-        <!-- <div class="con_wrap" v-html="props.msg">
-          <p class="fs20">
-            {{$t(`common['${props.msg}']`)}}
-          </p>
-        </div> -->
-        <div class="con_wrap">
+        <div class="con_wrap" v-if="props.msg === 'modalExchange'">
+          <p>{{ $t(`modalExchange['${props.exchange.toLowerCase()}']`) }}</p>
+        </div>
+        <div class="con_wrap" v-else>
           <p>{{ $t(`modal['${props.msg}']`) }}</p>
         </div>
         <div class="btn_bottom">
@@ -27,14 +25,20 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 const store = useStore();
+const router = useRouter();
 const props = defineProps({
   msg: { type: String },
+  exchange: { type: String },
 });
 let second = ref(3);
 const closeModal = () => {
   store.commit("referral/changeModalState", false);
+  if(props.exchange){
+    router.push("/apply");
+  }
 };
 const redirect = () => {
   location.href = "https://retri.io";
