@@ -40,7 +40,7 @@
           <p>{{ exchange.name }} {{ $t("connectExc.PCConnectGuide") }}</p>
           <button>
             <a
-              :href="`/pdf/${exchange.name}/${screenSize}/${exchange.name}_${screenSize}_${localLang}.pdf`"
+              :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
               download=""
             >
               <img src="@/assets/image/download_icon.png" alt="download"
@@ -53,7 +53,7 @@
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
           <a
-            :href="`/uid/${exchange.name}/${screenSize}/${exchange.name}_${screenSize}_${localLang}.pdf`"
+            :href="`/uid/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
             download=""
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>

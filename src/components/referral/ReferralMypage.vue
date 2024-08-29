@@ -8,6 +8,9 @@
   <div class="blur_area flex_col_c_c">
     <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
     <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
+    <p>{{ $t(`prevGuide['guideMsg2']`) }}</p>
+    <p>{{ $t(`prevGuide['guideMsg3']`) }}</p>
+    <p class="warning_txt">{{ $t(`prevGuide['guideMsg4']`) }}</p>
   </div>
   <div class="mypage_wrap" v-if="!allLoading">
     <ul class="mypage_ul">
