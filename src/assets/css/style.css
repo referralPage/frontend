@@ -280,7 +280,7 @@ img.logo_l {
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  /* word-break: break-all; */
+  word-break: break-all;
 }
 .fs20 {
   font-size: 20px !important;

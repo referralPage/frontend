@@ -71,6 +71,12 @@
   .exchange_area li img.logo_l {
     width: 80%;
   }
+  .explan_area p{
+    word-break: break-all;
+  }
+  .middle_area p{
+    word-break: break-all;
+  }
 }
 
 .recieve_wrap {
