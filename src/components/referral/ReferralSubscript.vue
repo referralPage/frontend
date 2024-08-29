@@ -37,7 +37,7 @@
     <div> 
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
-          <p>{{ exchange.name }} {{ $t("connectExc.PCConnectGuide") }}</p>
+          <p>{{ exchange.name }} {{ screenSize == 'pc' ? $t("connectExc.PCConnectGuide") : $t("connectExc.MobileConnectGuide")}}</p>
           <button>
             <a
               :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
