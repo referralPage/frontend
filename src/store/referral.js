@@ -118,6 +118,7 @@ export default {
         };
         console.log(info);
         let response = await api.postUidApi(info);
+        console.log(response);
         console.log(response.recode);
         if(response.recode === 0){
           context.state.uidState = 1; // msg 신청완료
