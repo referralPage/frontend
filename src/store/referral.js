@@ -196,34 +196,25 @@ export default {
         return;
       }
     },
-    // async postRetriAuth(context) {
-    //   try {
-    //     let response = await api.postRetriAuthApi();
-    //     context.state.status = response.status;
-    //     //console.log(response.status);
-    //   } catch (error) {
-    //     return;
-    //   }
-    // },
     async getLoadUser(context) {
       try {
-        let response = await api.getLoadUserApi();
+        // let response = await api.getLoadUserApi();
 
-        // let response = {
-        //   "result": {
-        //     "user_id": "retri60",
-        //     "retri_id": "25576",
-        //     "session_id": "882288638",
-        //     "na_code": "KR"
-        //   }
-        // }
+        let response = {
+          "result": {
+            "user_id": "retri60",
+            "retri_id": "25576",
+            "session_id": "882288638",
+            "na_code": "KR"
+          }
+        }
 
         context.state.region_code = response.result.na_code;
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
 
         // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
-        if (!document.referrer.includes('ref.retri.xyz')) {
+        if (!document.referrer.includes('local')) {
           let lang = changeLang(context.state.region_code)
           localStorage.setItem("localeLangDisplayed", context.state.region_code);
           localStorage.setItem("localeLang", lang);
