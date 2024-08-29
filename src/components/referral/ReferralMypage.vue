@@ -6,11 +6,13 @@
   </div>
   <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
   <div class="blur_area flex_col_c">
-    <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
-    <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
-    <p>{{ $t(`prevGuide['guideMsg2']`) }}</p>
-    <p>{{ $t(`prevGuide['guideMsg3']`) }}</p>
-    <p class="warning_txt">{{ $t(`prevGuide['guideMsg4']`) }}</p>
+    <div>
+      <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
+      <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
+      <p>{{ $t(`prevGuide['guideMsg2']`) }}</p>
+      <p>{{ $t(`prevGuide['guideMsg3']`) }}</p>
+      <p class="warning_txt">{{ $t(`prevGuide['guideMsg4']`) }}</p>
+    </div>
   </div>
   <div class="mypage_wrap" v-if="!allLoading">
     <ul class="mypage_ul">
@@ -161,7 +163,7 @@ import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 const store = useStore();
-const router =useRouter();
+const router = useRouter();
 const exchangeArr = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
@@ -321,7 +323,7 @@ function syncScroll(el1, el2) {
 allLoading.value = true;
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-    if (!session_id.value || !retri_id.value) {
+  if (!session_id.value || !retri_id.value) {
     router.push("/404");
   }
   changeDate();
@@ -355,9 +357,9 @@ const createdFn = async () => {
   max_profit = Math.max(...numArr);
 };
 
-store.watch((state)=>{
-  if(state.referral.setting){
+store.watch((state) => {
+  if (state.referral.setting) {
     createdFn();
-  } 
-},createdFn);
+  }
+}, createdFn);
 </script>
