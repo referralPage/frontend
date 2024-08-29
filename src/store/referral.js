@@ -237,7 +237,7 @@ export default {
         let response = await api.getCheckLoginApi();
         context.state.loginStatus = response.status;
         // console.log(response);
-        context
+        // context
       } catch (error) {
         return;
       }
