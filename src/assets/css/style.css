@@ -32,6 +32,7 @@
   --text-red: #ee7272;
 }
 body {
+  font-family: var(--main-font-bold), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif !important;
   /* background: url("../image/chart_bg1.png") no-repeat; */
   background-color: var(--background-color);
   box-sizing: border-box;

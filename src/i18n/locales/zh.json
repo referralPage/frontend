@@ -1,78 +1,45 @@
 {
-    "dashboard" : {
-        "daysOperation" : "Days of Operation",
-        "currentBalance" : "Current Balance",
-        "avDailyProfit" : "Average Daily Profit",
-        "avWeeklyProfit" : "Average Weekly Profit",
-        "monthProfit" : "This Month's Profit",
-        "startingAmount" : "Starting Amount",
-        "currentDeposit" : "Current Deposit",
-        "currentProfit" : "Current Profit",
-        "estimatedDeduction" : "Estimated Deduction",
-        "estimatedAdditionalCharge" : "Estimated Additional Charge",
-        "currentPosition" : "Current Position",
-        "unrealizedProfit" : "Unrealized Profit"
+    "dashboardPrev" : {
+        "referralSystem": "推荐返现系统",
+        "mainGuide": "申请后，每笔交易都会收到返现",
+        "chooseExc": "选择你想要的交易所"
     },
-    "profit" : {
-        "totalPNL" : "Total PNL",
-        "cumulativeProfit" : "Cumulative Profit",
-        "avMonthlyProfit" : "Average Monthly Profit",
-        "avWeeklyProfit" : "Average Weekly Profit",
-        "avDailyProfit" : "Average Daily Profit",
-        "transactionHistory" : "Transaction History",
-        "currency" : "Currency",
-        "previousPrice" : "Previous Price",
-        "currentPrice" : "Current Price",
-        "date" : "Date"
-    },
-    "deposit" : {
-        "requiredAmount" : "Required Amount",
-        "currentAmount" : "Current Amount",
-        "insufficientAmount" : "Insufficient Amount",
-        "date" : "Date"
-    },
-    "common" : {
-        "dashboardTitle" : "Dashboard",
-        "position" : "Position",
-        "profitTitle" : "Profit",
-        "term" : "Term",
-        "type" : "Type",
-        "coin" : "Coin",
-        "quantity" : "Quantity",
-        "change" : "Change",
-        "balance" : "Balance",
-        "apply" : "Apply",
-        "confirm" : "Confirm",
-        "cancel" : "Cancel", 
-        "dateWarningMsg" : "Please enter the date accurately."
-    },
-    "info" : {
-        "infoTxt01" : "based on over 7 years of big data and deep learning system",
-        "infoTxt02" : "More than 20,000 people in 27 countries are using it",
-        "infoTxt03" : "FX automatic trading bot!",
-        "infoTxt04" : "based on GOYA AI algorithm!",
-        "infoTxt05" : "In foreign exchange trading, linking with Goya FX Bot Achieve higher returns of over ",
-        "infoTxt06" : "every year with automatic trading!"
-    },
-    "guide" : {
-        "step01" : "Open an FP Markets Account",
-        "step02" : "Charge Seed Money for Operation",
-        "step03" : "Charge Deposit",
-        "step04" : "Link your Transactions",
-        "stepGuide01" : "Account Guide",
-        "stepGuide02" : "Seed Money Charging Guide",
-        "stepGuide03" : "Deposit Charging Guide",
-        "stepGuide04" : "Transaction Linking Guide",
-        "singUp" : "Sign Up",
-        "charge" : "Charge",
-        "operate" : "Operate FX Bot",
-        "videoGuide" : "Video Guide"
+    "connectExc": {
+        "paybackConnect": "申请推荐返现",
+        "nowSign": "立即注册",
+        "UIDGuide": "※ 请务必使用网站上的推荐码进行注册，然后输入您的UID ※",
+        "notLinkPayback" : "（如果您使用其他链接或代码注册，则不会获得返现。）",
+        "UIDInput": "Toobit 交易所本人UID：",
+        "connectBtn": "申请",
+        "PCConnectGuide": "如何注册新入会员和现有会员（PC版）",
+        "MobileConnectGuide": "如何注册新入会员和现有会员（手机版）",
+        "UIDCheckGuide": "确认UID 方法 "
     },
     "modal" : {
-        "dateWarnig" : "<p>Please check the date carefully.</p>",
-        "msgCode01" : "<p>Successfully registered.</p>",
-        "msgCode02" : "<p>The UID is already registered.</p>",
-        "msgCode03" : "<p>The UID is invalid.</p>",
-        "msgCode04" : "<p>The UID is not registered with a valid referral code. <br/> Please re-register with a valid referral code after deactivating your account.</p>"
+        "dateWarnig" : "날짜를 정확하게 입력해주세요.",
+        "msgCode0" : "UID 无效。",
+        "msgCode01" : "注册申请已完成。",
+        "msgCode02" : "성공적으로 등록되었습니다.",
+        "msgCode03" : "申请注册失败。请稍后重试。",
+        "msgCode04" : "该 UID 已被注册。",
+        "msgCode05" : "交易所将在申请推荐后最多2个工作日内会完成推荐登记。",
+        "msgCode06" : "已经申请过的UID。",
+        "msgCode07" : "没有要求该 UID 的推荐历史记录。",
+        "msgCode08" : "等待推荐注册批准。",
+        "noLogin" : "중복 로그인이 확인되었습니다. 창을 종료합니다."
+    },
+    "modalExchange" : {
+        "okx" : "기존회원의 경우 1회에 한해 회원탈뢰를 하실경우 KYC 인증을 다시 받으실 수 있습니다. 한번도 탈퇴한 기록이 없는 기존회원께서는 탈퇴를 진행하고 레퍼럴코드를 입력하여 신규가입한 계정의 UID를 입력하시면 됩니다.",
+        "bingx" : "기존 회원의 경우 레퍼럴 코드를 입력한 신규 계정을 생성하여 UID를 먼저 입력하시고 이후 기존계정에서 KYC를 신규계정으로 옮기실 권장 드립니다 (KYC 이동시 약 7일 소요예상)",
+        "deepcoin" : "기존회원의 경우 1회에 한해 회원탈뢰를 하실경우 KYC 인증을 다시 받으실 수 있습니다. 한번도 탈퇴한 기록이 없는 기존회원께서는 탈퇴를 진행하고 레퍼럴코드를 입력하여 신규가입한 계정의 UID를 입력하시면 됩니다.",
+        "toobit" : "기존회원의 경우UID를 확인하여 Telegram : https://t.me/retrics 로 보내주시면 레퍼럴 코드를 변경처리 해 드리겠습니다."
+    },
+    "noAccess" : {
+        "msg01" : "불편을 드려 죄송합니다.",
+        "msg02" : "비정상적인 경로로 접근 하였습니다.",
+        "msg03" : "확인을 누르시면 RETRI 페이지로 이동합니다."
+    },
+    "common" : {
+        "confirm" : "查看"
     }
 }

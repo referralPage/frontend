@@ -4,7 +4,7 @@
 
 /* ****************** LAYOUT ********************** */
 body, table, th, td, button, select, input, textarea {
-	font-family:'gilroyregular', 'Noto Sans KR',  NanumGothic, "Nanum Gothic","돋움", Dotum, Arial, sans-serif;
+	/* font-family:'gilroyregular', 'Noto Sans KR',  NanumGothic, "Nanum Gothic","돋움", Dotum, Arial, sans-serif; */
 	font-size:14px;
 	color:#000;
 	font-weight:400;
