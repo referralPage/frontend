@@ -6,8 +6,8 @@
   </div>
   <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
   <div class="blur_area flex_col_c_c">
-    <p>레퍼럴 페이백 등록 후 이용이 가능합니다.</p>
-    <p>신청 페이지에서 레퍼럴 페이백 신청 후 이용 부탁드립니다.</p>
+    <p>{{ $t(`mypage['infoTitle']`) }}</p>
+    <p>{{ $t(`mypage['info']`) }}</p>
   </div>
   <div class="mypage_wrap" v-if="!allLoading">
     <ul class="mypage_ul">

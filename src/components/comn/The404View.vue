@@ -9,7 +9,12 @@
 
 <script setup>
 const confirmBtn = () => {
+  const screenWidth = window.innerWidth;
+  if (screenWidth < 640) {
+    location.href = "https://www.retri.io/m/";
+  } else {
     location.href = "https://retri.io";
+  }
 }
 
 </script>
