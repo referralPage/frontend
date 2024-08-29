@@ -32,12 +32,12 @@
   --text-red: #ee7272;
 }
 body {
+  font-family: var(--main-font-Light), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif !important;
   /* background: url("../image/chart_bg1.png") no-repeat; */
   background-color: var(--background-color);
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   letter-spacing: 0.5px;
-  font-family: var(--main-font-Light);
   font-style: normal;
   color: var(--color-main);
 }
@@ -46,7 +46,7 @@ h1 {
 }
 p,
 select {
-  font-family: var(--main-font-Medium);
+  font-family: var(--main-font-Medium), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif;
 }
 form {
   margin: 0;
