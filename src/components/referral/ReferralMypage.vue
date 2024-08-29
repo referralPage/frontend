@@ -4,7 +4,8 @@
       <div class="loading_circle"></div>
     </div>
   </div>
-  <div class="blur_area flex_col_c_c" v-if="isNotReferral">
+  <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
+  <div class="blur_area flex_col_c_c">
     <p>레퍼럴 페이백 등록 후 이용이 가능합니다.</p>
     <p>신청 페이지에서 레퍼럴 페이백 신청 후 이용 부탁드립니다.</p>
   </div>
@@ -180,9 +181,15 @@ const totalPages = computed(() => {
 const listLoading = computed(() => {
   return store.state.referral.listLoading;
 });
-const isNotReferral = computed(() => {
-  return store.state.referral.isNotReferral;
-});
+// const session_id = computed(() => {
+//   return store.state.referral.session_id;
+// });
+// const retri_id = computed(() => {
+//   return store.state.referral.retri_id;
+// });
+// const isNotReferral = computed(() => {
+//   return store.state.referral.isNotReferral;
+// });
 const msg = "dateWarnig";
 let allLoading = ref(false);
 let max_profit;
@@ -309,6 +316,9 @@ function syncScroll(el1, el2) {
 allLoading.value = true;
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
+    // if (!session_id.value || !retri_id.value) {
+  //   router.push("/404");
+  // }
   changeDate();
   store.commit("referral/setPage", 1);
   await Promise.all([

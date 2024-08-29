@@ -15,11 +15,11 @@
     <p class="warning_txt">
       {{ $t("connectExc.UIDGuide") }}
       <br />
-      (다른 링크나 코드로 가입 시 페이백이 이루어지지 않습니다.)
+      {{ $t("connectExc.notLinkPayback") }}
     </p>
     <div class="uid_area flex_row_c_c">
       <label for="userUid"
-        >{{ exchange.name }} {{ $t("connectExc.UIDInput") }}
+        >{{localLang === 'VN' ? `${$t("connectExc.UIDInput")} ${exchange.name}` : `${exchange.name} ${$t("connectExc.UIDInput")}`}}
       </label>
       <input
         type="number"
