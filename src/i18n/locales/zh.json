@@ -13,6 +13,21 @@
         "currentPosition" : "Current Position",
         "unrealizedProfit" : "Unrealized Profit"
     },
+    "dashboardPrev" : {
+        "referralSystem": "推荐返现系统",
+        "mainGuide": "申请后，每笔交易都会收到返现",
+        "chooseExc": "选择你想要的交易所"
+    },
+    "connectExc": {
+        "paybackConnect": "申请推荐返现",
+        "nowSign": "立即注册",
+        "UIDGuide": "※ 请务必使用网站上的推荐码进行注册，然后输入您的UID ※",
+        "UIDInput": "Toobit 交易所本人UID：",
+        "connectBtn": "申请",
+        "PCConnectGuide": "如何注册新入会员和现有会员（PC版）",
+        "MobileConnectGuide": "如何注册新入会员和现有会员（手机版）",
+        "UIDCheckGuide": "确认UID 方法 "
+    },
     "profit" : {
         "totalPNL" : "Total PNL",
         "cumulativeProfit" : "Cumulative Profit",

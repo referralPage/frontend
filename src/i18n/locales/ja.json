@@ -13,6 +13,21 @@
         "currentPosition" : "Current Position",
         "unrealizedProfit" : "Unrealized Profit"
     },
+    "dashboardPrev" : {
+        "referralSystem": "リファラル·ペイバック·システム",
+        "mainGuide": "お申し込み後、取引するたびに発生する手数料をペイバックされて下さい。",
+        "chooseExc": "ご希望の取引所をお選びください。"
+    },
+    "connectExc": {
+        "paybackConnect": "リファラル·ペイバックを申請する",
+        "nowSign": "今すぐ登録する",
+        "UIDGuide": "※ 必ずサイトにある招待コードでご登録の上、UIDを入力してください ※",
+        "UIDInput": "Toobit取引所のご本人のUID:",
+        "connectBtn": "申請する",
+        "PCConnectGuide": "新規会員&既存会員の登録の仕方(PC)",
+        "MobileConnectGuide": "新規会員&既存会員の登録の仕方(Mobile)",
+        "UIDCheckGuide": "UIDの確認の仕方"
+    },
     "profit" : {
         "totalPNL" : "Total PNL",
         "cumulativeProfit" : "Cumulative Profit",
@@ -69,10 +84,17 @@
         "videoGuide" : "Video Guide"
     },
     "modal" : {
-        "dateWarnig" : "<p>Please check the date carefully.</p>",
-        "msgCode01" : "<p>Successfully registered.</p>",
-        "msgCode02" : "<p>The UID is already registered.</p>",
-        "msgCode03" : "<p>The UID is invalid.</p>",
-        "msgCode04" : "<p>The UID is not registered with a valid referral code. <br/> Please re-register with a valid referral code after deactivating your account.</p>"
+        "dateWarnig" : "日付を正確に入力してください。",
+        "msgCode01" : "無効なUIDです。",
+        "msgCode02" : "登録に成功しました。",
+        "msgCode03" : "유효하지 않은 UID 입니다. 탈퇴 후 올바른 레퍼럴 코드로 재 가입 해주시기 바랍니다.",
+        "msgCode04" : "이미 신청 완료된 UID 입니다.",
+        "msgCode05" : "이미 등록된 UID입니다.",
+        "msgCode06" : "등록 신청이 완료 되었습니다.",
+        "msgCode07" : "등록 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.",
+        "msgCode08" : "해당 거래소는 레퍼럴 신청 후 최대 2영업일 이내 레퍼럴 등록 완료됩니다.",
+        "msgCode09" : "레퍼럴 등록 승인 대기중입니다.",
+        "msgCode10" : "해당 UID로 신청된 레퍼럴 내역이 존재하지 않습니다.",
+        "noLogin" : "重複ログインが確認されました。 ウィンドウを終了します。"
     }
 }
