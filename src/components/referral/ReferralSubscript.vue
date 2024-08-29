@@ -10,7 +10,7 @@
         <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
       </div>
       <p>{{ $t("connectExc.paybackConnect") }}</p>
-      <button class="gradient_green">{{ $t("connectExc.nowSign") }}</button>
+      <button class="gradient_green" @click="goToExchange()">{{ $t("connectExc.nowSign") }}</button>
     </div>
     <p class="warning_txt">
       {{ $t("connectExc.UIDGuide") }}
@@ -120,6 +120,14 @@ const createdFn = async () => {
     screenSize.value = "pc";
   }
 };
+const goToExchange = () => {
+  let exchangeUrl;
+  if(exchange.value.name === "Toobit") exchangeUrl = "https://www.toobit.com/t/YOUTHMETA";
+  else if(exchange.value.name === "OKX") exchangeUrl = "https://www.okx.com/join/YOUTHMETA";
+  else if(exchange.value.name === "BingX") exchangeUrl = " https://bingx.com/partner/YOUTHMETA";
+  else if(exchange.value.name === "Deepcoin") exchangeUrl = "https://s.deepcoin.com/jcfdhib";
+  window.open(exchangeUrl,"");
+}
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();
