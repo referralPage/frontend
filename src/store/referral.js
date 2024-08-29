@@ -119,15 +119,13 @@ export default {
           datetime: new Date().toISOString(),
         };
         let response = await api.postUidApi(info);
-        console.log(response.recode);
-        if(response.recode === 0){
+        if(response.reCode === 0){
           context.state.uidState = 1; // msg 신청완료
-        } else if (response.recode === 1){ 
+        } else if (response.reCode === 1){ 
           context.state.uidState = 4; // msg 중복
-        } else if (response.recode === 2){
+        } else if (response.reCode === 2){
           context.state.uidState = 3; // msg 등록실패
         }
-        // console.log(context.state.uidState);
       } catch (error) {
         return;
       }

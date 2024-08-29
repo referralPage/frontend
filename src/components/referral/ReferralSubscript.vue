@@ -114,7 +114,7 @@ const createdFn = async () => {
     router.push("/404");
   }
   const screenWidth = window.innerWidth;
-  if (screenWidth < 729) {
+  if (screenWidth < 640) {
     screenSize.value = "mo";
   } else {
     screenSize.value = "pc";
