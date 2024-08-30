@@ -111,8 +111,6 @@ const checkNumber = (e) => {
   userUid = e.target.value;
 };
 const enrollBtn = async () => {
-  console.log(localLang.value);
-  console.log(exchange.value.name);
   if (userUid == "" || userUid == null) {
     msgCode = `msgCode0`;
   } else {
