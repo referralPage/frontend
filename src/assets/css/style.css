@@ -40,6 +40,7 @@ body {
   letter-spacing: 0.5px;
   font-style: normal;
   color: var(--color-main);
+  user-select: none;
 }
 h1 {
   font-family: var(--main-font-Mont);
@@ -48,6 +49,9 @@ p,
 select,
 button {
   font-family: var(--main-font-Medium), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif;
+}
+button, button:focus {
+  outline: none;
 }
 form {
   margin: 0;
@@ -86,6 +90,8 @@ form {
 }
 .gradient_green{
   background: var(--green_gradient);
+  animation: heartBeat;
+  animation-duration: 5s;
 }
 .gradient_blue{
   background: var(--blue_gradient);
