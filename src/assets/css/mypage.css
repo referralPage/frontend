@@ -674,14 +674,11 @@ ul.payback_list_box li em:nth-child(6) {
   max-width: 1420px;
   margin: 0 auto;
 }
-
 .blur_area{
   position: fixed;
   z-index: 5;
-  width: calc(100% -70px);
+  width: 100%;
   height: calc(100% - 70px);
-  /* width: calc(100% -70px);
-  height: calc(100% - 70px); */
   background: rgba(29, 29, 43, 0.5);
   backdrop-filter: blur(10px);
   overflow-y: auto;
@@ -689,7 +686,8 @@ ul.payback_list_box li em:nth-child(6) {
   box-sizing: border-box;
 }
 .blur_area div{
-  width: 80%;
+  padding-right: 70px;
+  max-width: 1420px;
 }
 .blur_area.hd{
   visibility: hidden;

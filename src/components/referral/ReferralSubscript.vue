@@ -10,7 +10,9 @@
         <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
       </div>
       <p>{{ $t("connectExc.paybackConnect") }}</p>
-      <button class="gradient_green" @click="goToExchange()">{{ $t("connectExc.nowSign") }}</button>
+      <button class="gradient_green" @click="goToExchange()">
+        {{ $t("connectExc.nowSign") }}
+      </button>
     </div>
     <p class="warning_txt">
       {{ $t("connectExc.UIDGuide") }}
@@ -19,7 +21,11 @@
     </p>
     <div class="uid_area flex_row_c_c">
       <label for="userUid"
-        >{{localLang === 'VN' ? `${$t("connectExc.UIDInput")} ${exchange.name}` : `${exchange.name} ${$t("connectExc.UIDInput")}`}}
+        >{{
+          localLang === "VN"
+            ? `${$t("connectExc.UIDInput")} ${exchange.name}`
+            : `${exchange.name} ${$t("connectExc.UIDInput")}`
+        }}
       </label>
       <input
         type="number"
@@ -34,10 +40,17 @@
         {{ $t("connectExc.connectBtn") }}
       </button>
     </div>
-    <div> 
+    <div v-if="(localLang != 'JP' || exchange.name != 'OKX') && (localLang != 'CN' || exchange.name != 'BingX')  ">
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
-          <p>{{ exchange.name }} {{ screenSize == 'pc' ? $t("connectExc.PCConnectGuide") : $t("connectExc.MobileConnectGuide")}}</p>
+          <p>
+            {{ exchange.name }}
+            {{
+              screenSize == "pc"
+                ? $t("connectExc.PCConnectGuide")
+                : $t("connectExc.MobileConnectGuide")
+            }}
+          </p>
           <button>
             <a
               :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
@@ -98,10 +111,16 @@ const checkNumber = (e) => {
   userUid = e.target.value;
 };
 const enrollBtn = async () => {
-  store.commit("referral/setUId", userUid);
-  await store.dispatch("referral/postUid");
+  console.log(localLang.value);
+  console.log(exchange.value.name);
+  if (userUid == "" || userUid == null) {
+    msgCode = `msgCode0`;
+  } else {
+    store.commit("referral/setUId", userUid);
+    await store.dispatch("referral/postUid");
+    msgCode = `msgCode0${uidState.value}`;
+  }
   store.commit("referral/changeModalState", true);
-  msgCode = `msgCode0${uidState.value}`;
 };
 let screenSize = ref("pc");
 
@@ -122,12 +141,16 @@ const createdFn = async () => {
 };
 const goToExchange = () => {
   let exchangeUrl;
-  if(exchange.value.name === "Toobit") exchangeUrl = "https://www.toobit.com/t/YOUTHMETA";
-  else if(exchange.value.name === "OKX") exchangeUrl = "https://www.okx.com/join/YOUTHMETA";
-  else if(exchange.value.name === "BingX") exchangeUrl = " https://bingx.com/partner/YOUTHMETA";
-  else if(exchange.value.name === "Deepcoin") exchangeUrl = "https://s.deepcoin.com/jcfdhib";
-  window.open(exchangeUrl,"");
-}
+  if (exchange.value.name === "Toobit")
+    exchangeUrl = "https://www.toobit.com/t/YOUTHMETA";
+  else if (exchange.value.name === "OKX")
+    exchangeUrl = "https://www.okx.com/join/YOUTHMETA";
+  else if (exchange.value.name === "BingX")
+    exchangeUrl = " https://bingx.com/partner/YOUTHMETA";
+  else if (exchange.value.name === "Deepcoin")
+    exchangeUrl = "https://s.deepcoin.com/jcfdhib";
+  window.open(exchangeUrl, "");
+};
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();
