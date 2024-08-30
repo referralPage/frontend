@@ -1,5 +1,7 @@
 /* payback */
 .payback_main_wrap {
+  max-width: 1420px;
+  margin: 0 auto;
   height: calc(100vh - 70px);
   font-size: 1.4em;
   background: url("@/assets/image/bg01.png") center center no-repeat;
