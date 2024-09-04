@@ -219,8 +219,8 @@ export default {
 
 
         // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
-        // if (!document.referrer.includes('ref.retri.xyz')) {
-          if (!document.referrer.includes('local')) {
+        if (!document.referrer.includes('ref.retri.xyz')) {
+          // if (!document.referrer.includes('local')) {
           let lang = changeLang(context.state.region_code)
           localStorage.setItem("localeLangDisplayed", context.state.region_code);
           localStorage.setItem("localeLang", lang);
