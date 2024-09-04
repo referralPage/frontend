@@ -1,7 +1,7 @@
 <template>
   <header class="header_wrap">
     <div class="header_logo">
-      <router-link to="/payback">
+      <router-link :to="mainPath === '404' ? '/404' : '/payback'">
         <img src="@/assets/image/logo.png" alt="retri logo" />
       </router-link>
     </div>

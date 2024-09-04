@@ -2,10 +2,10 @@
   <aside class="side_menu">
     <ul class="flex_col_center mgt70">
       <li :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''">
-        <router-link to="/payback"></router-link>
+        <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
       </li>
       <li :class="mainPath === 'mypage' ? 'active' : ''">
-        <router-link to="/mypage"></router-link>
+        <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
       </li>
     </ul>
   </aside>
