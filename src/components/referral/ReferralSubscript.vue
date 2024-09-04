@@ -40,7 +40,12 @@
         {{ $t("connectExc.connectBtn") }}
       </button>
     </div>
-    <div v-if="(localLang != 'JP' || exchange.name != 'OKX') && (localLang != 'CN' || exchange.name != 'BingX')  ">
+    <div
+      v-if="
+        (localLang != 'JP' || exchange.name != 'OKX') &&
+        (localLang != 'CN' || exchange.name != 'BingX')
+      "
+    >
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
           <p>
@@ -53,20 +58,22 @@
           </p>
           <button>
             <a
-              :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
+              :href="`/pdf/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
               :download="`${exchange.name}_pdf`"
             >
               <img src="@/assets/image/download_icon.png" alt="download"
             /></a>
           </button>
-          <!-- <button>
-            <img src="@/assets/image/youtube_icon.png" alt="youtube" />
-          </button> -->
+          <button>
+            <a :href="videoLink()" target="_blank">
+              <img src="@/assets/image/youtube_icon.png" alt="youtube"
+            /></a>
+          </button>
         </li>
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
           <a
-            :href="`/uid/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
+            :href="`/uid/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
             :download="`${exchange.name}_uid`"
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>
@@ -149,6 +156,22 @@ const goToExchange = () => {
     exchangeUrl = "https://s.deepcoin.com/jcfdhib";
   window.open(exchangeUrl, "");
 };
+const videoLink = () =>{
+  let link;
+  switch(localLang.value){
+    case 'KR' : link = exchange.value.videoKR;
+    break;
+    case 'EN' : link = exchange.value.videoEN;
+    break;
+    case 'VN' : link = exchange.value.videoVN;
+    break;
+    case 'CN' : link = exchange.value.videoCN;
+    break;
+    case 'JP' : link = exchange.value.videoJP;
+    break;
+  }
+  return link;
+}
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();

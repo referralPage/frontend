@@ -51,7 +51,11 @@ export default {
       state.exchange = {
         name: payload.name,
         logo: payload.logo,
-        text: payload.text,
+        videoKR: payload.videoKR,
+        videoEN: payload.videoEN,
+        videoVN: payload.videoVN,
+        videoCN: payload.videoCN,
+        videoJP: payload.videoJP,
       };
     },
     setExchangeFlag(state) {
