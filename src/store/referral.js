@@ -123,11 +123,14 @@ export default {
           datetime: new Date().toISOString(),
         };
         let response = await api.postUidApi(info);
+        // console.log(response.reCode);
         if(response.reCode === 0){
           context.state.uidState = 1; // msg 신청완료
         } else if (response.reCode === 1){ 
           context.state.uidState = 4; // msg 중복
         } else if (response.reCode === 2){
+          context.state.uidState = ""; // msg 유효하지않는 uid
+        } else if (response.reCode === 3){
           context.state.uidState = 3; // msg 등록실패
         }
       } catch (error) {
