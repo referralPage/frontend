@@ -122,6 +122,7 @@ const enrollBtn = async () => {
     msgCode = `msgCode0`;
   } else {
     store.commit("referral/setUId", userUid);
+    await store.dispatch("referral/postCheckLogin");
     await store.dispatch("referral/postUid");
     msgCode = `msgCode0${uidState.value}`;
   }
