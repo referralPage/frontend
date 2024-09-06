@@ -14,7 +14,7 @@
         <div class="btn_bottom">
           <button class="btn_gray" @click="closeModal">
             {{
-              props.msg === "noLogin" ? `${second}s` : $t("common['confirm']")
+              $t("common['confirm']")
             }}
           </button>
         </div>
@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 const store = useStore();
@@ -33,9 +32,11 @@ const props = defineProps({
   msg: { type: String },
   exchange: { type: String },
 });
-let second = ref(3);
 const closeModal = () => {
   store.commit("referral/changeModalState", false);
+  if (props.msg == "noLogin") {
+    redirect();
+  }
   if(props.exchange){
     router.push("/apply");
   }
@@ -52,18 +53,6 @@ const redirect = () => {
   }
   
 };
-onMounted(() => {
-  if (props.msg == "noLogin") {
-    setInterval(() => {
-      second.value === 0 ? 0 : second.value--;
-    }, 1000);
-    setTimeout(() => {
-      redirect();
-    }, 3000);
-  } else {
-    clearTimeout(redirect);
-  }
-});
 </script>
 
 <style lang="scss" scoped></style>
