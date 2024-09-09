@@ -1,16 +1,24 @@
 <template>
-    <aside class="side_menu">
-        <ul class="flex_col_center mgt70">
-            <li><router-link to="/payback"><img src="@/assets/image/menu01.png" alt="레퍼럴 페이백 신청" /></router-link></li>
-            <li><router-link to="/mypage"><img src="@/assets/image/menu02.png" alt="레퍼럴 페이백 내역" /></router-link></li>
-        </ul>
-    </aside>
+  <aside class="side_menu">
+    <ul class="flex_col_center mgt70">
+      <li :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''">
+        <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+      </li>
+      <li :class="mainPath === 'mypage' ? 'active' : ''">
+        <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+      </li>
+    </ul>
+  </aside>
 </template>
 
 <script setup>
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
+const mainPath = computed(() => {
+  return route.path.split("/")[1];
+});
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

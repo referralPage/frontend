@@ -1,5 +1,7 @@
 /* payback */
 .payback_main_wrap {
+  max-width: 1420px;
+  margin: 0 auto;
   height: calc(100vh - 70px);
   font-size: 1.4em;
   background: url("@/assets/image/bg01.png") center center no-repeat;
@@ -71,6 +73,12 @@
   .exchange_area li img.logo_l {
     width: 80%;
   }
+  .explan_area p{
+    word-break: break-all;
+  }
+  .middle_area p{
+    word-break: break-all;
+  }
 }
 
 .recieve_wrap {
@@ -96,6 +104,7 @@
   margin: 80px auto;
   width: 520px;
   line-height: 1.5em;
+  word-break: break-all;
 }
 .uid_area label {
   margin-right: 30px;

@@ -10,7 +10,9 @@
         <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
       </div>
       <p>{{ $t("connectExc.paybackConnect") }}</p>
-      <button class="gradient_green">{{ $t("connectExc.nowSign") }}</button>
+      <button class="gradient_green" @click="goToExchange()">
+        {{ $t("connectExc.nowSign") }}
+      </button>
     </div>
     <p class="warning_txt">
       {{ $t("connectExc.UIDGuide") }}
@@ -19,7 +21,11 @@
     </p>
     <div class="uid_area flex_row_c_c">
       <label for="userUid"
-        >{{localLang === 'VN' ? `${$t("connectExc.UIDInput")} ${exchange.name}` : `${exchange.name} ${$t("connectExc.UIDInput")}`}}
+        >{{
+          localLang === "VN"
+            ? `${$t("connectExc.UIDInput")} ${exchange.name}`
+            : `${exchange.name} ${$t("connectExc.UIDInput")}`
+        }}
       </label>
       <input
         type="number"
@@ -34,32 +40,46 @@
         {{ $t("connectExc.connectBtn") }}
       </button>
     </div>
-    <div> 
+    <div
+      v-if="
+        (localLang != 'JP' || exchange.name != 'OKX') &&
+        (localLang != 'CN' || exchange.name != 'BingX')
+      "
+    >
       <ul class="flex_row_c_c">
         <li class="flex_row_c_c">
-          <p>{{ exchange.name }} {{ $t("connectExc.PCConnectGuide") }}</p>
+          <p>
+            {{ exchange.name }}
+            {{
+              screenSize == "pc"
+                ? $t("connectExc.PCConnectGuide")
+                : $t("connectExc.MobileConnectGuide")
+            }}
+          </p>
           <button>
             <a
-              :href="`/pdf/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
-              download=""
+              :href="`/pdf/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
+              :download="`${exchange.name}_pdf`"
             >
               <img src="@/assets/image/download_icon.png" alt="download"
             /></a>
           </button>
           <button>
-            <img src="@/assets/image/youtube_icon.png" alt="youtube" />
+            <a :href="videoLink()" target="_blank">
+              <img src="@/assets/image/youtube_icon.png" alt="youtube"
+            /></a>
           </button>
         </li>
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
           <a
-            :href="`/uid/${exchange.name.toLowerCase()}/${screenSize}/${exchange.name.toLowerCase()}_${screenSize}_${localLang}.pdf`"
-            download=""
+            :href="`/uid/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
+            :download="`${exchange.name}_uid`"
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>
-          <button>
+          <!-- <button>
             <img src="@/assets/image/youtube_icon.png" alt="youtube" />
-          </button>
+          </button> -->
         </li>
       </ul>
     </div>
@@ -98,10 +118,15 @@ const checkNumber = (e) => {
   userUid = e.target.value;
 };
 const enrollBtn = async () => {
-  store.commit("referral/setUId", userUid);
-  await store.dispatch("referral/postUid");
+  if (userUid == "" || userUid == null) {
+    msgCode = `msgCode0`;
+  } else {
+    store.commit("referral/setUId", userUid);
+    await store.dispatch("referral/postCheckLogin");
+    await store.dispatch("referral/postUid");
+    msgCode = `msgCode0${uidState.value}`;
+  }
   store.commit("referral/changeModalState", true);
-  msgCode = `msgCode0${uidState.value}`;
 };
 let screenSize = ref("pc");
 
@@ -120,6 +145,34 @@ const createdFn = async () => {
     screenSize.value = "pc";
   }
 };
+const goToExchange = () => {
+  let exchangeUrl;
+  if (exchange.value.name === "Toobit")
+    exchangeUrl = "https://www.toobit.com/t/YOUTHMETA";
+  else if (exchange.value.name === "OKX")
+    exchangeUrl = "https://www.okx.com/join/YOUTHMETA";
+  else if (exchange.value.name === "BingX")
+    exchangeUrl = " https://bingx.com/partner/YOUTHMETA";
+  else if (exchange.value.name === "Deepcoin")
+    exchangeUrl = "https://s.deepcoin.com/jcfdhib";
+  window.open(exchangeUrl, "");
+};
+const videoLink = () =>{
+  let link;
+  switch(localLang.value){
+    case 'KR' : link = exchange.value.videoKR;
+    break;
+    case 'EN' : link = exchange.value.videoEN;
+    break;
+    case 'VN' : link = exchange.value.videoVN;
+    break;
+    case 'CN' : link = exchange.value.videoCN;
+    break;
+    case 'JP' : link = exchange.value.videoJP;
+    break;
+  }
+  return link;
+}
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();

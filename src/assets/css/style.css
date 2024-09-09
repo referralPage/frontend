@@ -40,6 +40,7 @@ body {
   letter-spacing: 0.5px;
   font-style: normal;
   color: var(--color-main);
+  user-select: none;
 }
 h1 {
   font-family: var(--main-font-Mont);
@@ -48,6 +49,9 @@ p,
 select,
 button {
   font-family: var(--main-font-Medium), "Noto Sans JP", sans-serif,  "Noto Sans SC", sans-serif;
+}
+button, button:focus {
+  outline: none;
 }
 form {
   margin: 0;
@@ -86,6 +90,8 @@ form {
 }
 .gradient_green{
   background: var(--green_gradient);
+  animation: heartBeat;
+  animation-duration: 5s;
 }
 .gradient_blue{
   background: var(--blue_gradient);
@@ -116,6 +122,10 @@ img.logo_l {
 .header_logo {
   width: 100px;
 }
+.header_logo a{
+  width: 100%;
+  height: 100%;
+}
 .header_logo img {
   width: 100%;
 }
@@ -133,10 +143,27 @@ img.logo_l {
 }
 .side_menu ul li {
   width: 100%;
+  height: 50px;
   margin-bottom: 10px;
-
   cursor: pointer;
   overflow: hidden;
+  transition: none;
+}
+.side_menu ul li a{
+  width: 100%;
+  height: 100%;
+}
+.side_menu ul li:first-child{
+  background: url('@/assets/image/payback_off.png') center center no-repeat;
+}
+.side_menu ul li:last-child{
+  background: url('@/assets/image/mypage_off.png') center center no-repeat;
+}
+.side_menu ul li.active:first-child{
+  background: url('@/assets/image/payback_on.png') center center no-repeat;
+}
+.side_menu ul li.active:last-child{
+  background: url('@/assets/image/mypage_on.png') center center no-repeat;
 }
 .side_menu ul li a{
   width: 100%;
@@ -259,7 +286,7 @@ img.logo_l {
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  /* word-break: break-all; */
+  word-break: break-all;
 }
 .fs20 {
   font-size: 20px !important;
