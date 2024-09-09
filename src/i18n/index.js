@@ -4,6 +4,8 @@ import en from './locales/en.json'
 import zh from './locales/zh.json'
 import vi from './locales/vi.json'
 import ja from './locales/ja.json'
+import mn from './locales/mn.json'
+
 const i18n = createI18n({
     fallbackLocale: "en", 
     locale: localStorage.getItem("localeLang") ?? "en",
@@ -15,6 +17,7 @@ const i18n = createI18n({
         "zh": zh,
         "vi": vi,
         "ja": ja,
+        "mn": mn,
     }
 })
 
