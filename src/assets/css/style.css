@@ -520,7 +520,8 @@ img.logo_l {
   top: 40px;
   right: 0;
   width: 70px;
-  height: 300px;
+  /* height: 300px; */
+  height: 160px;
   padding: 20px 5px 10px 5px;
   background: #2a303c;
   border-radius: 20px 20px 20px 20px;
