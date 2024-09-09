@@ -678,6 +678,9 @@ ul.payback_list_box li em:nth-child(6) {
   }
 }
 @media (max-width: 480px) {
+  .blur_area div {
+    padding :0;
+  }
   .mypage_ul{
     padding: 20px 0 0 0;
   }
