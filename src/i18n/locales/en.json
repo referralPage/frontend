@@ -47,5 +47,27 @@
         "guideMsg2" : "If you enter a UID that was not signed up with the referral code provided by the company, the referral may not accumulate even if the registration is successful. ",
         "guideMsg3" : " Please check the manual and make sure to check whether the referral code has been entered when signing up. ",
         "guideMsg4" : "Please note: the company is not responsible for any issues that arise from entering a UID that was signed up with an incorrect referral code."
+    },
+    "myPage" : {
+        "totalPayback" : "Total Earned Payback",
+        "monthPayback" : "My Expected Payback for This Month",
+        "weekPayback" : "My Expected Payback for This Week",
+        "year" : "1 Year",
+        "monthSix" : "6 Months",
+        "monthThree" : "3 Months",
+        "monthPrev" : "Last Month",
+        "monthCurr" : "This Month",
+        "today" : "Today",
+        "all" : "All",
+        "date" : "Date",
+        "exchange" : "Exchange",
+        "paymentAcount": "Payment Amount",
+        "paymentDate" : "Payment Date",
+        "paymentDetail" : "Payment Details",
+        "remarks" : "Remarks",
+        "referralPayback" : "Referral Payback",
+        "expectedPayment" : "Expected Payment",
+        "paymentCompleted" : "Payment Completed",
+        "notSubscribed" : "Not joined through Referral link"
     }
 }

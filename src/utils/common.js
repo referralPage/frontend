@@ -1,17 +1,24 @@
 // 공통 함수
 import { setTimeZone } from "@/utils/timezone.js";
 
-//local시간을  utc로 변경
-export const localeToUTC = (country) => {
+//현재 local시간을  utc로 변경
+export const localeToUTCNow = (country) => {
   const date = new Date();
   const offset = date.getTimezoneOffset() * 60 * 1000;
   const utcDate = new Date(date.getTime() + offset);
-  const nowDate = setTimeZone(utcDate, country); //선택한 언어탭 날짜로 변경예정
+  const nowDate = setTimeZone(utcDate, country);
   nowDate.split(":")[1] = "00";
   let formatDate = `${nowDate.split(":")[0]}:00`;
   return formatDate;
 };
-
+//kst -> utc -> locale
+export const kstToLocale = (localeTime) => {
+  let date = new Date(localeTime);
+  let utc = new Date(date.setHours(date.getHours()- 9)); //kst to utc
+  const locale = navigator.language.split("-")[1];
+  const localeDate = setTimeZone(utc,locale) // utc to locale
+  return localeDate.split(" ")[0];
+};
 //type = year 1년 전, type = month 한달 전
 export const preDate = (selectDate, type) => {
   let result = new Date(selectDate);

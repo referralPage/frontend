@@ -7,6 +7,10 @@
 }
 .mypage_ul > li {
   width: 48.5%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 45px 20px 20px 20px;
   border-radius: 5px;
   background: rgba(29, 29, 43, 0.5);
@@ -27,13 +31,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .payback_info {
   font-size: 1.5em;
-  margin: 40px 0;
+  margin: 30px 0;
 }
 .pf_chart {
   position: relative;
   width: 100%;
   height: 150px;
-  margin: 80px 0 0 0;
+  margin: 30px 0 0 0;
   border-radius: 0 !important;
 }
 .pf_chart .chart_line {
@@ -226,6 +230,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .month_exchange ul li p {
   margin-top: 10px;
+  text-align: center;
 }
 .pf_list_top {
   width: 100%;
@@ -321,21 +326,27 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: rgba(29, 29, 43, 0.9);
   width: 100%;
   text-align: center;
-  padding: 5px 10px;
+  padding: 10px 10px;
   color: var(--color-gray1);
   border-radius: 5px;
   cursor: pointer;
+}
+.tab_ctgy li.active {
+  background-color: rgba(198, 198, 221, 0.9);
+  color: rgba(29, 29, 43, 0.9);
+}
+.payback_list_head_area{
+  background: rgba(29, 29, 43, 0.5);
+  backdrop-filter: blur(3.5px);
+  margin-top: 10px;
+  border-radius: 5px;
 }
 ul.payback_list_head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 43px;
-  margin-top: 10px;
-  border-radius: 5px;
-  background: rgba(29, 29, 43, 0.5);
-  backdrop-filter: blur(3.5px);
+  padding: 10px;
   text-align: center;
 }
 ul.payback_list_head li {
@@ -354,10 +365,11 @@ ul.payback_list_head li:nth-child(4) {
   width: 15%;
 }
 ul.payback_list_head li:nth-child(5) {
-  width: 25%;
+  width: 20%;
 }
 ul.payback_list_head li:nth-child(6) {
-  width: 10%;
+  width: 20%;
+  padding-right: 10px;
 }
 
 ul.payback_list_head li a {
@@ -404,7 +416,7 @@ ul.payback_list_box li {
   justify-content: space-between;
   width: 100%;
   height: 64px;
-  padding: 20px 0;
+  padding: 20px 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   background: rgba(29, 29, 43, 0.5);
@@ -436,10 +448,11 @@ ul.payback_list_box li em:nth-child(4) {
   width: 15%;
 }
 ul.payback_list_box li em:nth-child(5) {
-  width: 25%;
+  width: 20%;
 }
 ul.payback_list_box li em:nth-child(6) {
-  width: 10%;
+  width: 20%;
+  padding-right: 10px;
 }
 .nodata_list{
   margin-bottom: 150px !important;
@@ -451,224 +464,6 @@ ul.payback_list_box li em:nth-child(6) {
   font-weight: 300;
   font-size: 14px;
 }
-@media (max-width: 1279px) {
-  .pf_chart > ul > li i {
-    font-size: 12px;
-  }
-  .pf_calendar_table tr > th {
-    padding: 10px 5px;
-    font-size: 13px;
-  }
-  .pf_calendar_table tr > td {
-    padding: 10px 5px;
-  }
-  .cal_set .title {
-    font-size: 16px;
-  }
-  ul.payback_list_head li a {
-    font-size: 14px;
-  }
-  ul.payback_list_box li em {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .pf_calendar_table tr > td {
-    padding: 6px;
-  }
-  .mypage_ul > div {
-    width: 23%;
-  }
-}
-
-@media (max-width: 920px) {
-  .pf_chart > ul > li i {
-    font-size: 10px;
-  }
-  .pf_chart > ul > li .bar em {
-    font-size: 11px;
-  }
-  .pf_calendar {
-    width: 100%;
-    height: auto;
-  }
-  .mypage_ul {
-    height: auto;
-    padding: 40px 20px;
-  }
-  .pf_list_top {
-    flex-wrap: wrap;
-  }
-  .pf_list_search {
-    width: 100%;
-    justify-content: left;
-  }
-  ul.payback_list_head li a {
-    font-size: 14px;
-  }
-  ul.payback_list_head li a i {
-    margin: 0 0 -3px 5px;
-  }
-  .month_payback {
-    margin: 30px 0;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 768px) {
-  .mypage_ul li {
-    width: 100%;
-    margin-right: 0 !important;
-  }
-  .mypage_ul {
-    height: auto;
-    padding: 40px 15px 30px 15px;
-  }
-  .month_exchange{
-    width: 100%;
-  }
-  .month_exchange ul{
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .month_exchange li{
-    width: 45%;
-  }
-  .month_exchange li img.logo_s{
-    width: 70%;
-    height: 50px;
-  }
-  .payback_list_head_area{
-    width: 100%;
-    overflow-x: scroll;
-  }
-  .nodata_list{
-    margin-bottom: 0 !important;
-  }
-  ul.payback_list_head {
-    height: auto;
-    width: auto;
-    min-width: 100vw;
-    padding-right: 15px;
-  }
-  ul.payback_list_head li {
-    width: auto;
-  }
-  ul.payback_list_box li{
-    width: auto;
-    min-width: 100vw;
-    padding-right: 15px;
-  }
-  .nodata{
-    display: block;
-    width: 100vw;
-  }
-  .month_txt {
-    font-size: 1.5em;
-  }
-  .month_txt .txt_blue {
-    font-size: 1.7em;
-  }
-  .pf_list_search{
-    margin-bottom: 30px;
-  }
-  .pf_list_search input[type="date"],
-  .pf_list_search input[type="month"] {
-    font-size: 12px;
-    padding-left: 3px;
-    margin: 0 5px;
-  }
-  .pf_list_search h5 {
-    display: none;
-  }
-}
-@media (max-width: 480px) {
-  .mypage_ul{
-    padding: 20px 0 0 0;
-  }
-  .mypage_ul > li{
-    padding:20px 10px;
-  }
-  .pf_calendar {
-    height: auto;
-    padding-top: 20px;
-  }
-  .pf_chart > ul > li{
-    padding: 0 0 20px 0;  
-    overflow:visible;
-  }
-  .pf_chart > ul > li i {
-    bottom: -10px;
-  }
-  .pf_calendar_table tr > th {
-    font-size: 10px;
-  }
-  .pf_calendar_table tr > td {
-    padding: 4px;
-    font-size: 11px;
-  }
-  .pf_list_search .btn_search{
-    width: 100%;
-  }
-  .pf_list_search {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .pf_list_search button {
-    margin: 10px;
-  }
-  ul.payback_list_head li {
-    min-width: 70px;
-  }
-  ul.payback_list_box li em {
-    font-size: 12px;
-    min-width: 70px;
-  }
-  .nodata{
-    display: block;
-    width: 100vw;
-  }
-  .month_payback{
-    padding: 20px;
-  }
-  .month_exchange li{
-    width: 80%;
-  }
-  .month_exchange li img.logo_s {
-    width: 70%;
-    height: 40px;
-  }
-  .tab_ctgy {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  .tab_ctgy li {
-    width: 20%;
-  }
-  .pf_list_search input[type="date"],
-  .pf_list_search input[type="month"] {
-    width: 100%;
-  }
-}
-@media (max-width: 418px) {
-  ul.payback_list_head {
-    min-width: auto;
-  }
-  ul.payback_list_head li{
-    background: rgba(29, 29, 43, 0.5);
-    -webkit-backdrop-filter: blur(3.5px);
-    backdrop-filter: blur(3.5px);
-  }
-  ul.payback_list_head li:last-child{
-    /* padding-right: 15px; */
-  }
-  ul.payback_list_box li{
-    min-width: auto;
-    padding-right: 0;
-  }
-}
-
 .mypage_wrap {
   width: 90%;
   max-width: 1420px;
@@ -699,7 +494,154 @@ ul.payback_list_box li em:nth-child(6) {
   word-break: break-all;
 }
 
+@media (max-width: 1279px) {
+  .pf_chart > ul > li i {
+    font-size: 12px;
+  }
+  .pf_calendar_table tr > th {
+    padding: 10px 5px;
+    font-size: 13px;
+  }
+  .pf_calendar_table tr > td {
+    padding: 10px 4px;
+  }
+  .cal_set .title {
+    font-size: 16px;
+  }
+  ul.payback_list_head li a {
+    font-size: 14px;
+  }
+  ul.payback_list_box li em {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .mypage_ul>li {
+    width: 100%;
+    margin-right: 0 !important;
+    height: auto;
+  }
+  .pf_calendar_table tr > td {
+    padding: 6px 3px;
+  }
+  .mypage_ul > div {
+    width: 23%;
+  }
+  .month_payback {
+    margin: 30px 0;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 920px) {
+  .pf_chart > ul > li i {
+    font-size: 10px;
+  }
+  .pf_chart > ul > li .bar em {
+    font-size: 11px;
+  }
+  .pf_calendar {
+    width: 100%;
+    height: auto;
+  }
+  .pf_list_top {
+    flex-wrap: wrap;
+  }
+  .pf_list_search {
+    width: 100%;
+    justify-content: left;
+  }
+  ul.payback_list_head li a {
+    font-size: 14px;
+  }
+  ul.payback_list_head li a i {
+    margin: 0 0 -3px 5px;
+  }
+}
 @media (max-width: 768px) {
+  .month_exchange{
+    width: 100%;
+  }
+  .month_exchange ul{
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .month_exchange li{
+    width: 45%;
+  }
+  .month_exchange li img.logo_s{
+    width: 70%;
+    height: 50px;
+  }
+  .payback_list_head_area{
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .nodata_list{
+    margin-bottom: 0 !important;
+  }
+  ul.payback_list_head {
+    height: auto;
+    gap : 10px;
+    min-width: 700px;
+  }
+  ul.payback_list_head li {
+    width: 20% !important;
+  }
+  ul.payback_list_head li:nth-child(3) {
+    min-width: 85px;
+  }
+  ul.payback_list_head li:nth-child(4) {
+    min-width: 85px;
+  }
+  ul.payback_list_head li:nth-child(5) {
+    min-width: 130px;
+  }
+  ul.payback_list_head li:nth-child(6) {
+    min-width: 130px;
+  }
+  ul.payback_list_box li{
+    gap: 10px;
+    min-width: 700px;
+  }
+  ul.payback_list_box li em{
+    width: 20% !important;
+  }
+  ul.payback_list_box li em:nth-child(3) {
+    min-width: 85px;
+  }
+  ul.payback_list_box li em:nth-child(4) {
+    min-width: 85px;
+  }
+  ul.payback_list_box li em:nth-child(5) {
+    min-width: 130px;
+  }
+  ul.payback_list_box li em:nth-child(6) {
+    min-width: 130px;
+  }
+  .nodata{
+    display: block;
+    width: 100vw;
+  }
+  .month_txt {
+    font-size: 1.5em;
+  }
+  .month_txt .txt_blue {
+    font-size: 1.7em;
+  }
+  .pf_list_search{
+    margin-bottom: 30px;
+  }
+  .pf_list_search input[type="date"],
+  .pf_list_search input[type="month"] {
+    font-size: 12px;
+    padding-left: 3px;
+    margin: 0 5px;
+  }
+  .pf_list_search h5 {
+    display: none;
+  }
   .blur_area{
     padding : 70px 20px;
   }
@@ -708,4 +650,99 @@ ul.payback_list_box li em:nth-child(6) {
     line-height: 1.3em;
     padding: 10px;
   }
+  .month_exchange p.txt_green{
+    font-size: 16px;
+  }
 }
+@media (max-width: 537px) {
+  .table_area{
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .pf_calendar_table {
+    width: 400px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+  .pf_calendar_table tr > th {
+    font-size: 13px;
+  }
+  .pf_calendar_table tr > td {
+    padding: 6px 2px;
+    font-size: 11px;
+
+  }
+  .tab_ctgy {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 480px) {
+  .mypage_ul{
+    padding: 20px 0 0 0;
+  }
+  .mypage_ul > li{
+    padding:20px 10px;
+  }
+  .pf_calendar {
+    height: auto;
+    padding-top: 20px;
+  }
+  .pf_chart > ul > li{
+    padding: 0 0 20px 0;  
+    overflow:visible;
+  }
+  .pf_chart > ul > li i {
+    bottom: -10px;
+  }
+  .pf_list_search .btn_search{
+    width: 100%;
+  }
+  .pf_list_search {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pf_list_search button {
+    margin: 10px;
+  }
+  ul.payback_list_head li {
+    min-width: 70px;
+    font-size: 14px;
+  }
+  ul.payback_list_box li em{
+    font-size: 14px;
+  }
+  .nodata{
+    display: block;
+    width: 100vw;
+  }
+  .month_payback{
+    padding: 30px 20px;
+  }
+  .month_exchange li{
+    width: 80%;
+  }
+  .month_exchange li img.logo_s {
+    width: 70%;
+    height: 40px;
+  }
+  .pf_list_search input[type="date"],
+  .pf_list_search input[type="month"] {
+    width: 100%;
+  }
+  .month_exchange ul{
+    gap: 15px;
+  }
+}
+@media (max-width: 380px) {
+  .month_division .flex_row_c_c li{
+    width: 100% !important;
+    text-align: center;
+  }
+  .month_exchange ul{
+    gap: 10px;
+  }
+
+
+}
+

@@ -5,7 +5,7 @@
     </div>
   </div>
   <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
-  <div class="blur_area flex_col_c">
+  <div class="blur_area flex_col_c" v-if="isNotReferral">
     <div>
       <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
       <p>{{ $t(`prevGuide['guideMsg']`) }}</p>
@@ -20,17 +20,39 @@
         <h3 class="title">My Referral Payback</h3>
         <div class="payback_info">
           <p>
-            총 적립 페이백 :
+            {{ $t("myPage.totalPayback") }}
             <span class="txt_blue"
-              >${{ formatNum(monthlyInfo.total_accumulated_profit) }}</span
+              >${{ formatNum(monthlyInfo.total_accumulated_profit) ?? 0 }}</span
             >
           </p>
+          <p class="paybackp">
+            {{ $t("myPage.monthPayback") }}
+            <span class="txt_blue">±${{ profitInfo.total_profit }}</span>
+          </p>
+          <div class="month_division">
+            <ul class="flex_row_c_c">
+              <li class="flex_col_c_c" v-for="(exchange, i) in exchangeArr" :key="i">
+                <img
+                  class="logo_xs"
+                  :src="exchange.logo"
+                  :alt="`${exchange.name} logo`"
+                />
+                <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
+                  {{
+                    exchange.payback !== "X"
+                      ? `±${exchange.payback}`
+                      : $t("myPage.notSubscribed")
+                  }}
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="pf_chart">
           <ul :style="chartStyle()">
             <li v-for="data in monthlyInfo.monthly_data" :key="data.month">
               <div class="bar" :style="styledObj(data.total_profit)">
-                <em>${{ formatNum(data.total_profit, 0) }}</em>
+                <em>${{ data.total_profit }}</em>
               </div>
               <i>{{ data.month.slice(2, 7) }}</i>
             </li>
@@ -64,27 +86,23 @@
     </ul>
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
-        <p>이번달 나의 예상 페이백</p>
-        <p class="txt_blue">± ${{ profitInfo.total_profit }}</p>
+        <p>{{ $t("myPage.weekPayback") }}</p>
+        <p class="txt_blue">± ${{ profitWeekInfo.total_profit ?? 0 }}</p>
       </div>
       <div class="month_exchange">
         <ul class="flex_row_c_c">
           <li
             class="flex_col_c_c"
-            v-for="exchange in exchangeArr"
+            v-for="exchange in exchangeArrWeekly"
             :key="exchange.name"
           >
-            <img
-              class="logo_s"
-              :src="exchange.logo"
-              :alt="`${exchange.name} logo`"
-            />
+            <img class="logo_s" :src="exchange.logo" :alt="`${exchange.name} logo`" />
             <!-- <p>{{ exchange.name }}</p> -->
             <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
               {{
                 exchange.payback !== "X"
                   ? `±${exchange.payback}`
-                  : "레퍼럴 미 가입"
+                  : $t("myPage.notSubscribed")
               }}
             </p>
           </li>
@@ -99,9 +117,7 @@
           <input type="month" v-model="start_date" :max="toDate" />
           <span class="input_hypen">-</span>
           <input type="month" v-model="end_date" :max="toDate" />
-          <button type="button" class="btn_search" @click="historySearch">
-            Search
-          </button>
+          <button type="button" class="btn_search" @click="historySearch">Search</button>
         </div>
       </div>
     </form>
@@ -110,18 +126,19 @@
         v-for="tab in tabList"
         :key="tab.type"
         @click="selectDateBtn(tab.type)"
+        :class="{ active: selectReportTab == tab.type }"
       >
-        {{ tab.displayed }}
+        {{ $t(`myPage.${tab.type}`) }}
       </li>
     </ul>
     <div class="payback_list_head_area" @scroll="syncScroll('head', 'content')">
       <ul class="payback_list_head">
-        <li>날짜<i></i></li>
-        <li>거래소<i></i></li>
-        <li>지급액<i></i></li>
-        <li>지급일자<i></i></li>
-        <li>지급내역<i></i></li>
-        <li>비고<i></i></li>
+        <li>{{ $t("myPage.date") }}<i></i></li>
+        <li>{{ $t("myPage.exchange") }}<i></i></li>
+        <li>{{ $t("myPage.paymentAcount") }}<i></i></li>
+        <li>{{ $t("myPage.paymentDate") }}<i></i></li>
+        <li>{{ $t("myPage.paymentDetail") }}<i></i></li>
+        <li>{{ $t("myPage.remarks") }}<i></i></li>
       </ul>
     </div>
     <div class="list_loading" v-if="listLoading">
@@ -135,12 +152,14 @@
         <span class="nodata">No data!</span>
       </li>
       <li v-for="data in paybackList" :key="data.date">
-        <em>{{ data.datetime.slice(2, 12) }}</em>
+        <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
         <em>${{ data.payment }}</em>
-        <em>{{ data.paymentdate.slice(2, 12) }}</em>
-        <em>{{ data.paymentdetails }}</em>
-        <em>{{ data.status }}</em>
+        <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
+        <em>{{ $t("myPage.referralPayback") }}</em>
+        <em>{{
+          data.status == 1 ? $t("myPage.expectedPayment") : $t("myPage.paymentCompleted")
+        }}</em>
       </li>
     </ul>
     <ThePaging
@@ -158,13 +177,14 @@ import ModalMsg from "@/components//modal/ModalMsg.vue";
 import TheCalender from "@/components/comn/TheCalender.vue";
 import ThePaging from "@/components/comn/ThePaging.vue";
 import exchangeList from "@/utils/exchangeList";
-import { formatNum, preDate } from "@/utils/common";
+import { autoLeftPad, formatNum, kstToLocale, preDate } from "@/utils/common";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 const store = useStore();
 const router = useRouter();
 const exchangeArr = ref([...exchangeList]);
+const exchangeArrWeekly = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
 const modalState = computed(() => {
@@ -175,6 +195,9 @@ const monthlyInfo = computed(() => {
 });
 const profitInfo = computed(() => {
   return store.state.referral.profitInfo;
+});
+const profitWeekInfo = computed(() => {
+  return store.state.referral.profitWeekInfo;
 });
 const paybackList = computed(() => {
   return store.state.referral.paybackList;
@@ -194,20 +217,21 @@ const session_id = computed(() => {
 const retri_id = computed(() => {
   return store.state.referral.retri_id;
 });
-// const isNotReferral = computed(() => {
-//   return store.state.referral.isNotReferral;
-// });
+const isNotReferral = computed(() => {
+  return store.state.referral.isNotReferral;
+});
+let selectReportTab = "";
 const msg = "dateWarnig";
 let allLoading = ref(false);
 let max_profit;
 let tabList = [
-  { type: "year", displayed: "1년" },
-  { type: "month_6", displayed: "6개월" },
-  { type: "month_3", displayed: "3개월" },
-  { type: "month_pre", displayed: "전월" },
-  { type: "month_curr", displayed: "당월" },
-  { type: "date_curr", displayed: "당일" },
-  { type: "all", displayed: "전체" },
+  { type: "year" },
+  { type: "monthSix" },
+  { type: "monthThree" },
+  { type: "monthPrev" },
+  { type: "monthCurr" },
+  { type: "today" },
+  { type: "all" },
 ];
 let select = reactive({
   year: nowDate.getFullYear(),
@@ -239,38 +263,53 @@ const selectDateBtn = async (type) => {
     case "year":
       selectDate.start_date = today.setFullYear(today.getFullYear() - 1);
       break;
-    case "month_6":
+    case "monthSix":
       selectDate.start_date = today.setMonth(today.getMonth() - 6);
       break;
-    case "month_3":
+    case "monthThree":
       selectDate.start_date = today.setMonth(today.getMonth() - 3);
       break;
-    case "month_pre":
+    case "monthPrev":
       selectDate.end_date = today.setDate(0);
-      today.setMonth(today.getMonth() - 1);
+      // today.setMonth(today.getMonth() - 1);
       selectDate.start_date = today.setDate(1);
+      console.log("select", selectDate);
       break;
-    case "month_curr":
+    case "monthCurr":
       selectDate.end_date = new Date();
       selectDate.start_date = today.setDate(1);
       break;
-    case "date_curr":
+    case "today":
       selectDate.start_date = new Date();
       selectDate.end_date = new Date();
       break;
     case "all":
-      store.commit("referral/setType", "all");
+      store.commit("referral/setReportDate", {
+        start_date: "",
+        end_date: "",
+      });
       break;
   }
-  selectDate.start_date = new Date(selectDate.start_date)
-    .toISOString()
-    .slice(0, 10);
-  selectDate.end_date = new Date(selectDate.end_date)
-    .toISOString()
-    .slice(0, 10);
-  store.commit("referral/setReportDate", selectDate);
+  let [sYear, sMonth, sDate] = new Date(selectDate.start_date)
+    .toLocaleDateString()
+    .split(".");
+  let [eYear, eMonth, eDate] = new Date(selectDate.end_date)
+    .toLocaleDateString()
+    .split(".");
+  let formatDate = {
+    start_date: `${sYear}-${autoLeftPad(Number(sMonth), 2)}-${autoLeftPad(
+      Number(sDate),
+      2
+    )}`,
+    end_date: `${eYear}-${autoLeftPad(Number(eMonth), 2)}-${autoLeftPad(
+      Number(eDate),
+      2
+    )}`,
+  };
+  if (type !== "all") store.commit("referral/setReportDate", formatDate);
   store.commit("referral/setPage", 1);
   await store.dispatch("referral/getPaybackReport");
+  selectReportTab = type;
 };
 
 const changeDate = async () => {
@@ -309,10 +348,7 @@ let listContScroll = 0;
 function syncScroll(el1, el2) {
   const listHead = document.querySelector(".payback_list_head_area ");
   const listCont = document.querySelector(".payback_list_box ");
-  if (
-    listHead.scrollLeft !== listHeadScroll ||
-    listCont.scrollLeft !== listContScroll
-  ) {
+  if (listHead.scrollLeft !== listHeadScroll || listCont.scrollLeft !== listContScroll) {
     el1 == "head" ? (el1 = listHead) : (el1 = listCont);
     el2 == "head" ? (el2 = listHead) : (el2 = listCont);
     el2.scrollLeft = el1.scrollLeft;
@@ -331,22 +367,23 @@ const createdFn = async () => {
   await Promise.all([
     store.dispatch("referral/getMonthlyProfit"),
     store.dispatch("referral/getProfit"),
+    store.dispatch("referral/getProfitWeekly"),
     store.dispatch("referral/getPaybackReport"),
   ]);
   allLoading.value = false;
   exchangeArr.value.forEach((obj) => {
     switch (obj.name) {
       case "OKX":
-        obj.payback = profitInfo.value.okx_profit;
+        obj.payback = profitInfo.value.okx_profit ?? 0;
         break;
       case "Toobit":
-        obj.payback = profitInfo.value.toobit_profit;
+        obj.payback = profitInfo.value.toobit_profit ?? 0;
         break;
       case "BingX":
-        obj.payback = profitInfo.value.bingx_profit;
+        obj.payback = profitInfo.value.bingx_profit ?? 0;
         break;
       case "Deepcoin":
-        obj.payback = profitInfo.value.deepcoin_profit;
+        obj.payback = profitInfo.value.deepcoin_profit ?? 0;
         break;
     }
   });
@@ -355,6 +392,23 @@ const createdFn = async () => {
     numArr.push(item.total_profit);
   });
   max_profit = Math.max(...numArr);
+  // weekly
+  exchangeArrWeekly.value.forEach((obj) => {
+    switch (obj.name) {
+      case "OKX":
+        obj.payback = profitWeekInfo.value.okx_profit ?? 0;
+        break;
+      case "Toobit":
+        obj.payback = profitWeekInfo.value.toobit_profit ?? 0;
+        break;
+      case "BingX":
+        obj.payback = profitWeekInfo.value.bingx_profit ?? 0;
+        break;
+      case "Deepcoin":
+        obj.payback = profitWeekInfo.value.deepcoin_profit ?? 0;
+        break;
+    }
+  });
 };
 
 store.watch((state) => {
