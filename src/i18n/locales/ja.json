@@ -48,6 +48,28 @@
         "guideMsg2" : "もし、会社から提供されたリファラルコードで登録していないアカウントのUIDを登録した場合、正常登録されてもリファラルが蓄積されないことがあります。",
         "guideMsg3" : "必ずマニュアルを参照して、登録時にリファラルコードの入力可否を確認してください。",
         "guideMsg4" : "** 指定されたリファラルコードと違うUIDを入力される場合、会社では責任を負いませんのでご注意ください。**"
+    },
+    "myPage" : {
+        "totalPayback" : "総ペイバック",
+        "monthPayback" : "今月のペイバック(予想)",
+        "weekPayback" : "今週の私のペイバック(予想)",
+        "year" : "1年",
+        "monthSix" : "6カ月",
+        "monthThree" : "3カ月",
+        "monthPrev" : "前月",
+        "monthCurr" : "今月",
+        "today" : "当日",
+        "all" : "全体",
+        "date" : "日付",
+        "exchange" : "取引所",
+        "paymentAcount": "支給額",
+        "paymentDate" : "支給日",
+        "paymentDetail" : "支給内訳",
+        "remarks" : "備考",
+        "referralPayback" : "リファラル·ペイバック",
+        "expectedPayment" : "支給(予想)",
+        "paymentCompleted" : "支給完了",
+        "notSubscribed" : ""
     }
 }
 

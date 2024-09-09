@@ -22,7 +22,7 @@ const postUidApi = async (info) => {
     return;
   }
 };
-// 최근 5개월 페이백 및 총 적립 페이백 API api
+// 최근 5개월 페이백 및 총 적립 페이백 API api  / candle date
 const getMonthlyProfitApi = async (retri_id) => {
   try {
     const response = await API.get(`monthly-profit?retri_id=${retri_id}`);
@@ -46,6 +46,18 @@ const getCalendarApi = async (retri_id, year_month) => {
 const getProfitApi = async (retri_id) => {
   try {
     const response = await API.get(`profit?retri_id=${retri_id}`);
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 500) {
+      return error.response;
+    }
+    return;
+  }
+};
+// 이번주 나의 예상 페이백 api
+const getProfitWeeklyApi = async (retri_id) => {
+  try {
+    const response = await API.get(`week_profit?retri_id=${retri_id}`);
     return response.data;
   } catch (error) {
     if (error.response.status === 500) {
@@ -84,16 +96,6 @@ const getMonthProfitApi = async () => {
   }
 };
 
-// 리트리 인증 api
-// const postRetriAuthApi = async () => {
-//   try {
-//     const response = await API.post("retri_auth");
-//     return response;
-//   } catch (error) {
-//     return;
-//   }
-// };
-
 // 로그인 한 유저 정보 조회 api
 const getLoadUserApi = async () => {
   try {
@@ -123,9 +125,9 @@ export default {
   getMonthlyProfitApi,
   getCalendarApi,
   getProfitApi,
+  getProfitWeeklyApi,
   getPaybackReportApi,
   getMonthProfitApi,
-  // postRetriAuthApi,
   getLoadUserApi,
   getCheckLoginApi,
 };

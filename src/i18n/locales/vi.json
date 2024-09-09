@@ -47,5 +47,27 @@
         "guideMsg2" : "Nếu bạn đăng ký UID của một tài khoản chưa được đăng ký bằng mã giới thiệu do công ty cung cấp, thì số lượt giới thiệu có thể không được tích lũy ngay cả khi đã đăng ký đúng cách.",
         "guideMsg3" : "Hãy nhớ tham khảo hướng dẫn sử dụng và kiểm tra xem bạn đã nhập mã giới thiệu khi đăng ký hay chưa.",
         "guideMsg4" : "** Hãy cẩn thận vì công ty không chịu trách nhiệm nếu bạn nhập sai UID cho mã giới thiệu.**"
+    },
+    "myPage" : {
+        "totalPayback" : "Tổng số tiền hoàn vốn kiếm được",
+        "monthPayback" : "Dự kiến số tiền ​​hoàn vốn trong tháng này",
+        "weekPayback" : "Khoản hoàn vốn dự kiến ​​​​của tôi trong tuần này",
+        "year" : "1 năm",
+        "monthSix" : "6 tháng",
+        "monthThree" : "3 tháng",
+        "monthPrev" : "Tháng trước",
+        "monthCurr" : "Tháng này",
+        "today" : "Trong ngày",
+        "all" : "Toàn bộ",
+        "date" : "Ngày",
+        "exchange" : "Sàn giao dịch",
+        "paymentAcount": "Số tiền thanh toán",
+        "paymentDate" : "Ngày thanh toán",
+        "paymentDetail" : "Chi tiết thanh toán",
+        "remarks" : "Ghi chú",
+        "referralPayback" : "Số tiền hoàn vốn giới thiệu( Refferal)",
+        "expectedPayment" : "Dự kiến thánh toán",
+        "paymentCompleted" : "Hoàn tất thanh toán",
+        "notSubscribed" : ""
     }
 }

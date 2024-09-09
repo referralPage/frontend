@@ -32,6 +32,7 @@ export default {
       calenderInfo: [],
       monthlyInfo: {},
       profitInfo: {},
+      profitWeekInfo : {},
       paybackList: [],
       postStatus : 1,
       loadCheck: false,
@@ -182,6 +183,19 @@ export default {
         return;
       }
     },
+    async getProfitWeekly(context) {
+      try {
+        let retri_id = context.state.retri_id;
+        let response = await api.getProfitWeeklyApi(retri_id);
+        if (response.status === 500) {
+          context.state.isNotReferral = true;
+        } else {
+          context.state.profitWeekInfo = response.result[0];
+        }
+      } catch (error) {
+        return;
+      }
+    },
     async getPaybackReport(context) {
       try {
         context.state.listLoading = true;
@@ -210,7 +224,8 @@ export default {
         // let response = {
         //   "result": {
         //     "user_id": "retri60",
-        //     "retri_id": "25576",
+        //     // "retri_id": "25576",
+        //     "retri_id": "23915",
         //     "session_id": "882288638",
         //     "na_code": "KR"
         //   }
@@ -244,7 +259,6 @@ export default {
       try {
         let response = await api.getCheckLoginApi();
         context.state.loginStatus = response.status;
-        // console.log(response);
         // context
       } catch (error) {
         return;

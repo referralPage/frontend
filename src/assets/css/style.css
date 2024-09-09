@@ -96,7 +96,12 @@ form {
 .gradient_blue{
   background: var(--blue_gradient);
 }
-
+img.logo_xs {
+  max-width: 80px;
+  min-width: 70px;
+  width: 40%;
+  height: 40px;
+}
 img.logo_s {
   width: 100px;
   height: 40px;
@@ -191,25 +196,7 @@ img.logo_l {
   /* max-width: 1420px; */
 }
 
-@media (min-width: 1024px) {
-}
-@media (min-width: 481px) and (max-width: 767px) {
-  .header_title .time_area {
-    display: none;
-  }
-}
-@media (max-width: 480px) {
-  .header_logo {
-    width: 70px;
-  }
-  h1 {
-    font-size: 1.4em;
-    text-align: center;
-  }
-  .header_title .time_area {
-    display: none;
-  }
-}
+
 
 /* modal */
 /*모달창(팝업)*/
@@ -535,14 +522,7 @@ img.logo_l {
   font-size: 13px !important;
 }
 
-@media screen and (min-width: 615px) and (max-width: 800px) {
 
-}
-@media screen and (max-width: 614px) {
-  .right_setBox .drowdown_box {
-    position: absolute;
-  }
-}
 .selected {
   color: #fff !important;
   font-weight: 700;
@@ -568,4 +548,55 @@ img.logo_l {
   margin-top: 20px;
   font-size: 0.8em;
   color: #fff;
+}
+.month_division{
+  font-size: 18px;
+  margin-top:10px;
+}
+.month_division .flex_row_c_c{
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.month_division .flex_row_c_c li{
+  width: 50%;
+}
+.payback_info .paybackp{
+  font-size: 20px;
+  margin-top: 10px;
+}
+@media (min-width: 1024px) {
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .header_title .time_area {
+    display: none;
+  }
+}
+@media screen and (max-width: 614px) {
+  .right_setBox .drowdown_box {
+    position: absolute;
+  }
+}
+@media (max-width: 480px) {
+  .header_logo {
+    width: 70px;
+  }
+  h1 {
+    font-size: 1.4em;
+    text-align: center;
+  }
+  .header_title .time_area {
+    display: none;
+  }
+  .payback_info{
+    margin: 10px 0;
+  }
+  .payback_info .paybackp{
+    font-size: 15px;
+  }
+  .payback_info p span{
+    display: block;
+  }
+  .pf_chart{
+    margin-top: 10px;
+  }
 }

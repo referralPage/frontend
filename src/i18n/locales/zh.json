@@ -48,5 +48,27 @@
         "guideMsg2" : "“如果您使用了不是公司提供的推荐码登入了UID账户，即使正常登入也可能无法累积推荐。",
         "guideMsg3" : "请务必参阅手册并检查您在注册时是否输入了推荐代码。",
         "guideMsg4" : "** 请注意，如果您输入错误的 UID 推荐码，公司概不负责。**"
+    },
+    "myPage" : {
+        "totalPayback" : "总投资回收期",
+        "monthPayback" : "预计本月收回成本",
+        "weekPayback" : "预计本周我的回收成本",
+        "year" : "1年",
+        "monthSix" : "6个月",
+        "monthThree" : "3个月",
+        "monthPrev" : "上个月",
+        "monthCurr" : "本月",
+        "today" : "当天",
+        "all" : "全部",
+        "date" : "日期",
+        "exchange" : "交易所",
+        "paymentAcount": "付款金额",
+        "paymentDate" : "付款日期",
+        "paymentDetail" : "付款内容",
+        "remarks" : "备注",
+        "referralPayback" : "推荐码回收成本",
+        "expectedPayment" : "预期付款",
+        "paymentCompleted" : "付款完成",
+        "notSubscribed" : "未注册推荐码"
     }
 }

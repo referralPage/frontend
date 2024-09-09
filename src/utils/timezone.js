@@ -210,7 +210,7 @@ function getTimeZone(regionCode) {
   
     const formatter = new Intl.DateTimeFormat("en-US", options);
     const formattedDate = formatter.format(dateInUTC);
- 
+    // console.log('format',formattedDate)
     let [month, day, year] = formattedDate.split(",")[0].split("/");
       year = year.slice(2,4);
     if (month.length === 1) {
