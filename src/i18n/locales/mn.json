@@ -47,5 +47,27 @@
         "guideMsg2" : "If you enter a UID that was not signed up with the referral code provided by the company, the referral may not accumulate even if the registration is successful. ",
         "guideMsg3" : " Please check the manual and make sure to check whether the referral code has been entered when signing up. ",
         "guideMsg4" : "Please note: the company is not responsible for any issues that arise from entering a UID that was signed up with an incorrect referral code."
+    },
+    "myPage" : {
+        "totalPayback" : "Нийт олсон буцаан олголт",
+        "monthPayback" : "Энэ сард эргэн төлөгдөх төлөвлөж буй дүн",
+        "weekPayback" : "Энэ долоо хоногт миний хүлээгдэж буй эргэн төлөлт",
+        "year" : "1 жил",
+        "monthSix" : "6 сар",
+        "monthThree" : "3 сар",
+        "monthPrev" : "Өмнөх сар",
+        "monthCurr" : "Энэ сар",
+        "today" : "өдөр",
+        "all" : "Бүгд",
+        "date" : "Огноо",
+        "exchange" : "Бирж",
+        "paymentAcount": "Олгогдох хэмжээ",
+        "paymentDate" : "Олгогдох огноо",
+        "paymentDetail" : "Олголтын дэлгэрэнгүй мэдээлэл",
+        "remarks" : "тэмдэглэл",
+        "referralPayback" : "Гишүүнчлэлийн буцаан олголт",
+        "expectedPayment" : "Төлөвлөж буй буцаан олголт",
+        "paymentCompleted" : "Олголт дууссан",
+        "notSubscribed" : "Гишүүнчлэлд бүртгүүлээгүй байнав"
     }
 }

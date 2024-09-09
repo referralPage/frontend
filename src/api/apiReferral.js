@@ -16,7 +16,7 @@ const postUidApi = async (info) => {
     const response = await API.post("main", info);
     return response.data;
   } catch (error) {
-    if(error.response.status === 500) {
+    if (error.response.status === 500) {
       return error.response.data;
     }
     return;
@@ -67,19 +67,12 @@ const getProfitWeeklyApi = async (retri_id) => {
   }
 };
 // 페이백 내역 api
-const getPaybackReportApi = async (info, type) => {
+const getPaybackReportApi = async (info) => {
   try {
-    if (type == "all") {
-      const response = await API.get(
-        `payment-report?retri_id=${info.retri_id}&page=${info.page}&per_page=${info.per_page}`
-      );
-      return response.data;
-    } else {
-      const response = await API.get(
-        `payment-report?retri_id=${info.retri_id}&page=${info.page}&per_page=${info.per_page}&start_date=${info.start_date}&end_date=${info.end_date}`
-      );
-      return response.data;
-    }
+    const response = await API.get(
+      `payment-report?retri_id=${info.retri_id}&page=${info.page}&per_page=${info.per_page}&start_date=${info.start_date}&end_date=${info.end_date}`
+    );
+    return response.data;
   } catch (error) {
     // console.log(error);
     return;

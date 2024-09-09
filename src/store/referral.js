@@ -7,6 +7,8 @@ export default {
   namespaced: true,
   state() {
     return {
+      isMobile : false,
+      isSideMenu : false,
       modalState: false,
       exchange: {},
       exchangeFlag: "",
@@ -20,7 +22,6 @@ export default {
       per_page: 6,
       start_date: "",
       end_date: "",
-      type: "",
       listLoading: false,
       isNotReferral: false,
       status: "",
@@ -39,6 +40,12 @@ export default {
     };
   },
   mutations: {
+    setSideMenu(state,payload){
+      state.isSideMenu = payload;
+    },
+    setIsMobile(state,payload){
+      state.isMobile = payload;
+    },
     changeModalState(state, payload) {
       state.modalState = payload;
       const body = document.querySelector("body");
@@ -84,9 +91,6 @@ export default {
     setReportDate(state, payload) {
       state.start_date = payload.start_date;
       state.end_date = payload.end_date;
-    },
-    setType(state, payload) {
-      state.type = payload;
     },
     setPage(state, str) {
       if (str == "prev") {
@@ -206,11 +210,9 @@ export default {
           start_date: context.state.start_date,
           end_date: context.state.end_date,
         };
-        let type = context.state.type;
-        let response = await api.getPaybackReportApi(info, type);
+        let response = await api.getPaybackReportApi(info);
         context.state.paybackList = response.result;
         context.state.totalPages = response.pagination.total_pages;
-        context.state.type = "";
         setTimeout(() => {
           context.state.listLoading = false;
         }, 200);
@@ -234,8 +236,6 @@ export default {
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
         let load = context.state.loadCheck
-
-
         // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
         if (!document.referrer.includes('ref.retri.xyz')) {
           // if (!document.referrer.includes('local')) {

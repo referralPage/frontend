@@ -68,6 +68,6 @@
         "referralPayback" : "Số tiền hoàn vốn giới thiệu( Refferal)",
         "expectedPayment" : "Dự kiến thánh toán",
         "paymentCompleted" : "Hoàn tất thanh toán",
-        "notSubscribed" : ""
+        "notSubscribed" : "Bạn chưa đăng ký bằng link giới thiệu(Referral)"
     }
 }

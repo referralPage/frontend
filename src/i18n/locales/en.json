@@ -68,6 +68,6 @@
         "referralPayback" : "Referral Payback",
         "expectedPayment" : "Expected Payment",
         "paymentCompleted" : "Payment Completed",
-        "notSubscribed" : ""
+        "notSubscribed" : "Not joined through Referral link"
     }
 }

@@ -20,14 +20,14 @@
         <h3 class="title">My Referral Payback</h3>
         <div class="payback_info">
           <p>
-            총 적립 페이백 :
+            {{ $t("myPage.totalPayback") }}
             <span class="txt_blue"
               >${{ formatNum(monthlyInfo.total_accumulated_profit) ?? 0 }}</span
             >
           </p>
           <p class="paybackp">
-            이번달 예상 페이백 :
-            <span class="txt_blue">± ${{ profitInfo.total_profit }}</span>
+            {{ $t("myPage.monthPayback") }}
+            <span class="txt_blue">±${{ profitInfo.total_profit }}</span>
           </p>
           <div class="month_division">
             <ul class="flex_row_c_c">
@@ -39,7 +39,9 @@
                 />
                 <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
                   {{
-                    exchange.payback !== "X" ? `±${exchange.payback}` : "레퍼럴 미 가입"
+                    exchange.payback !== "X"
+                      ? `±${exchange.payback}`
+                      : $t("myPage.notSubscribed")
                   }}
                 </p>
               </li>
@@ -84,7 +86,7 @@
     </ul>
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
-        <p>이번주 나의 예상 페이백</p>
+        <p>{{ $t("myPage.weekPayback") }}</p>
         <p class="txt_blue">± ${{ profitWeekInfo.total_profit ?? 0 }}</p>
       </div>
       <div class="month_exchange">
@@ -97,7 +99,11 @@
             <img class="logo_s" :src="exchange.logo" :alt="`${exchange.name} logo`" />
             <!-- <p>{{ exchange.name }}</p> -->
             <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
-              {{ exchange.payback !== "X" ? `±${exchange.payback}` : "레퍼럴 미 가입" }}
+              {{
+                exchange.payback !== "X"
+                  ? `±${exchange.payback}`
+                  : $t("myPage.notSubscribed")
+              }}
             </p>
           </li>
         </ul>
@@ -116,18 +122,23 @@
       </div>
     </form>
     <ul class="tab_ctgy flex_row_c">
-      <li v-for="tab in tabList" :key="tab.type" @click="selectDateBtn(tab.type)">
-        {{ tab.displayed }}
+      <li
+        v-for="tab in tabList"
+        :key="tab.type"
+        @click="selectDateBtn(tab.type)"
+        :class="{ active: selectReportTab == tab.type }"
+      >
+        {{ $t(`myPage.${tab.type}`) }}
       </li>
     </ul>
     <div class="payback_list_head_area" @scroll="syncScroll('head', 'content')">
       <ul class="payback_list_head">
-        <li>날짜<i></i></li>
-        <li>거래소<i></i></li>
-        <li>지급액<i></i></li>
-        <li>지급일자<i></i></li>
-        <li>지급내역<i></i></li>
-        <li>비고<i></i></li>
+        <li>{{ $t("myPage.date") }}<i></i></li>
+        <li>{{ $t("myPage.exchange") }}<i></i></li>
+        <li>{{ $t("myPage.paymentAcount") }}<i></i></li>
+        <li>{{ $t("myPage.paymentDate") }}<i></i></li>
+        <li>{{ $t("myPage.paymentDetail") }}<i></i></li>
+        <li>{{ $t("myPage.remarks") }}<i></i></li>
       </ul>
     </div>
     <div class="list_loading" v-if="listLoading">
@@ -141,12 +152,14 @@
         <span class="nodata">No data!</span>
       </li>
       <li v-for="data in paybackList" :key="data.date">
-        <em>{{ kstToLocale(`${data.datetime} 00:00`)  }}</em>
+        <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
         <em>${{ data.payment }}</em>
         <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
-        <em>{{ data.paymentdetails }}</em>
-        <em>{{ data.status == 1 ? "예상 지급" : "지급완료" }}</em>
+        <em>{{ $t("myPage.referralPayback") }}</em>
+        <em>{{
+          data.status == 1 ? $t("myPage.expectedPayment") : $t("myPage.paymentCompleted")
+        }}</em>
       </li>
     </ul>
     <ThePaging
@@ -207,17 +220,18 @@ const retri_id = computed(() => {
 const isNotReferral = computed(() => {
   return store.state.referral.isNotReferral;
 });
+let selectReportTab = "";
 const msg = "dateWarnig";
 let allLoading = ref(false);
 let max_profit;
 let tabList = [
-  { type: "year", displayed: "1년" },
-  { type: "month_6", displayed: "6개월" },
-  { type: "month_3", displayed: "3개월" },
-  { type: "month_pre", displayed: "전월" },
-  { type: "month_curr", displayed: "당월" },
-  { type: "date_curr", displayed: "당일" },
-  { type: "all", displayed: "전체" },
+  { type: "year" },
+  { type: "monthSix" },
+  { type: "monthThree" },
+  { type: "monthPrev" },
+  { type: "monthCurr" },
+  { type: "today" },
+  { type: "all" },
 ];
 let select = reactive({
   year: nowDate.getFullYear(),
@@ -249,28 +263,31 @@ const selectDateBtn = async (type) => {
     case "year":
       selectDate.start_date = today.setFullYear(today.getFullYear() - 1);
       break;
-    case "month_6":
+    case "monthSix":
       selectDate.start_date = today.setMonth(today.getMonth() - 6);
       break;
-    case "month_3":
+    case "monthThree":
       selectDate.start_date = today.setMonth(today.getMonth() - 3);
       break;
-    case "month_pre":
+    case "monthPrev":
       selectDate.end_date = today.setDate(0);
       // today.setMonth(today.getMonth() - 1);
       selectDate.start_date = today.setDate(1);
       console.log("select", selectDate);
       break;
-    case "month_curr":
+    case "monthCurr":
       selectDate.end_date = new Date();
       selectDate.start_date = today.setDate(1);
       break;
-    case "date_curr":
+    case "today":
       selectDate.start_date = new Date();
       selectDate.end_date = new Date();
       break;
     case "all":
-      store.commit("referral/setType", "all");
+      store.commit("referral/setReportDate", {
+        start_date: "",
+        end_date: "",
+      });
       break;
   }
   let [sYear, sMonth, sDate] = new Date(selectDate.start_date)
@@ -289,9 +306,10 @@ const selectDateBtn = async (type) => {
       2
     )}`,
   };
-  store.commit("referral/setReportDate", formatDate);
+  if (type !== "all") store.commit("referral/setReportDate", formatDate);
   store.commit("referral/setPage", 1);
   await store.dispatch("referral/getPaybackReport");
+  selectReportTab = type;
 };
 
 const changeDate = async () => {

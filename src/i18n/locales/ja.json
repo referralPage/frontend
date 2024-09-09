@@ -69,7 +69,7 @@
         "referralPayback" : "リファラル·ペイバック",
         "expectedPayment" : "支給(予想)",
         "paymentCompleted" : "支給完了",
-        "notSubscribed" : ""
+        "notSubscribed" : "指定されたリファラルリンクからの登録ではありません。"
     }
 }
 

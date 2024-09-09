@@ -1,22 +1,24 @@
 <template>
-  <table class="pf_calendar_table">
-    <thead>
-      <tr>
-        <th>SUN</th>
-        <th>MON</th>
-        <th>TUE</th>
-        <th>WED</th>
-        <th>THU</th>
-        <th>FRI</th>
-        <th>SAT</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="table_area">
+    <table class="pf_calendar_table">
+      <thead>
+        <tr>
+          <th>SUN</th>
+          <th>MON</th>
+          <th>TUE</th>
+          <th>WED</th>
+          <th>THU</th>
+          <th>FRI</th>
+          <th>SAT</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </template>
 
 <script setup>
-import { autoLeftPad, numSign, } from "@/utils/common";
+import { autoLeftPad, numSign } from "@/utils/common";
 import { computed, onMounted, watch } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
@@ -37,8 +39,7 @@ async function buildCalendar() {
   let row = tbCalendar.insertRow();
   let dom = 1;
   let daysLength =
-    Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7 -
-    doMonth.getDay();
+    Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7 - doMonth.getDay();
   // 달력 출력
   for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
     let column = row.insertCell();
@@ -49,9 +50,7 @@ async function buildCalendar() {
         2
       )}-${autoLeftPad(day, 2)}`;
       column.innerText = autoLeftPad(day, 2);
-      const calenderData = calenderInfo.value.find(
-        (obj) => obj.date === selectDate
-      );
+      const calenderData = calenderInfo.value.find((obj) => obj.date === selectDate);
       let data = document.createElement("em");
       if (calenderData || calenderData?.total_profit == 0) {
         if (String(calenderData?.total_profit).charAt(0) == "-") {
@@ -60,9 +59,9 @@ async function buildCalendar() {
           data.classList.add("txt_zero");
         } else {
           data.classList.add("txt_plus");
-          calenderData.total_profit = numSign(calenderData.total_profit, 2)
+          calenderData.total_profit = numSign(calenderData.total_profit, 2);
         }
-        data.textContent = `${calenderData?.total_profit}$`;
+        data.textContent = `${calenderData?.total_profit}`;
         column.appendChild(data);
       } else {
         data.textContent = "-";
@@ -87,7 +86,7 @@ onMounted(() => {
   store.commit("referral/setCalenderDate", props.select);
   buildCalendar();
 });
-watch(props.select,  () => {
+watch(props.select, () => {
   store.commit("referral/setCalenderDate", props.select);
   buildCalendar();
 });
