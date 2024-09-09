@@ -249,8 +249,6 @@ export default {
             load = false;
           }
         }
-
-        //console.log(response);
       } catch (error) {
         return;
       }
