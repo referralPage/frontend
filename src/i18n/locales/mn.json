@@ -1,0 +1,51 @@
+{
+    "dashboardPrev" : {
+        "referralSystem": "Referral Payback System",
+        "mainGuide": "Apply Now and Receive payback on fees every time you trade",
+        "chooseExc": "Choose your preferred exchange"
+    },
+    "connectExc": {
+        "paybackConnect": "Apply for Referral Payback",
+        "nowSign": "Sign up now",
+        "notLinkPayback" : "(Payback will not be processed if you sign up using other links or codes.)",
+        "UIDGuide": "※ Please make sure to sign up using the REFERRAL CODE on the site and enter your UID ※",
+        "UIDInput": " Exchange UID:",
+        "connectBtn": "Apply",
+        "PCConnectGuide": "New & Existing Users Registration Method (PC)",
+        "MobileConnectGuide": "New & Existing Users Registration Method (Mobile)",
+        "UIDCheckGuide": "How to Check UID"
+    },
+    "modal" : {
+        "dateWarnig" : "Please enter the date accurately.",
+        "msgCode0" : "This UID is invalid.",
+        "msgCode01" : "The registration application has been completed.",
+        "msgCode02" : "Successfully registered",
+        "msgCode03" : "Registration application failed. Please try again later.",
+        "msgCode04" : "This UID is already registered.",
+        "msgCode05" : "For this exchange, Referral registration will be completed within 2 business days after application.",
+        "msgCode06" : "This UID has already been applied.",
+        "msgCode07" : "No referral application history exist for this UID.",
+        "noLogin" : "Duplicate login detected. This window will be closed."
+    },
+    "modalExchange" : {
+        "okx" : "Existing users can cancel their acounts once and complete KYC verification again in a new account. For members who have never canceled before, proceed with cancellation and enter the referral code to to make a new account. Once new account is made, enter your UID.",
+        "bingx" : "Existing users are recommended to create a new account with a referral code first, then enter your UID. After entering UID of your new account, transfer KYC from the existing account to the new one (transferring KYC may take about 7 days).",
+        "deepcoin" : "Existing users can re-register after cancellation and complete KYC verification again ( Only Once ). For members who have never canceled their accounts before, proceed with cancellation and enter the referral code to to make a new account. Once new account is made, enter your UID.",
+        "toobit" : "Existing users should check their UID and send it to us via Telegram: https://t.me/retrics for referral code change processing."
+    },
+    "noAccess" : {
+        "msg01" : "We apologize for the inconvenience.",
+        "msg02" : "Accessed through an unauthorized path",
+        "msg03" : "Clicking confirm will redirect you to the Retri page."
+    },
+    "common" : {
+        "confirm" : "confirm"
+    },
+    "prevGuide": {
+        "guideTitle" : "Preliminary Notice",
+        "guideMsg" : "The referral system for the exchange is currently under development and is scheduled to open in September 2024 - However, to return as much as possible back to our members, we are opening the UID application process early. Please be aware that KYC verification may take more than 7 days for some exchanges. Familiarize yourself with the registration methods (for new and existing users) on each exchange. If you pre-register your UID, referrals will be accumulated from the registration point.",
+        "guideMsg2" : "If you enter a UID that was not signed up with the referral code provided by the company, the referral may not accumulate even if the registration is successful. ",
+        "guideMsg3" : " Please check the manual and make sure to check whether the referral code has been entered when signing up. ",
+        "guideMsg4" : "Please note: the company is not responsible for any issues that arise from entering a UID that was signed up with an incorrect referral code."
+    }
+}

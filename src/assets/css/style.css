@@ -367,7 +367,7 @@ img.logo_l {
   align-items: center;
   justify-content: center;
 }
-@keyframes load {
+/* @keyframes load {
   0% {
     transform: rotate(0deg);
   }
@@ -375,7 +375,7 @@ img.logo_l {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* paging */
 /* pagination */
@@ -493,7 +493,7 @@ img.logo_l {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 20px 0 0 0;
+  padding: 0;
   overflow-y: auto;
   -ms-overflow-style: none;
   cursor: pointer;

@@ -65,6 +65,10 @@ import { useStore } from "vuex";
     {
       abbr : "vi",
       displayed : "VN",
+    },
+    {
+      abbr : "mn",
+      displayed : "MN",
     }
   ]);
   
