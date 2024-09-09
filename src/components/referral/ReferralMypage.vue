@@ -273,7 +273,6 @@ const selectDateBtn = async (type) => {
       selectDate.end_date = today.setDate(0);
       // today.setMonth(today.getMonth() - 1);
       selectDate.start_date = today.setDate(1);
-      console.log("select", selectDate);
       break;
     case "monthCurr":
       selectDate.end_date = new Date();
@@ -322,6 +321,7 @@ const changeDate = async () => {
     end_date: `${end_date.value}-${date}`,
   };
   store.commit("referral/setReportDate", selectDate);
+  selectReportTab = "";
 };
 
 const historySearch = async () => {
@@ -340,7 +340,6 @@ const changePage = async (str) => {
   await store.dispatch("referral/postCheckLogin");
   await store.dispatch("referral/getPaybackReport");
   // const listItem = document.querySelector(".payback_list_box");
-  // console.log(listItem);
   // listItem.scrollTo({ top: 0, behavior: "smooth" });
 };
 let listHeadScroll = 0;

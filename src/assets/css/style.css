@@ -651,6 +651,9 @@ img.logo_l {
   .main_wrap {
     padding-left: 0;
   }
+  .und_wrap{
+    transform: translate( calc(-50%),-50%);
+  }
   .header_logo {
     width: 70px;
   }
