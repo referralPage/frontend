@@ -22,12 +22,12 @@
           <p>
             {{ $t("myPage.totalPayback") }}
             <span class="txt_blue"
-              >${{ formatNum(monthlyInfo.total_accumulated_profit) ?? 0 }}</span
+              >${{ formatNum(monthlyInfo.total_accumulated_profit,4) ?? 0 }}</span
             >
           </p>
           <p class="paybackp">
             {{ $t("myPage.monthPayback") }}
-            <span class="txt_blue">±${{ profitInfo.total_profit }}</span>
+            <span class="txt_blue">±${{ formatNum(profitInfo.total_profit,4) ?? 0 }}</span>
           </p>
           <div class="month_division">
             <ul class="flex_row_c_c">
@@ -40,7 +40,7 @@
                 <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
                   {{
                     exchange.payback !== "X"
-                      ? `±${exchange.payback}`
+                      ? `±${formatNum(exchange.payback,4)}`
                       : $t("myPage.notSubscribed")
                   }}
                 </p>
@@ -52,7 +52,7 @@
           <ul :style="chartStyle()">
             <li v-for="data in monthlyInfo.monthly_data" :key="data.month">
               <div class="bar" :style="styledObj(data.total_profit)">
-                <em>${{ data.total_profit }}</em>
+                <em>${{ formatNum(data.total_profit,4) }}</em>
               </div>
               <i>{{ data.month.slice(2, 7) }}</i>
             </li>
@@ -87,7 +87,7 @@
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
         <p>{{ $t("myPage.weekPayback") }}</p>
-        <p class="txt_blue">± ${{ profitWeekInfo.total_profit ?? 0 }}</p>
+        <p class="txt_blue">± ${{ formatNum(profitWeekInfo.total_profit,4) ?? 0 }}</p>
       </div>
       <div class="month_exchange">
         <ul class="flex_row_c_c">
@@ -101,7 +101,7 @@
             <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
               {{
                 exchange.payback !== "X"
-                  ? `±${exchange.payback}`
+                  ? `±${formatNum(exchange.payback,4) ?? 0}`
                   : $t("myPage.notSubscribed")
               }}
             </p>
@@ -154,7 +154,7 @@
       <li v-for="data in paybackList" :key="data.date">
         <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
-        <em>${{ data.payment }}</em>
+        <em>${{ formatNum(data.payment,4) ?? 0 }}</em>
         <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
         <em>{{ $t("myPage.referralPayback") }}</em>
         <em>{{

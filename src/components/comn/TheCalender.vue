@@ -90,9 +90,6 @@ watch(props.select, () => {
   store.commit("referral/setCalenderDate", props.select);
   buildCalendar();
 });
-// defineExpose({
-//   buildCalendar
-// });
 </script>
 
 <style lang="scss" scoped></style>
