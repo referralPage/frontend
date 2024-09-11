@@ -48,16 +48,13 @@ export const numChkClass = (num) => {
     if (Number(num) > 0) return "txt_plus";
     else if (Number(num) < 0) return "txt_minus";
     else return "txt_zero";
-    // if (Number(num) > 0 || String(num).charAt(0) != '-') return "txt_plus";
-    // else if (Number(num) < 0 || String(num).charAt(0) == '-') return "txt_minus";
-    // else return "txt_zero";
   }
 };
 //숫자 + =
 export const numSign = (num, digit, type) => {
   if (num) {
     if (digit == 0 || digit) {
-      num = String(Number(Number(num).toFixed(digit)).toLocaleString());
+      num = String(Number(num).toLocaleString('ko-KR',{maximumFractionDigits : digit}));
     }
     if(type){
       if (String(num).charAt(0) != "-" && num != 0) return `+$${num}`;
@@ -73,7 +70,7 @@ export const numSign = (num, digit, type) => {
 //숫자 ,(콤마) , 소수점
 export const formatNum = (num, digit) => {
   if (num) {
-    num = Number(Number(num).toFixed(digit)).toLocaleString();
+    num = Number(num).toLocaleString('ko-KR',{maximumFractionDigits : digit});
     return num;
   } else {
     return 0;
