@@ -26,7 +26,7 @@ input[type=number]::-webkit-outer-spin-button {
 .mypage_ul li h3.title {
   color: var(--color-main);
   font-family: var(--main-font-Mont);
-  font-size: 20px;
+  font-size: 1.5em;
   margin: 0;
 }
 .payback_info {
@@ -184,6 +184,14 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-main);
 }
 
+.table_area::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+}
+.table_area::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
 .pf_calendar_table {
   width: 100%;
   border-collapse: collapse;
