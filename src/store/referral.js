@@ -27,6 +27,7 @@ export default {
       region_code: "",
       loginStatus: 200,
       setting: false,
+      isPostLoading : false,
       // res
       uidState: "",
       calenderInfo: [],
@@ -117,22 +118,27 @@ export default {
     },
     async postUid(context) {
       try {
-        let info = {
-          retri_id: context.state.retri_id,
-          UID: context.state.uid,
-          exchange: context.state.exchangeFlag,
-          datetime: new Date().toISOString(),
-        };
-        let response = await api.postUidApi(info);
-        if(response.reCode === 0){
-          context.state.uidState = 1; // msg 신청완료
-        } else if (response.reCode === 1){ 
-          context.state.uidState = 4; // msg 중복
-        } else if (response.reCode === 2){
-          context.state.uidState = ""; // msg 유효하지않는 uid
-        } else if (response.reCode === 3){
-          context.state.uidState = 3; // msg 등록실패
+        if(context.state.isPostLoading == false){
+          context.state.isPostLoading = true;
+          let info = {
+            retri_id: context.state.retri_id,
+            UID: context.state.uid,
+            exchange: context.state.exchangeFlag,
+            datetime: new Date().toISOString(),
+          };
+          let response = await api.postUidApi(info);
+          if(response.reCode === 0){
+            context.state.uidState = 1; // msg 신청완료
+          } else if (response.reCode === 1){ 
+            context.state.uidState = 4; // msg 중복
+          } else if (response.reCode === 2){
+            context.state.uidState = ""; // msg 유효하지않는 uid
+          } else if (response.reCode === 3){
+            context.state.uidState = 3; // msg 등록실패
+          }
+          context.state.isPostLoading = false;
         }
+        
       } catch (error) {
         return;
       }
