@@ -8,7 +8,6 @@ export default {
   state() {
     return {
       isMobile : false,
-      isSideMenu : false,
       modalState: false,
       exchange: {},
       exchangeFlag: "",
@@ -40,9 +39,6 @@ export default {
     };
   },
   mutations: {
-    setSideMenu(state,payload){
-      state.isSideMenu = payload;
-    },
     setIsMobile(state,payload){
       state.isMobile = payload;
     },
@@ -128,7 +124,6 @@ export default {
           datetime: new Date().toISOString(),
         };
         let response = await api.postUidApi(info);
-        // console.log(response.reCode);
         if(response.reCode === 0){
           context.state.uidState = 1; // msg 신청완료
         } else if (response.reCode === 1){ 

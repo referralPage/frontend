@@ -129,6 +129,7 @@ input.checkbox_type0:checked {
 .mgt50 {margin-top:50px !important;}
 .mgt60 {margin-top:60px !important;}
 .mgt70 {margin-top:70px !important;}
+.mgt90 {margin-top:90px !important;}
 
 
 .mgb0 {margin-bottom:0px !important;}
@@ -196,6 +197,11 @@ input.checkbox_type0:checked {
 .mgr50 {margin-right:50px !important;}
 .mgr60 {margin-right:60px !important;}
 
+.fs1 {font-size:1em !important;}
+.fs15 {font-size:1.5em !important;}
+.fs18 {font-size:1.8em !important;}
+.fs2 {font-size:2em !important;}
+.fs3 {font-size:3em !important;}
 
 .flex_row_c{
   display: flex;

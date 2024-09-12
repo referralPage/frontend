@@ -11,8 +11,7 @@
         "notLinkPayback" : "(他のリンクやコードで登録時にペイバックされません。)",
         "UIDInput": "Toobit取引所のご本人のUID:",
         "connectBtn": "申請する",
-        "PCConnectGuide": "新規会員&既存会員の登録の仕方(PC)",
-        "MobileConnectGuide": "新規会員&既存会員の登録の仕方(Mobile)",
+        "connectGuide": "新規会員&既存会員の登録の仕方",
         "UIDCheckGuide": "UIDの確認の仕方"
     },
     "modal" : {

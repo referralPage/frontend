@@ -2,49 +2,58 @@
 .payback_main_wrap {
   max-width: 1420px;
   margin: 0 auto;
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
   font-size: 1.4em;
-  background: url("@/assets/image/bg01.png") center center no-repeat;
-  background-size: 55%;
+  padding-bottom: 50px;
 }
+
 .payback_main_wrap p {
   margin-bottom: 15px;
   letter-spacing: 0.8px;
 }
 .explan_area {
-  padding: 50px 0 0 40px;
+  padding: 50px 0;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.explan_area p.txt_main {
+  font-size: 1.8em;
 }
 
 .middle_area {
-  position: absolute;
-  left: 200px;
-  top: 45%;
   text-align: center;
+  margin-bottom: 50px;
 }
-.middle_area span {
-  font-size: 3em;
-  font-family: var(--main-font-Mont);
-  text-shadow: 0px 0px 8px #00ffa3;
+.middle_area img {
+  width: 40px;
+  margin-right: 5px;
+}
+.middle_area p {
+  font-family: var(--main-font-Mont), "Noto Sans JP", sans-serif, "Noto Sans SC",
+    sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0;
 }
 .exchange_area {
-  position: absolute;
-  right: 200px;
+  margin: 0 auto;
+  max-width: 700px;
+  width: 90%;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .exchange_area li {
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 47%;
+  background: linear-gradient(rgba(32, 32, 32, 0.3), rgba(80, 77, 77, 0.3));
+  border-radius: 10px;
   padding: 30px;
-  margin-bottom: 1.1em;
   cursor: pointer;
+  backdrop-filter: blur(5px);
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .payback_main_wrap {
-    background-size: 65%;
-  }
-  .middle_area {
-    left: 50px;
-    top: 40%;
-  }
   .exchange_area {
     right: 80px;
   }
@@ -56,27 +65,18 @@
   .payback_main_wrap {
     background-size: 75%;
   }
-  .middle_area {
-    position: static;
-  }
   .exchange_area {
-    position: static;
+    justify-content: center;
   }
   .exchange_area li {
     padding: 20px;
     width: 80%;
     max-width: 300px;
   }
-  .exchange_area li img.logo_s {
-    width: 30%;
-  }
-  .exchange_area li img.logo_l {
-    width: 80%;
-  }
-  .explan_area p{
+  .explan_area p {
     word-break: break-all;
   }
-  .middle_area p{
+  .middle_area p {
     word-break: break-all;
   }
 }
@@ -89,20 +89,31 @@
 
 .payback_sub_title {
   margin-top: 50px;
-  gap: 2em;
+  gap: 1.5em;
 }
 .payback_sub_title p {
   font-size: 2em;
+  color: var(--main-color);
 }
 .payback_sub_title button {
   font-size: 1.8em;
   padding: 10px 30px;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
+  border: 2px solid #afafaf;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payback_sub_title button img {
+  width: 30px;
+  margin-left: 10px;
 }
 .recieve_wrap .warning_txt {
-  margin: 80px auto;
-  width: 520px;
+  margin: 60px auto;
+  max-width: 540px;
+  width: 90%;
   line-height: 1.5em;
   word-break: break-all;
 }
@@ -116,27 +127,33 @@
   max-width: 400px;
   min-width: 200px;
   background-color: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
   color: #fff;
   font-size: 1.5em;
   letter-spacing: 0.5px;
   padding: 10px;
   height: 60px;
+  border: 1px solid #969696;
 }
+
 .recieve_wrap .btn_area button {
   font-size: 1.3em;
   width: 300px;
   padding: 10px 0;
   border-radius: 8px;
-  margin: 80px 0;
+  margin: 50px 0;
   color: #fff;
+  width: 276px;
+  height: 62px;
+  background-color: var(--main-color-dark);
 }
 .recieve_wrap ul {
   gap: 20px;
   padding-bottom: 50px;
 }
 .recieve_wrap ul li {
-  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(rgba(32, 32, 32, 0.3), rgba(80, 77, 77, 0.3));
+  backdrop-filter: blur(10px);
   padding: 30px;
   gap: 20px;
   font-size: 1.3em;
@@ -148,9 +165,19 @@
   width: 70%;
   word-break: break-all;
 }
-.recieve_wrap ul li button {
-  width: 45px;
-  background-color: transparent;
+.recieve_wrap ul li a{
+  width: 48px;
+  display: block;
+}
+.recieve_wrap ul li img{
+  scale: 0.8;
+  width: 100%;
+}
+.bin_{
+  width: 48px;
+}
+.recieve_wrap ul li img.video_icon{
+  scale: 1;
 }
 .status_txt {
   margin: 100px 0;
@@ -163,17 +190,11 @@
   .payback_sub_title {
     flex-wrap: wrap;
   }
-  .payback_sub_title button {
-    width: 70%;
-  }
   .recieve_wrap .warning_txt {
     width: 90%;
   }
   .uid_area input {
     height: 50px;
-  }
-  .recieve_wrap .btn_area button {
-    width: 70%;
   }
   .recieve_wrap ul {
     gap: 10px;
@@ -194,7 +215,7 @@
   }
   .payback_sub_title button {
     font-size: 1.5em;
-    width: 90%;
+    max-width: 90%;
   }
   .recieve_wrap .warning_txt {
     margin: 50px auto;
@@ -213,8 +234,7 @@
   }
   .recieve_wrap .btn_area button {
     font-size: 1.3em;
-    width: 90%;
-    margin: 30px 0;
+    max-width: 90%;
   }
   .recieve_wrap ul {
     flex-direction: column;
@@ -236,14 +256,53 @@
   }
 }
 @media (max-width: 480px) {
-  .explan_area {
-    padding: 30px 20px;
+  img.logo_l{
+    max-width: 100%;
   }
+  .payback_main_wrap{
+    padding-bottom: 120px;
+  }
+  .explan_area p.txt_main {
+    font-size: 1.5em;
+  }
+  .explan_area {
+    padding: 50px 20px;
+    width: 100%;
+  }
+  .middle_area {
+    padding: 0 20px;
+  }
+  .middle_area img {
+    width: 25px;
+    margin-right: 5px;
+  }
+  .middle_area p {
+    font-size: 18px;
+    word-break: keep-all;
+  }
+  .exchange_area li {
+    background: linear-gradient(rgba(66, 66, 66, 0.3), rgba(80, 77, 77, 0.5));
+}
+.recieve_wrap{
+  padding-bottom: 100px;
+}
   .recieve_wrap img.logo_s {
     width: 50px;
   }
   .recieve_wrap img.logo_l {
     width: 100px;
+  }
+  .recieve_wrap ul li{
+    padding: 20px;
+  }
+  .recieve_wrap ul li p{
+    width: 70%;
+  }
+  .recieve_wrap ul li a{
+    width: 25px;
+  }
+  .bin_{
+    width: 25px;
   }
   .recieve_wrap ul li img {
     width: 25px;
@@ -251,4 +310,27 @@
   .recieve_wrap ul li button {
     width: auto;
   }
+  .payback_sub_title{
+    gap: 0;
+  }
+  .payback_sub_title  p{
+    margin-bottom: 20px;
+  }
+  .payback_sub_title button {
+    font-size: 1.5em;
+    width: auto;
+}
+.recieve_wrap .warning_txt{
+  margin: 30px auto 50px;
+}
+.uid_area label{
+  width: 90%;
+}
+.recieve_wrap .btn_area button {
+  max-width: 90%;
+  width: 220px;
+}
+.recieve_wrap ul li {
+  background: linear-gradient(rgba(66, 66, 66, 0.3), rgba(80, 77, 77, 0.5));
+}
 }

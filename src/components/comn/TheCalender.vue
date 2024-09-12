@@ -3,13 +3,13 @@
     <table class="pf_calendar_table">
       <thead>
         <tr>
-          <th>SUN</th>
-          <th>MON</th>
-          <th>TUE</th>
-          <th>WED</th>
-          <th>THU</th>
-          <th>FRI</th>
-          <th>SAT</th>
+          <th>S</th>
+          <th>M</th>
+          <th>T</th>
+          <th>W</th>
+          <th>T</th>
+          <th>F</th>
+          <th>S</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -54,11 +54,11 @@ async function buildCalendar() {
       let data = document.createElement("em");
       if (calenderData || calenderData?.total_profit == 0) {
         if (String(calenderData?.total_profit).charAt(0) == "-") {
-          data.classList.add("txt_minus");
+          data.classList.add("txt_zero");
         } else if (calenderData?.total_profit == 0) {
           data.classList.add("txt_zero");
         } else {
-          data.classList.add("txt_plus");
+          data.classList.add("txt_main");
           calenderData.total_profit = numSign(calenderData.total_profit, 2);
         }
         data.textContent = `${calenderData?.total_profit}`;

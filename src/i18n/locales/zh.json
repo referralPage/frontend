@@ -11,8 +11,7 @@
         "notLinkPayback" : "（如果您使用其他链接或代码注册，则不会获得返现。）",
         "UIDInput": "Toobit 交易所本人UID：",
         "connectBtn": "申请",
-        "PCConnectGuide": "如何注册新入会员和现有会员（PC版）",
-        "MobileConnectGuide": "如何注册新入会员和现有会员（手机版）",
+        "connectGuide": "如何注册新入会员和现有会员",
         "UIDCheckGuide": "确认UID 方法 "
     },
     "modal" : {

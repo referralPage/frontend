@@ -195,8 +195,6 @@ function getTimeZone(regionCode) {
   function setTimeZone(utcDate,regionCode) {
     const timeZone = getTimeZone(regionCode);
     const dateInUTC = new Date(utcDate + "Z");
-
-    // const locale = navigator.language;
     const options = {
       timeZone: timeZone,
       year: "numeric",
@@ -210,7 +208,6 @@ function getTimeZone(regionCode) {
   
     const formatter = new Intl.DateTimeFormat("en-US", options);
     const formattedDate = formatter.format(dateInUTC);
-    // console.log('format',formattedDate)
     let [month, day, year] = formattedDate.split(",")[0].split("/");
       year = year.slice(2,4);
     if (month.length === 1) {

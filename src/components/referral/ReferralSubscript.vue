@@ -1,20 +1,20 @@
 <template>
   <div class="recieve_wrap">
-    <div class="payback_sub_title flex_row_c_c">
-      <div class="flex_row_c_c">
-        <img
-          class="logo_l"
-          :src="exchange.logo"
-          :alt="`${exchange.name} 로고`"
-        />
-        <!-- <img class="logo_l" :src="exchange.text" :alt="exchange.name" /> -->
+    <div class="header_title">
+      <h1>Referral Payback</h1>
+      <div class="time_area">
+        <span>{{ reportDate }}</span>
       </div>
+    </div>
+    <div class="payback_sub_title flex_col_c_c">
+      <img class="logo_l" :src="exchange.logo" :alt="`${exchange.name} 로고`" />
       <p>{{ $t("connectExc.paybackConnect") }}</p>
-      <button class="gradient_green" @click="goToExchange()">
+      <button @click="goToExchange()">
         {{ $t("connectExc.nowSign") }}
+        <img src="@/assets/image/icon_signup.png" alt="signup_icon" />
       </button>
     </div>
-    <p class="warning_txt">
+    <p class="warning_txt text-center">
       {{ $t("connectExc.UIDGuide") }}
       <br />
       {{ $t("connectExc.notLinkPayback") }}
@@ -23,8 +23,8 @@
       <label for="userUid"
         >{{
           localLang === "VN"
-            ? `${$t("connectExc.UIDInput")} ${exchange.name}`
-            : `${exchange.name} ${$t("connectExc.UIDInput")}`
+            ? `UID ${$t("myPage.exchange")}`
+            : `${$t("myPage.exchange")} UID`
         }}
       </label>
       <input
@@ -36,7 +36,7 @@
       />
     </div>
     <div class="btn_area flex_row_c_c">
-      <button class="gradient_blue" @click="enrollBtn">
+      <button class="enroll_btn" @click="enrollBtn">
         {{ $t("connectExc.connectBtn") }}
       </button>
     </div>
@@ -50,25 +50,20 @@
         <li class="flex_row_c_c">
           <p>
             {{ exchange.name }}
-            {{
-              screenSize == "pc"
-                ? $t("connectExc.PCConnectGuide")
-                : $t("connectExc.MobileConnectGuide")
-            }}
+            {{ $t("connectExc.connectGuide") }}
           </p>
-          <button>
-            <a
-              :href="`/pdf/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
-              :download="`${exchange.name}_pdf`"
-            >
-              <img src="@/assets/image/download_icon.png" alt="download"
-            /></a>
-          </button>
-          <button>
-            <a :href="videoLink()" target="_blank">
-              <img src="@/assets/image/youtube_icon.png" alt="youtube"
-            /></a>
-          </button>
+          <a
+            :href="`/pdf/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
+            :download="`${exchange.name}_pdf`"
+          >
+            <img src="@/assets/image/download_icon.png" alt="download"
+          /></a>
+          <a :href="videoLink()" target="_blank">
+            <img
+              class="video_icon"
+              src="@/assets/image/youtube_icon.png"
+              alt="youtube"
+          /></a>
         </li>
         <li class="flex_row_c_c">
           <p>{{ exchange.name }} {{ $t("connectExc.UIDCheckGuide") }}</p>
@@ -77,6 +72,8 @@
             :download="`${exchange.name}_uid`"
             ><img src="@/assets/image/download_icon.png" alt="download"
           /></a>
+          <div class="bin_">&nbsp;</div>
+
           <!-- <button>
             <img src="@/assets/image/youtube_icon.png" alt="youtube" />
           </button> -->
@@ -92,6 +89,7 @@ import { computed, ref } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { localeToUTCNow } from "@/utils/common";
 const router = useRouter();
 const store = useStore();
 const exchange = computed(() => {
@@ -112,6 +110,8 @@ const session_id = computed(() => {
 const retri_id = computed(() => {
   return store.state.referral.retri_id;
 });
+let locale = navigator.language.split("-")[1];
+let reportDate = localeToUTCNow(locale);
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {
@@ -157,22 +157,27 @@ const goToExchange = () => {
     exchangeUrl = "https://s.deepcoin.com/jcfdhib";
   window.open(exchangeUrl, "");
 };
-const videoLink = () =>{
+const videoLink = () => {
   let link;
-  switch(localLang.value){
-    case 'KR' : link = exchange.value.videoKR;
-    break;
-    case 'EN' : link = exchange.value.videoEN;
-    break;
-    case 'VN' : link = exchange.value.videoVN;
-    break;
-    case 'CN' : link = exchange.value.videoCN;
-    break;
-    case 'JP' : link = exchange.value.videoJP;
-    break;
+  switch (localLang.value) {
+    case "KR":
+      link = exchange.value.videoKR;
+      break;
+    case "EN":
+      link = exchange.value.videoEN;
+      break;
+    case "VN":
+      link = exchange.value.videoVN;
+      break;
+    case "CN":
+      link = exchange.value.videoCN;
+      break;
+    case "JP":
+      link = exchange.value.videoJP;
+      break;
   }
   return link;
-}
+};
 store.watch((state) => {
   if (state.referral.setting) {
     createdFn();

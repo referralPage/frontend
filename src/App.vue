@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div :class="`${(locale, t)}`"></div>
+  <div class="wrap">
+    <div ></div>
     <TheHeader></TheHeader>
     <TheSideMenu></TheSideMenu>
-    <div class="main_wrap">
+    <div class="main_wrap" :class="{payback : mainPath == 'payback'}">
       <router-view></router-view>
       <ModalMsg msg="noLogin" v-if="!loginStatus"/>
     </div>
@@ -21,10 +21,11 @@ import TheSideMenu from "./components/comn/TheSideMenu.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 import ModalMsg from "./components/modal/ModalMsg.vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const { t, locale } = useI18n({ useScope: "global" });
 const store = useStore();
 const router =useRouter();
+const route = useRoute();
 const session_id = computed(()=>{
   return store.state.referral.session_id;
 });
@@ -33,6 +34,9 @@ const retri_id = computed(()=>{
 });
 const loginStatus = computed(()=>{
   return store.state.referral.loginStatus === 200 ? true : false;
+});
+const mainPath = computed(() => {
+  return route.path.split("/")[1];
 });
 // router.beforeEach(function (to, from, next) {
 //   // to: 이동할 url에 해당하는 라우팅 객체
@@ -47,15 +51,16 @@ const loginStatus = computed(()=>{
 //   };
 // });
 const createdFetch = async () =>{
-  // await store.dispatch("referral/postRetriAuth");
   await store.dispatch("referral/getLoadUser");
   store.commit("referral/initSetting",true);
-  // console.log(session_id.value);
-  // console.log(retri_id.value);
   if(!session_id.value || !retri_id.value){
     router.push('/404');
   }
 }
 createdFetch();
+const fn = () => {
+  t,locale
+}
+fn();
 
 </script>

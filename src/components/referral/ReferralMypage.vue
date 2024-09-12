@@ -4,7 +4,6 @@
       <div class="loading_circle"></div>
     </div>
   </div>
-  <!-- <div class="blur_area flex_col_c_c" v-if="isNotReferral"> -->
   <div class="blur_area flex_col_c" v-if="isNotReferral">
     <div>
       <p>{{ $t(`prevGuide['guideTitle']`) }}</p>
@@ -15,19 +14,25 @@
     </div>
   </div>
   <div class="mypage_wrap" v-if="!allLoading">
+    <div class="header_title">
+      <h1>Referral Payback</h1>
+      <div class="time_area">
+        <span >{{ reportDate }}</span>
+      </div>
+    </div>
     <ul class="mypage_ul">
       <li>
-        <h3 class="title">My Referral Payback</h3>
+        <h3 class="title">My Payback</h3>
         <div class="payback_info">
           <p>
             {{ $t("myPage.totalPayback") }}
-            <span class="txt_blue"
+            <span class="txt_main"
               >${{ formatNum(monthlyInfo.total_accumulated_profit,4) ?? 0 }}</span
             >
           </p>
           <p class="paybackp">
             {{ $t("myPage.monthPayback") }}
-            <span class="txt_blue">±${{ formatNum(profitInfo.total_profit,4) ?? 0 }}</span>
+            <span class="txt_main">±${{ formatNum(profitInfo.total_profit,4) ?? 0 }}</span>
           </p>
           <div class="month_division">
             <ul class="flex_row_c_c">
@@ -37,7 +42,7 @@
                   :src="exchange.logo"
                   :alt="`${exchange.name} logo`"
                 />
-                <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
+                <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
                   {{
                     exchange.payback !== "X"
                       ? `±${formatNum(exchange.payback,4)}`
@@ -67,7 +72,7 @@
       </li>
       <li class="pf_calendar">
         <div class="cal_set">
-          <h3 class="title">Profit Calendar</h3>
+          <h3 class="title">Payback Calendar</h3>
           <div class="cal_inner">
             <form action="" id="" name="">
               <select id="year" name="year" v-model="select.year">
@@ -87,7 +92,7 @@
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
         <p>{{ $t("myPage.weekPayback") }}</p>
-        <p class="txt_blue">± ${{ formatNum(profitWeekInfo.total_profit,4) ?? 0 }}</p>
+        <p class="txt_main">± ${{ formatNum(profitWeekInfo.total_profit,4) ?? 0 }}</p>
       </div>
       <div class="month_exchange">
         <ul class="flex_row_c_c">
@@ -98,7 +103,7 @@
           >
             <img class="logo_s" :src="exchange.logo" :alt="`${exchange.name} logo`" />
             <!-- <p>{{ exchange.name }}</p> -->
-            <p :class="exchange.payback !== 'X' ? 'txt_green' : 'txt_gray'">
+            <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
               {{
                 exchange.payback !== "X"
                   ? `±${formatNum(exchange.payback,4) ?? 0}`
@@ -111,7 +116,7 @@
     </div>
     <form action="" id="" name="">
       <div class="pf_list_top">
-        <h3 class="sub_title">Referral History</h3>
+        <h3 class="sub_title">Payback History</h3>
         <div class="pf_list_search">
           <h5>Search for Date</h5>
           <input type="month" v-model="start_date" :max="toDate" />
@@ -177,7 +182,7 @@ import ModalMsg from "@/components//modal/ModalMsg.vue";
 import TheCalender from "@/components/comn/TheCalender.vue";
 import ThePaging from "@/components/comn/ThePaging.vue";
 import exchangeList from "@/utils/exchangeList";
-import { autoLeftPad, formatNum, kstToLocale, preDate } from "@/utils/common";
+import { autoLeftPad, formatNum, kstToLocale, localeToUTCNow, preDate } from "@/utils/common";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -187,6 +192,8 @@ const exchangeArr = ref([...exchangeList]);
 const exchangeArrWeekly = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
+let locale = navigator.language.split("-")[1];
+let reportDate = localeToUTCNow(locale);
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });

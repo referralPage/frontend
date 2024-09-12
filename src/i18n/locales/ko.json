@@ -6,13 +6,12 @@
     },
     "connectExc": {
         "paybackConnect": "레퍼럴 페이백 신청",
-        "nowSign": "지금 가입하기",
+        "nowSign": "가입하기",
         "UIDGuide": "※ 반드시 사이트에 있는 레퍼럴 코드로 가입한 후 UID 입력해주시기 바랍니다 ※",
         "notLinkPayback" : "(다른 링크나 코드로 가입 시 페이백이 이루어지지 않습니다.)",
         "UIDInput": "거래소 본인 UID :",
         "connectBtn": "신청하기",
-        "PCConnectGuide": "신규회원 &기존회원 가입방법(PC)",
-        "MobileConnectGuide": "신규회원 &기존회원 가입방법(Mobile)",
+        "connectGuide": "신규회원 &기존회원 가입방법",
         "UIDCheckGuide": "UID 확인방법"
     },
     "modal" : {
