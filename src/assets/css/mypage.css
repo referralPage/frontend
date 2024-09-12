@@ -189,7 +189,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .table_area::-webkit-scrollbar {
   width: 3px;
-  height: 3px;
+  height: 5px;
   background: transparent;
 }
 .table_area::-webkit-scrollbar-thumb {
@@ -202,7 +202,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 15px;
 }
 .pf_calendar_table tr > th {
-  min-width: 35px;
+  min-width: 76px;
   padding: 10px;
   text-align: center;
   /* border: solid 1px #3a3939; */
@@ -248,6 +248,10 @@ input[type=number]::-webkit-outer-spin-button {
 .month_exchange ul li p {
   margin-top: 10px;
   text-align: center;
+}
+.table_area{
+  width: 100%;
+  overflow-x: scroll;
 }
 .pf_list_top {
   width: 100%;
@@ -698,10 +702,7 @@ ul.payback_list_box li.nodata_list{
   }
 }
 @media (max-width: 537px) {
-  .table_area{
-    width: 100%;
-    overflow-x: scroll;
-  }
+
   .pf_calendar_table {
     width: 400px;
     -webkit-font-smoothing: antialiased;

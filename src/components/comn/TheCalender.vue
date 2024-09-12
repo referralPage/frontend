@@ -59,7 +59,7 @@ async function buildCalendar() {
           data.classList.add("txt_zero");
         } else {
           data.classList.add("txt_main");
-          calenderData.total_profit = numSign(calenderData.total_profit, 2);
+          calenderData.total_profit = numSign(calenderData.total_profit, 4);
         }
         data.textContent = `${calenderData?.total_profit}`;
         column.appendChild(data);

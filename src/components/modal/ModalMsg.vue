@@ -12,6 +12,9 @@
           <p>{{ $t(`modal['${props.msg}']`) }}</p>
         </div>
         <div class="btn_bottom">
+          <button @click="goTelegram" v-if="props.msg == 'modalExchange' && props.exchange.toLowerCase() =='toobit'">
+            고객센터
+          </button>
           <button class="btn_gray" @click="closeModal">
             {{
               $t("common['confirm']")
@@ -44,6 +47,11 @@ const closeModal = () => {
     router.push("/payback");
   }
 };
+const goTelegram = () =>{
+  window.open("https://t.me/retrics");
+  closeModal();
+
+}
 const redirect = () => {
   const screenWidth = window.innerWidth;
   if (screenWidth < 640) {
@@ -51,8 +59,8 @@ const redirect = () => {
   } else {
     location.href = "https://retri.io";
   }
-  
 };
+
 </script>
 
 <style lang="scss" scoped></style>
