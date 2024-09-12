@@ -384,7 +384,7 @@ img.logo_l {
   font-size: 17px;
   font-weight: 400;
   color: var(--color-main);
-  background: var(--color-green);
+  background: var(--color-gray1);
   padding: 0 10px;
   white-space: nowrap;
 }
@@ -396,7 +396,7 @@ img.logo_l {
   font-size: 17px;
   font-weight: 400;
   color: var(--color-main);
-  background: var(--color-green);
+  background: #777;
   padding: 0 10px;
   white-space: nowrap;
   margin: 0 5px;
@@ -680,6 +680,18 @@ img.logo_l {
 .line.line3 {
   transform-origin: 0% 100%;
   transition: transform 0.4s ease-in-out;
+}
+
+.bounce_animation{
+  animation: beat .25s 10 alternate;
+  transition:  all 0.3s;
+	transform-origin: center;
+  animation-fill-mode:forwards;
+
+
+}
+@keyframes beat{
+	to { transform: scale(1.4); }
 }
 @media screen and (max-width: 614px) {
   .right_setBox .drowdown_box {

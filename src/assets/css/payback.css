@@ -334,3 +334,12 @@
   background: linear-gradient(rgba(66, 66, 66, 0.3), rgba(80, 77, 77, 0.5));
 }
 }
+@media (max-width: 300px) {
+  .btn_bottom{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal_pop_small .smallPop{
+    padding-bottom: 120px !important;
+  }
+}

@@ -9,7 +9,8 @@
     <div class="payback_sub_title flex_col_c_c">
       <img class="logo_l" :src="exchange.logo" :alt="`${exchange.name} 로고`" />
       <p>{{ $t("connectExc.paybackConnect") }}</p>
-      <button @click="goToExchange()">
+      <!-- <button class="animate__animated  animate__bounce" @click="goToExchange()"> -->
+      <button class="bounce_animation" @click="goToExchange()">
         {{ $t("connectExc.nowSign") }}
         <img src="@/assets/image/icon_signup.png" alt="signup_icon" />
       </button>
