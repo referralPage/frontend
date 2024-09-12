@@ -20,7 +20,7 @@
         <span >{{ reportDate }}</span>
       </div>
     </div>
-    <ul class="mypage_ul">
+    <ul class="mypage_ul" :class="{nochart : monthlyInfo.monthly_data?.length < 1}" >
       <li>
         <h3 class="title">My Payback</h3>
         <div class="payback_info">
