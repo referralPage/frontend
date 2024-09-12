@@ -219,7 +219,8 @@ input[type=number]::-webkit-outer-spin-button {
   color:#fff;
 }
 .month_payback {
-  background: rgba(78, 78, 78, 0.4);
+  /* background: rgba(78, 78, 78, 0.4); */
+  background: linear-gradient(#292929b6 60%, #706f6f85);
   backdrop-filter: blur(5px);
   border-radius: 8px;
   padding: 40px;
