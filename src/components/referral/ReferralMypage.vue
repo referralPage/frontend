@@ -24,7 +24,7 @@
       <li>
         <h3 class="title">My Payback</h3>
         <div class="payback_info">
-          <p>
+          <p class="totalp">
             {{ $t("myPage.totalPayback") }}
             <span class="txt_main"
               >${{ formatNum(monthlyInfo.total_accumulated_profit,4) ?? 0 }}</span
@@ -53,7 +53,7 @@
             </ul>
           </div>
         </div>
-        <div class="pf_chart">
+        <div class="pf_chart" v-if="monthlyInfo.monthly_data?.length > 0">
           <ul :style="chartStyle()">
             <li v-for="data in monthlyInfo.monthly_data" :key="data.month">
               <div class="bar" :style="styledObj(data.total_profit)">
