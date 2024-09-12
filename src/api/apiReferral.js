@@ -1,4 +1,6 @@
 import { API } from "./apiAuth";
+let whileFetching = false;
+let abortController;
 // 승인 대기 상태 확인 api
 const getCheckApprovalApi = async (retri_id, exchange) => {
   try {
@@ -13,7 +15,12 @@ const getCheckApprovalApi = async (retri_id, exchange) => {
 // uid 등록 api
 const postUidApi = async (info) => {
   try {
-    const response = await API.post("main", info);
+    if (whileFetching) abortController.abort();
+    abortController = new AbortController();
+    const signal = abortController.signal;
+    whileFetching = true;
+    const response = await API.post("main", info,{ signal });
+    whileFetching = false;
     return response.data;
   } catch (error) {
     if (error.response.status === 500) {
