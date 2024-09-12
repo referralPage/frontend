@@ -11,8 +11,7 @@
         "notLinkPayback" : "(Nếu bạn đăng ký bằng mã giới thiệu hoặc liên kết khác, việc hoàn tiền sẽ không được thực hiện.)",
         "UIDInput": "UID của bạn trên sàn ",
         "connectBtn": "Đăng ký",
-        "PCConnectGuide": "Cách đăng ký dành cho thành viên mới và thành viên hiện tại (Máy tính)",
-        "MobileConnectGuide": "Cách đăng ký dành cho thành viên mới và thành viên hiện tại (Điện thoại)",
+        "connectGuide": "Cách đăng ký dành cho thành viên mới và thành viên hiện tại",
         "UIDCheckGuide": "Cách xác nhận UID"
     },
     "modal" : {

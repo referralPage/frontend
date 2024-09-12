@@ -11,8 +11,7 @@
         "UIDGuide": "※ Please make sure to sign up using the REFERRAL CODE on the site and enter your UID ※",
         "UIDInput": " Exchange UID:",
         "connectBtn": "Apply",
-        "PCConnectGuide": "New & Existing Users Registration Method (PC)",
-        "MobileConnectGuide": "New & Existing Users Registration Method (Mobile)",
+        "connectGuide": "New & Existing Users Registration Method",
         "UIDCheckGuide": "How to Check UID"
     },
     "modal" : {

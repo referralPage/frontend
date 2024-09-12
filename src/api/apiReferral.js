@@ -74,7 +74,6 @@ const getPaybackReportApi = async (info) => {
     );
     return response.data;
   } catch (error) {
-    // console.log(error);
     return;
   }
 };
@@ -84,7 +83,6 @@ const getMonthProfitApi = async () => {
     const response = await API.get(`month-profit`);
     return response.data;
   } catch (error) {
-    // console.log(error);
     return;
   }
 };

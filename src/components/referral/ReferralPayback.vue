@@ -1,16 +1,20 @@
 <template>
   <div class="payback_main_wrap pr">
+    <div class="header_title">
+      <h1>Referral Payback</h1>
+      <div class="time_area">
+        <span >{{ reportDate }}</span>
+      </div>
+    </div>
     <div class="explan_area">
-      <p class="gradient_yellow">{{ $t("dashboardPrev['referralSystem']") }}</p>
+      <p class="txt_main">{{ $t("dashboardPrev['referralSystem']") }}</p>
       <p>{{ $t("dashboardPrev['mainGuide']") }}</p>
     </div>
-    <div class="middle_area">
-      <p>
-        {{ $t("dashboardPrev['chooseExc']") }}<br />
-        <span>ReTri</span>
-      </p>
+    <div class="middle_area flex_row_c_c">
+      <img src="@/assets/image/icon_logo.png" />
+      <p>Select an exchange you want</p>
     </div>
-    <ul class="exchange_area flex_col_c">
+    <ul class="exchange_area flex_row_c">
       <li
         class="flex_row_c_c"
         v-for="exchange in exchangeList"
@@ -30,6 +34,7 @@
 
 <script setup>
 import ModalMsg from "@/components/modal/ModalMsg.vue";
+import { localeToUTCNow } from "@/utils/common";
 import exchangeList from "@/utils/exchangeList";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
@@ -48,6 +53,8 @@ const session_id = computed(()=>{
 const retri_id = computed(()=>{
   return store.state.referral.retri_id;
 });
+let locale = navigator.language.split("-")[1];
+let reportDate = localeToUTCNow(locale);
 let selectExchange = ref(null);
 let msgCode = "msgCode0"; //입력하지않았을 때
 const enrollCheck = async (exchange) => {

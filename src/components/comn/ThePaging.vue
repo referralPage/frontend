@@ -6,7 +6,7 @@
           v-if="props.page > 1"
           @click="props.changePage('prev')"
         >
-          Previous
+        <img src="@/assets/image/arrow_right.png" alt="previous" />
         </li>
         <li class="active page-item">
           {{ props.page }}
@@ -16,7 +16,7 @@
           v-if="props.page != props.totalPages"
           @click="props.changePage('next')"
         >
-          Next
+          <img src="@/assets/image/arrow_right.png" alt="next" />
         </li>
       </ul>
     </div>

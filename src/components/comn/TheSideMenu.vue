@@ -1,43 +1,40 @@
 <template>
-  <aside
-    class="side_menu mobile_side"
-    :class="{ active: isSideMenu }"
-    v-if="isMobile"
-  >
-  <div class="side_logo">
-      <router-link :to="mainPath === '404' ? '/404' : '/payback'" @click="changeSideMenu">
-        <img src="@/assets/image/logo.png" alt="retri logo" />
-      </router-link>
-    </div>
-    <button type="button" class="menu_close" @click="changeSideMenu"></button>
-
-    <ul class="flex_col_center" :class="{ mgt70: !isMobile }">
+  <aside class="side_menu mobile_side" v-if="isMobile">
+    <ul class="flex_row_c_c" :class="{ mgt70: !isMobile }">
       <li
-        :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''" @click="changeSideMenu"
+        :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''"
       >
-        <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+        <div>
+          <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+        </div>
       </li>
-      <li :class="mainPath === 'mypage' ? 'active' : ''" @click="changeSideMenu">
-        <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+      <li :class="mainPath === 'mypage' ? 'active' : ''">
+        <div>
+          <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+        </div>
       </li>
     </ul>
   </aside>
   <aside class="side_menu" v-else>
-    <ul class="flex_col_center mgt70">
+    <ul class="flex_col_center mgt90">
       <li
         :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''"
       >
-        <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+        <div>
+          <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+        </div>
       </li>
       <li :class="mainPath === 'mypage' ? 'active' : ''">
-        <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+        <div>
+          <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+        </div>
       </li>
     </ul>
   </aside>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 const route = useRoute();
@@ -45,15 +42,18 @@ const store = useStore();
 const mainPath = computed(() => {
   return route.path.split("/")[1];
 });
-const isMobile = computed(() => {
+const isMobile = computed(()=>{
   return store.state.referral.isMobile;
-});
-const isSideMenu = computed(() => {
-  return store.state.referral.isSideMenu;
-});
-const changeSideMenu = () => {
-  store.commit("referral/setSideMenu", false);
+})
+const widthChange = () => {
+  const screenWidth = window.innerWidth;
+  let mobile = screenWidth < 480;
+  store.commit("referral/setIsMobile",mobile);
 };
+onMounted(() => {
+  widthChange();
+  window.addEventListener("resize", widthChange);
+});
 </script>
 
 <style lang="scss" scoped></style>

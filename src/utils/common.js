@@ -54,7 +54,10 @@ export const numChkClass = (num) => {
 export const numSign = (num, digit, type) => {
   if (num) {
     if (digit == 0 || digit) {
-      num = String(Number(num).toLocaleString('ko-KR',{maximumFractionDigits : digit}));
+      const number = Number(num);
+      const factor = Math.pow(10, digit);
+      const floored = Math.floor(number * factor) / factor;
+      num = String(floored.toLocaleString('ko-KR',{maximumFractionDigits : digit}));
     }
     if(type){
       if (String(num).charAt(0) != "-" && num != 0) return `+$${num}`;
@@ -67,14 +70,15 @@ export const numSign = (num, digit, type) => {
   }
 };
 
-//숫자 ,(콤마) , 소수점
+//숫자 ,(콤마) , 소수점 내림
 export const formatNum = (num, digit) => {
-  if (num) {
-    num = Number(num).toLocaleString('ko-KR',{maximumFractionDigits : digit});
-    return num;
-  } else {
-    return 0;
-  }
+ const number = Number(num);
+ if (isNaN(number)) {
+   return '0';
+ }
+ const factor = Math.pow(10, digit);
+ const floored = Math.floor(number * factor) / factor;
+ return floored.toLocaleString('ko-KR', { maximumFractionDigits: digit });
 };
 
 // paging
@@ -95,3 +99,8 @@ export const formatTime = (datetime) => {
   let time = datetime.split("T")[1].slice(0, 5);
   return `${date} ${time}`;
 };
+
+// export const setIsMobile = () =>{
+//   const screenWidth = window.innerWidth;
+//    return screenWidth < 480;
+// }

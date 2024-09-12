@@ -13,8 +13,8 @@
   justify-content: center;
   padding: 45px 20px 20px 20px;
   border-radius: 5px;
-  background: rgba(29, 29, 43, 0.5);
-  backdrop-filter: blur(3.5px);
+  background: rgba(78, 78, 78, 0.4);
+  backdrop-filter: blur(5px);
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -103,7 +103,7 @@ input[type=number]::-webkit-outer-spin-button {
   backdrop-filter: blur(2.5px);
   background: linear-gradient(
     180deg,
-    #0084ff 0%,
+    #ED9644 0%,
     rgba(125, 205, 93, 0.05) 100%
   );
 }
@@ -188,9 +188,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 15px;
 }
 .pf_calendar_table tr > th {
+  min-width: 35px;
   padding: 10px;
   text-align: center;
-  border: solid 1px #3a3939;
+  /* border: solid 1px #3a3939; */
   color: var(--color-gray3) !important;
   font-size: 14px;
   font-style: normal;
@@ -201,7 +202,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 8px;
   text-align: center;
   font-weight: 500;
-  border: solid 1px #3a3939;
+  /* border: solid 1px #3a3939; */
 }
 .pf_calendar_table tr > td.cover {
   opacity: 0.3;
@@ -215,11 +216,12 @@ input[type=number]::-webkit-outer-spin-button {
   color:#fff;
 }
 .month_payback {
-  background-color: rgba(29, 29, 43, 0.9);
-  border-radius: 50px;
+  background: rgba(78, 78, 78, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
   padding: 40px;
   gap: 30px;
-  margin: 50px 0;
+  margin-bottom: 20px;
 }
 .month_txt {
   font-size: 1.7em;
@@ -301,7 +303,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 1px;
-  background: url(../image/icon_retri_logo.png) center left no-repeat;
+  background: url(../image/icon_logo.png) center left no-repeat;
   background-size: 28px 20px;
 }
 .btn_search {
@@ -309,7 +311,7 @@ input[type=number]::-webkit-outer-spin-button {
   /* height: 35px; */
   padding: 10px;
   border-radius: 5px;
-  background: var(--color-green2);
+  background: #242323;
   color: #fff;
   text-align: center;
   font-size: 12px;
@@ -318,28 +320,32 @@ input[type=number]::-webkit-outer-spin-button {
   line-height: normal;
 }
 .tab_ctgy {
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: flex-end;
   gap: 10px;
-  /* margin-bottom: 50px; */
+  margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 .tab_ctgy li {
-  background-color: rgba(29, 29, 43, 0.9);
-  width: 100%;
+  background-color: transparent;
+  border: 1px solid #fff;
+  width: 10%;
+  min-width: 80px;
   text-align: center;
   padding: 10px 10px;
-  color: var(--color-gray1);
+  color: #fff;
   border-radius: 5px;
   cursor: pointer;
 }
 .tab_ctgy li.active {
-  background-color: rgba(198, 198, 221, 0.9);
+  background-color: #fff;
   color: rgba(29, 29, 43, 0.9);
 }
 .payback_list_head_area{
-  background: rgba(29, 29, 43, 0.5);
-  backdrop-filter: blur(3.5px);
+  background: linear-gradient(rgba(32, 32, 32, 0.3), rgba(134, 134, 134, 0.3));
+  backdrop-filter: blur(10px);
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 ul.payback_list_head {
   display: flex;
@@ -402,13 +408,25 @@ ul.payback_list_box {
   overflow-y: hidden;
   overflow-y: auto;
   margin-bottom: 30px;
+  background: linear-gradient(rgba(114, 113, 113, 0.3), rgba(134, 134, 134, 0.3));
+  backdrop-filter: blur(10px);
+  padding :0 10px;
+}
+.payback_list_head_area::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+}
+.payback_list_head_area::-webkit-scrollbar-thumb {
+  background: var(--main-color);
 }
 ul.payback_list_box::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
+  height: 3px;
   background: transparent;
 }
 ul.payback_list_box::-webkit-scrollbar-thumb {
-  background: var(--color-green);
+  background: var(--main-color);
 }
 ul.payback_list_box li {
   display: flex;
@@ -417,13 +435,11 @@ ul.payback_list_box li {
   width: 100%;
   height: 64px;
   padding: 20px 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  background: rgba(29, 29, 43, 0.5);
-  backdrop-filter: blur(3.5px);
+  border-bottom: 1px solid #838282;
 }
 ul.payback_list_box li:last-child {
   margin-bottom: 0;
+  border:none;
 }
 ul.payback_list_box li em {
   display: block;
@@ -454,8 +470,8 @@ ul.payback_list_box li em:nth-child(6) {
   width: 20%;
   padding-right: 10px;
 }
-.nodata_list{
-  margin-bottom: 150px !important;
+ul.payback_list_box li.nodata_list{
+  height: 150px;
 }
 .nodata {
   display: block;
@@ -474,7 +490,7 @@ ul.payback_list_box li em:nth-child(6) {
   z-index: 5;
   width: 100%;
   height: calc(100% - 70px);
-  background: rgba(29, 29, 43, 0.5);
+  background: rgba(22, 21, 20, 0.5);
   backdrop-filter: blur(10px);
   overflow-y: auto;
   padding :100px 40px;
@@ -573,6 +589,7 @@ ul.payback_list_box li em:nth-child(6) {
   .month_exchange li img.logo_s{
     width: 70%;
     height: 50px;
+    margin:0;
   }
   .payback_list_head_area{
     width: 100%;
@@ -670,14 +687,16 @@ ul.payback_list_box li em:nth-child(6) {
   .pf_calendar_table tr > td {
     padding: 6px 2px;
     font-size: 11px;
-
-  }
-  .tab_ctgy {
-    flex-wrap: wrap;
-    justify-content: flex-start;
   }
 }
 @media (max-width: 480px) {
+  .mypage_wrap{
+    width: 100%;
+    padding-bottom: 80px;
+  }
+  .mypage_wrap .sub_title{
+    margin-left: 20px;;
+  }
   .blur_area div {
     padding :0;
   }
@@ -685,7 +704,8 @@ ul.payback_list_box li em:nth-child(6) {
     padding: 20px 0 0 0;
   }
   .mypage_ul > li{
-    padding:20px 10px;
+    padding:20px;
+    background: linear-gradient(#292929b6 60%, #706f6f85);
   }
   .pf_calendar {
     height: auto;
@@ -700,13 +720,12 @@ ul.payback_list_box li em:nth-child(6) {
   }
   .pf_list_search .btn_search{
     width: 100%;
+    margin: 10px;
+    background-color: #555553;
   }
   .pf_list_search {
     flex-wrap: wrap;
     justify-content: center;
-  }
-  .pf_list_search button {
-    margin: 10px;
   }
   ul.payback_list_head li {
     min-width: 70px;
@@ -714,6 +733,9 @@ ul.payback_list_box li em:nth-child(6) {
   }
   ul.payback_list_box li em{
     font-size: 14px;
+  }
+  ul.payback_list_box{
+    margin-bottom: 10px;
   }
   .nodata{
     display: block;
@@ -727,15 +749,35 @@ ul.payback_list_box li em:nth-child(6) {
   }
   .month_exchange li img.logo_s {
     width: 70%;
-    height: 40px;
+    max-width: 160px;
+    height: auto;
   }
   .pf_list_search input[type="date"],
   .pf_list_search input[type="month"] {
-    width: 100%;
+    width:45%;
   }
   .month_exchange ul{
     gap: 15px;
   }
+  .payback_info>p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .cal_set{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tab_ctgy {
+    width: 90%;
+    margin: 0 auto 50px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .payback_list_head_area {
+    background: linear-gradient(rgba(65, 64, 64, 0.3), rgba(134, 134, 134, 0.3));
+}
 }
 @media (max-width: 380px) {
   .month_division .flex_row_c_c li{
@@ -745,7 +787,11 @@ ul.payback_list_box li em:nth-child(6) {
   .month_exchange ul{
     gap: 10px;
   }
-
-
+}
+@media (max-width: 255px) {
+  .pf_list_search input[type="date"],
+  .pf_list_search input[type="month"] {
+    width:100%;
+  }
 }
 
