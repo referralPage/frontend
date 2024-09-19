@@ -375,21 +375,7 @@ img.logo_l {
   z-index: 2;
   padding: 20px;
 }
-.modal_pop_small .smallPop .btn_bottom a {
-  display: block;
-  border-radius: 5px;
-  width: 150px;
-  height: 50px;
-  line-height: 50px;
-  margin: 0 5px;
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--color-main);
-  background: var(--color-gray1);
-  padding: 0 10px;
-  white-space: nowrap;
-}
-.modal_pop_small .smallPop .btn_bottom button {
+.modal_pop_small .smallPop .btn_bottom a, .modal_pop_small .smallPop .btn_bottom button {
   display: block;
   border-radius: 5px;
   width: 150px;
@@ -402,6 +388,14 @@ img.logo_l {
   white-space: nowrap;
   margin: 0 5px;
   letter-spacing: 0.5px;
+}
+.modal_pop_small .smallPop.ex .btn_bottom button,.modal_pop_small .smallPop.ex .btn_bottom a  {
+  width: 50%;
+  max-width: 200px;
+  white-space: pre-line;
+  line-height: 1.5em;
+  height: 52px;
+  padding: 0 2px;
 }
 .modal_pop_small .smallPop .btn_bottom a.btn_gray,
 .modal_pop_small .smallPop .btn_bottom button.btn_gray {
@@ -538,7 +532,7 @@ img.logo_l {
   padding: 3px 30px 0 15px;
   font-size: 15px;
   color: var(--color-gray1);
-  background: #282828 url("@/assets/image/arrow_under.png") right 12px center
+  background: transparent url("@/assets/image/arrow_under.png") right 12px center
     no-repeat;
   background-size: 12px;
   border-radius: 20px;
@@ -730,12 +724,16 @@ img.logo_l {
   }
   .header_logo img{
     width: 90px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .header_title{
     margin-top: 30px;
   }
   .header_title div {
-    width: 210px;
+    width: 90%;
+    max-width: 210px;
     font-size: 18px;
   }
   .header_locale{
@@ -761,5 +759,27 @@ img.logo_l {
   }
   .pf_chart{
     margin-top: 10px;
+  }
+  .modal_pop_small .smallPop.ex{
+    padding-bottom: 120px;
+  }
+  .modal_pop_small .smallPop.ex .btn_bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal_pop_small .smallPop.ex .btn_bottom button, .modal_pop_small .smallPop.ex .btn_bottom a{
+    width: 100%;
+    max-width : 100%;
+    word-break: break-all;
+    height: auto;
+    min-height: 50px;
+  }
+}
+@media (max-width: 250px) {
+  .modal_pop_small .smallPop.ex{
+    padding-bottom: 140px;
+  }
+  .modal_pop_small .smallPop.ex .btn_bottom button, .modal_pop_small .smallPop.ex .btn_bottom a{
+    font-size: 15px;
   }
 }

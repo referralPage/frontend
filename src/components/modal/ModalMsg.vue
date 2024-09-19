@@ -1,7 +1,7 @@
 <template>
   <div class="modal_overlay" @click.self="closeModal(false)">
     <div class="modal_pop_small">
-      <div class="smallPop popup_block">
+      <div class="smallPop popup_block" :class="{ex : props.msg == 'modalExchange' && props.exchange.toLowerCase() =='toobit'}">
         <div class="pop_title">
           <p>ReTri Referral {{ props.exchange }}</p>
         </div>

@@ -339,7 +339,4 @@
     flex-direction: column;
     gap: 10px;
   }
-  .modal_pop_small .smallPop{
-    padding-bottom: 120px !important;
-  }
 }
