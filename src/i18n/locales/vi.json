@@ -12,7 +12,10 @@
         "UIDInput": "UID của bạn trên sàn ",
         "connectBtn": "Đăng ký",
         "connectGuide": "Cách đăng ký dành cho thành viên mới và thành viên hiện tại",
-        "UIDCheckGuide": "Cách xác nhận UID"
+        "UIDCheckGuide": "Cách xác nhận UID",
+        "okxInfo" : "Nếu bạn có quốc tịch Trung Quốc và muốn tham gia OKX, Đừng nhấp vào nút đăng ký trên trang. Hãy nhớ liên hệ với bộ phận chăm sóc khách hàng.",
+        "connected" : "Đã liên kết",
+        "notConnected" : "Không liên kết"
     },
     "modal" : {
         "dateWarnig" : "Hãy nhập chính xác ngày",
@@ -68,6 +71,7 @@
         "referralPayback" : "Số tiền hoàn vốn giới thiệu( Refferal)",
         "expectedPayment" : "Dự kiến thánh toán",
         "paymentCompleted" : "Hoàn tất thanh toán",
-        "notSubscribed" : "Bạn chưa đăng ký bằng link giới thiệu(Referral)"
+        "notSubscribed" : "Bạn chưa đăng ký bằng link giới thiệu(Referral)",
+        "subscribed" : "Đăng ký giới thiệu đã hoàn tất"
     }
 }

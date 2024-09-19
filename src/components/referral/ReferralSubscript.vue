@@ -36,6 +36,7 @@
         @input="checkNumber"
       />
     </div>
+    <p class="text-center mgt30" v-if="exchange.name?.toLowerCase() == 'okx'">{{ $t("connectExc.okxInfo") }}</p>
     <div class="btn_area flex_row_c_c">
       <button class="enroll_btn" @click="enrollBtn">
         {{ $t("connectExc.connectBtn") }}

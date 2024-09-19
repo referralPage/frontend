@@ -12,7 +12,10 @@
         "UIDInput": "Exchange UID:",
         "connectBtn": "Применить",
         "connectGuide": "Метод регистрации новых и существующих пользователей",
-        "UIDCheckGuide": "Как проверить UID"
+        "UIDCheckGuide": "Как проверить UID",
+        "okxInfo" : "",
+        "connected" : "",
+        "notConnected" : ""
     },
     "modal" : {
         "dateWarnig" : "Укажите точную дату",
@@ -68,6 +71,7 @@
         "referralPayback" : "Окупаемость рефералов",
         "expectedPayment" : "Ожидаемый платеж",
         "paymentCompleted" : "Оплата завершена",
-        "notSubscribed" : "Не зарегистрированный код рекомендаций"
+        "notSubscribed" : "Не зарегистрированный код рекомендаций",
+        "subscribed" : ""
     }
 }

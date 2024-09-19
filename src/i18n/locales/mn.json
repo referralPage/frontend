@@ -12,7 +12,10 @@
         "UIDInput": " Exchange UID:",
         "connectBtn": "Apply",
         "connectGuide": "New & Existing Users Registration Method",
-        "UIDCheckGuide": "How to Check UID"
+        "UIDCheckGuide": "How to Check UID",
+        "okxInfo" : "",
+        "connected" : "",
+        "notConnected" : ""
     },
     "modal" : {
         "dateWarnig" : "Please enter the date accurately.",
@@ -67,6 +70,7 @@
         "referralPayback" : "Гишүүнчлэлийн буцаан олголт",
         "expectedPayment" : "Төлөвлөж буй буцаан олголт",
         "paymentCompleted" : "Олголт дууссан",
-        "notSubscribed" : "Гишүүнчлэлд бүртгүүлээгүй байнав"
+        "notSubscribed" : "Гишүүнчлэлд бүртгүүлээгүй байнав",
+        "subscribed" : ""
     }
 }
