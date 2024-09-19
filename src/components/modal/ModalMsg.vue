@@ -43,6 +43,9 @@ const closeModal = (boolean) => {
   if(props.exchange && boolean){
     router.push("/apply");
   }
+  if(props.msg == "msgCode03"){
+    router.push("/apply");
+  }
   if(props.msg == "msgCode01" || props.msg == "msgCode04"){
     router.push("/payback");
   }

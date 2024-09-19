@@ -15,14 +15,15 @@
         "UIDCheckGuide": "Cách xác nhận UID",
         "okxInfo" : "Nếu bạn có quốc tịch Trung Quốc và muốn tham gia OKX, Đừng nhấp vào nút đăng ký trên trang. Hãy nhớ liên hệ với bộ phận chăm sóc khách hàng.",
         "connected" : "Đã liên kết",
-        "notConnected" : "Không liên kết"
+        "notConnected" : "Không liên kết",
+        "connectWaiting" : "Đang chờ kết nối"
     },
     "modal" : {
         "dateWarnig" : "Hãy nhập chính xác ngày",
         "msgCode0" : "UID không hợp lệ.",
         "msgCode01" : "Đơn đăng ký của bạn đã hoàn tất.",
         "msgCode02" : "Bạn đã đăng ký thành công",
-        "msgCode03" : "Đơn đăng ký của bạn không thành công. Vui lòng thử lại sau ít phút nữa.",
+        "msgCode03" : "Đơn đăng ký của bạn không thành công.",
         "msgCode04" : "UID này đã được đăng nhập.",
         "msgCode05" : "Tối đa 2 ngày( Trừ ngày nghỉ, ngày lễ) việc đăng ký của bạn sẽ được hoàn tất trên sàn giao dịch. ",
         "msgCode06" : "Đây là UID đã được đăng ký",
