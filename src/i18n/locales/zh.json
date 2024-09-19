@@ -15,14 +15,15 @@
         "UIDCheckGuide": "确认UID 方法 ",
         "okxInfo" : "如果您是中国国籍并想加入OKX，不要点击网页上的注册按钮。请务必联系客服。”",
         "connected" : "已链接",
-        "notConnected" : "未链接"
+        "notConnected" : "未链接",
+        "connectWaiting" : "等待 连接中"
     },
     "modal" : {
         "dateWarnig" : "请输入正确日期",
         "msgCode0" : "UID 无效。",
         "msgCode01" : "注册申请已完成。",
         "msgCode02" : "成功登入",
-        "msgCode03" : "申请注册失败。请稍后重试。",
+        "msgCode03" : "申请注册失败。",
         "msgCode04" : "该 UID 已被注册。",
         "msgCode05" : "交易所将在申请推荐后最多2个工作日内会完成推荐登记。",
         "msgCode06" : "已经申请过的UID。",

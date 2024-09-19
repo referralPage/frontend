@@ -15,14 +15,15 @@
         "UIDCheckGuide": "UID 확인방법",
         "okxInfo" : "중국 국적의 분들은 OKX 가입을 원할 경우, 페이지에 있는 가입하기 버튼을 클릭하지 마시고 반드시 고객센터로 연락해주시기 바랍니다.",
         "connected" : "연동 완료",
-        "notConnected" : "미 연동"
+        "notConnected" : "미 연동",
+        "connectWaiting" : "연동 대기중"
     },
     "modal" : {
         "dateWarnig" : "날짜를 정확하게 입력해주세요.",
         "msgCode0" : "유효하지 않은 UID 입니다.",
         "msgCode01" : "등록 신청이 완료 되었습니다.",
         "msgCode02" : "성공적으로 등록되었습니다.",
-        "msgCode03" : "등록 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.",
+        "msgCode03" : "등록 신청에 실패하였습니다.",
         "msgCode04" : "이미 등록된 UID입니다.",
         "msgCode05" : "해당 거래소는 레퍼럴 신청 후 최대 2영업일 이내 레퍼럴 등록 완료됩니다.",
         "msgCode06" : "이미 신청 완료된 UID 입니다.",

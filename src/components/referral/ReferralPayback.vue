@@ -26,8 +26,8 @@
           :src="exchange.logo"
           :alt="`${exchange.name} logo`"
         />
-        <p :class="exchange.payback == 'X' ||exchange.payback == undefined ? 'txt_gray' : 'txt_main'">
-          {{ exchange.payback == "X" ||exchange.payback == undefined ? $t("connectExc.notConnected") :  $t("connectExc.connected") }}
+        <p :class="exchange.payback == 'X' ||exchange.payback == undefined || exchange.payback == '승인대기'? 'txt_gray' : 'txt_main'">
+          {{ exchange.payback == "X" ||exchange.payback == undefined ? $t("connectExc.notConnected") : (exchange.payback == '승인대기' ? $t("connectExc.connectWaiting") : $t("connectExc.connected")) }}
         </p>
       </li>
     </ul>
@@ -69,6 +69,7 @@ const enrollCheck = async (exchange) => {
     if (postStatus.value === 1) {
       msgCode = `msgCode06`;
     }
+
     msgCode = `msgCode0${postStatus.value}`;
     //msg code 1 = 승인대기, 2 = 승인완료, 3 =승인실패, 4 = 이미 등록
   }
@@ -92,7 +93,6 @@ const createdFn = async () => {
         break;
     }
   });
-  console.log(exchangeArr.value);
 };
 store.watch((state) => {
   if (state.referral.setting) {

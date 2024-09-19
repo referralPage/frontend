@@ -15,14 +15,15 @@
         "UIDCheckGuide": "How to Check UID",
         "okxInfo" : "If individuals with Chinese nationality want to join OKX, please contact customer service, Do NOT click the sign-up button on the page",
         "connected" : "Connected Successfully",
-        "notConnected" : "not connected"
+        "notConnected" : "not connected",
+        "connectWaiting" : "Waiting for integration"
     },
     "modal" : {
         "dateWarnig" : "Please enter the date accurately.",
         "msgCode0" : "This UID is invalid.",
         "msgCode01" : "The registration application has been completed.",
         "msgCode02" : "Successfully registered",
-        "msgCode03" : "Registration application failed. Please try again later.",
+        "msgCode03" : "Registration application failed.",
         "msgCode04" : "This UID is already registered.",
         "msgCode05" : "For this exchange, Referral registration will be completed within 2 business days after application.",
         "msgCode06" : "This UID has already been applied.",
