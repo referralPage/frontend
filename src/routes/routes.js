@@ -31,5 +31,4 @@ const routes = [
   },
   { path: "/:pathMatch(.*)*", redirect: "/404" },
 ];
-
 export default routes;

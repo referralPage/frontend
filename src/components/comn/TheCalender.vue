@@ -62,12 +62,11 @@ async function buildCalendar() {
           calenderData.total_profit = numSign(calenderData.total_profit, 4);
         }
         data.textContent = `${calenderData?.total_profit}`;
-        column.appendChild(data);
       } else {
         data.textContent = "-";
         data.classList.add("txt_gray");
-        column.appendChild(data);
       }
+      column.appendChild(data);
       column.style.color = "#fff";
       //일요일
       if (dom % 7 == 1) {

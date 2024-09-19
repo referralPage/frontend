@@ -57,13 +57,15 @@
             :href="`/pdf/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
             :download="`${exchange.name}_pdf`"
           >
-            <img src="@/assets/image/download_icon.png" alt="download"
+            <img
+              src="@/assets/image/download_icon.png"
+              alt="go to download PDF"
           /></a>
           <a :href="videoLink()" target="_blank">
             <img
               class="video_icon"
               src="@/assets/image/youtube_icon.png"
-              alt="youtube"
+              alt="go to video"
           /></a>
         </li>
         <li class="flex_row_c_c">
@@ -71,7 +73,9 @@
           <a
             :href="`/uid/${exchange.name?.toLowerCase()}/${screenSize}/${exchange.name?.toLowerCase()}_${screenSize}_${localLang}.pdf`"
             :download="`${exchange.name}_uid`"
-            ><img src="@/assets/image/download_icon.png" alt="download"
+            ><img
+              src="@/assets/image/download_icon.png"
+              alt="go to download PDF"
           /></a>
           <div class="bin_">&nbsp;</div>
 
@@ -105,12 +109,6 @@ const uidState = computed(() => {
 const localLang = computed(() => {
   return store.state.referral.region_code;
 });
-const session_id = computed(() => {
-  return store.state.referral.session_id;
-});
-const retri_id = computed(() => {
-  return store.state.referral.retri_id;
-});
 let locale = navigator.language.split("-")[1];
 let reportDate = localeToUTCNow(locale);
 let msgCode = "msgCode0"; //입력하지않았을 때
@@ -136,9 +134,6 @@ if (Object.keys(exchange.value).length === 0) {
 }
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-  if (!session_id.value || !retri_id.value) {
-    router.push("/404");
-  }
   const screenWidth = window.innerWidth;
   if (screenWidth < 640) {
     screenSize.value = "mo";
@@ -147,36 +142,24 @@ const createdFn = async () => {
   }
 };
 const goToExchange = () => {
-  let exchangeUrl;
-  if (exchange.value.name === "Toobit")
-    exchangeUrl = "https://www.toobit.com/t/YOUTHMETA";
-  else if (exchange.value.name === "OKX")
-    exchangeUrl = "https://www.okx.com/join/YOUTHMETA";
-  else if (exchange.value.name === "BingX")
-    exchangeUrl = " https://bingx.com/partner/YOUTHMETA";
-  else if (exchange.value.name === "Deepcoin")
-    exchangeUrl = "https://s.deepcoin.com/jcfdhib";
+  const exchangeUrls = {
+    "Toobit" : "https://www.toobit.com/t/YOUTHMETA",
+    "OKX" : "https://www.okx.com/join/YOUTHMETA",
+    "BingX" : "https://bingx.com/partner/YOUTHMETA",
+    "Deepcoin" : "https://s.deepcoin.com/jcfdhib",
+  }
+  const exchangeUrl = exchangeUrls[exchange.value.name] || "";
   window.open(exchangeUrl, "");
 };
 const videoLink = () => {
-  let link;
-  switch (localLang.value) {
-    case "KR":
-      link = exchange.value.videoKR;
-      break;
-    case "EN":
-      link = exchange.value.videoEN;
-      break;
-    case "VN":
-      link = exchange.value.videoVN;
-      break;
-    case "CN":
-      link = exchange.value.videoCN;
-      break;
-    case "JP":
-      link = exchange.value.videoJP;
-      break;
-  }
+  const videoLinks = {
+    KR: exchange.value.videoKR,
+    EN: exchange.value.videoEN,
+    VN: exchange.value.videoVN,
+    CN: exchange.value.videoCN,
+    JP: exchange.value.videoJP,
+  };
+  let link = videoLinks[localLang.value] || null;
   return link;
 };
 store.watch((state) => {

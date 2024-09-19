@@ -17,22 +17,24 @@
     <div class="header_title">
       <h1>Referral Payback</h1>
       <div class="time_area">
-        <span >{{ reportDate }}</span>
+        <span>{{ reportDate }}</span>
       </div>
     </div>
-    <ul class="mypage_ul" :class="{nochart : monthlyInfo.monthly_data?.length < 1}" >
+    <ul class="mypage_ul" :class="{ nochart: monthlyInfo.monthly_data?.length < 1 }">
       <li>
         <h3 class="title">My Payback</h3>
         <div class="payback_info">
           <p class="totalp">
             {{ $t("myPage.totalPayback") }}
             <span class="txt_main"
-              >${{ formatNum(monthlyInfo.total_accumulated_profit,4) ?? 0 }}</span
+              >${{ formatNum(monthlyInfo.total_accumulated_profit, 4) ?? 0 }}</span
             >
           </p>
           <p class="paybackp">
             {{ $t("myPage.monthPayback") }}
-            <span class="txt_main">±${{ formatNum(profitInfo.total_profit,4) ?? 0 }}</span>
+            <span class="txt_main"
+              >±${{ formatNum(profitInfo.total_profit, 4) ?? 0 }}</span
+            >
           </p>
           <div class="month_division">
             <ul class="flex_row_c_c">
@@ -45,7 +47,7 @@
                 <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
                   {{
                     exchange.payback !== "X"
-                      ? `±${formatNum(exchange.payback,4)}`
+                      ? `±${formatNum(exchange.payback, 4)}`
                       : $t("myPage.notSubscribed")
                   }}
                 </p>
@@ -57,7 +59,7 @@
           <ul :style="chartStyle()">
             <li v-for="data in monthlyInfo.monthly_data" :key="data.month">
               <div class="bar" :style="styledObj(data.total_profit)">
-                <em>${{ formatNum(data.total_profit,4) }}</em>
+                <em>${{ formatNum(data.total_profit, 4) }}</em>
               </div>
               <i>{{ data.month.slice(2, 7) }}</i>
             </li>
@@ -92,7 +94,7 @@
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
         <p>{{ $t("myPage.weekPayback") }}</p>
-        <p class="txt_main">± ${{ formatNum(profitWeekInfo.total_profit,4) ?? 0 }}</p>
+        <p class="txt_main">± ${{ formatNum(profitWeekInfo.total_profit, 4) ?? 0 }}</p>
       </div>
       <div class="month_exchange">
         <ul class="flex_row_c_c">
@@ -106,7 +108,7 @@
             <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
               {{
                 exchange.payback !== "X"
-                  ? `±${formatNum(exchange.payback,4) ?? 0}`
+                  ? `±${formatNum(exchange.payback, 4) ?? 0}`
                   : $t("myPage.notSubscribed")
               }}
             </p>
@@ -159,7 +161,7 @@
       <li v-for="data in paybackList" :key="data.date">
         <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
-        <em>${{ formatNum(data.payment,4) ?? 0 }}</em>
+        <em>${{ formatNum(data.payment, 4) ?? 0 }}</em>
         <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
         <em>{{ $t("myPage.referralPayback") }}</em>
         <em>{{
@@ -182,12 +184,16 @@ import ModalMsg from "@/components//modal/ModalMsg.vue";
 import TheCalender from "@/components/comn/TheCalender.vue";
 import ThePaging from "@/components/comn/ThePaging.vue";
 import exchangeList from "@/utils/exchangeList";
-import { autoLeftPad, formatNum, kstToLocale, localeToUTCNow, preDate } from "@/utils/common";
+import {
+  autoLeftPad,
+  formatNum,
+  kstToLocale,
+  localeToUTCNow,
+  preDate,
+} from "@/utils/common";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
 const store = useStore();
-const router = useRouter();
 const exchangeArr = ref([...exchangeList]);
 const exchangeArrWeekly = ref([...exchangeList]);
 const nowDate = new Date();
@@ -217,12 +223,6 @@ const totalPages = computed(() => {
 });
 const listLoading = computed(() => {
   return store.state.referral.listLoading;
-});
-const session_id = computed(() => {
-  return store.state.referral.session_id;
-});
-const retri_id = computed(() => {
-  return store.state.referral.retri_id;
 });
 const isNotReferral = computed(() => {
   return store.state.referral.isNotReferral;
@@ -322,10 +322,10 @@ const changeDate = async () => {
   let date = new Date(end_date.value);
   date.setMonth(date.getMonth() + 1);
   date.setDate(0);
-  date = date.toISOString().slice(8, 10);
+  let eDate = date.toLocaleDateString().split(".")[2].trim();
   let selectDate = {
     start_date: `${start_date.value}-01`,
-    end_date: `${end_date.value}-${date}`,
+    end_date: `${end_date.value}-${eDate}`,
   };
   store.commit("referral/setReportDate", selectDate);
   selectReportTab = "";
@@ -346,8 +346,6 @@ const changePage = async (str) => {
   store.commit("referral/setPage", str);
   await store.dispatch("referral/postCheckLogin");
   await store.dispatch("referral/getPaybackReport");
-  // const listItem = document.querySelector(".payback_list_box");
-  // listItem.scrollTo({ top: 0, behavior: "smooth" });
 };
 let listHeadScroll = 0;
 let listContScroll = 0;
@@ -365,9 +363,6 @@ function syncScroll(el1, el2) {
 allLoading.value = true;
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-  if (!session_id.value || !retri_id.value) {
-    router.push("/404");
-  }
   changeDate();
   store.commit("referral/setPage", 1);
   await Promise.all([

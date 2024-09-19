@@ -5,6 +5,7 @@ import zh from './locales/zh.json'
 import vi from './locales/vi.json'
 import ja from './locales/ja.json'
 import mn from './locales/mn.json'
+import ru from './locales/ru.json'
 
 const i18n = createI18n({
     fallbackLocale: "en", 
@@ -18,6 +19,7 @@ const i18n = createI18n({
         "vi": vi,
         "ja": ja,
         "mn": mn,
+        "ru": ru,
     }
 })
 

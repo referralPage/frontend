@@ -51,7 +51,7 @@ a {color:inherit; text-decoration:none !important; vertical-align: top; border: 
 a:link, a:visited {color:inherit;}
 a:hover, a:focus, a:active, li a:hover, li:hover {text-decoration:none; transition: 0.5s ease; -moz-transition: 0.5s ease; -webkit-transition: 0.5s ease;  -o-transition: 0.5s ease;}
 
-p {margin:0; padding:0;}
+p {margin:0; padding:0; word-break: break-all;}
 
 .clearfix {clear:both;}
 
