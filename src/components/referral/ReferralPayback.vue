@@ -26,8 +26,8 @@
           :src="exchange.logo"
           :alt="`${exchange.name} logo`"
         />
-        <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
-          {{ exchange.payback !== "X" ?  $t("connectExc.connected") :  $t("connectExc.notConnected") }}
+        <p :class="exchange.payback == 'X' ||exchange.payback == undefined ? 'txt_gray' : 'txt_main'">
+          {{ exchange.payback == "X" ||exchange.payback == undefined ? $t("connectExc.notConnected") :  $t("connectExc.connected") }}
         </p>
       </li>
     </ul>
@@ -79,19 +79,20 @@ const createdFn = async () => {
   exchangeArr.value.forEach((obj) => {
     switch (obj.name) {
       case "OKX":
-        obj.payback = profitInfo.value.okx_profit ?? 0;
+        obj.payback = profitInfo.value.okx_profit;
         break;
       case "Toobit":
-        obj.payback = profitInfo.value.toobit_profit ?? 0;
+        obj.payback = profitInfo.value.toobit_profit;
         break;
       case "BingX":
-        obj.payback = profitInfo.value.bingx_profit ?? 0;
+        obj.payback = profitInfo.value.bingx_profit ;
         break;
       case "Deepcoin":
-        obj.payback = profitInfo.value.deepcoin_profit ?? 0;
+        obj.payback = profitInfo.value.deepcoin_profit;
         break;
     }
   });
+  console.log(exchangeArr.value);
 };
 store.watch((state) => {
   if (state.referral.setting) {
