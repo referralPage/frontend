@@ -11,7 +11,6 @@ export default {
       modalState: false,
       exchange: {},
       exchangeFlag: "",
-      // retri_id: "retri1",
       retri_id: "",
       session_id: "",
       uid: "",

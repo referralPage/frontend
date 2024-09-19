@@ -103,6 +103,7 @@ form {
 }
 .warning_txt{
   color: var(--color-red);
+  word-break: break-all;
 }
 .text-center{
   text-align: center !important;
@@ -626,6 +627,8 @@ img.logo_l {
   text-align: center;
   font-size: 1.6em;
   line-height: 1.6em;
+  width: 90%;
+  max-width: 500px;
 }
 .und_wrap button{
   padding:10px;
@@ -696,6 +699,13 @@ img.logo_l {
 @media screen and (max-width: 614px) {
   .right_setBox .drowdown_box {
     position: absolute;
+  }
+}
+
+@media (max-width: 767px) {
+  .und_wrap{
+    width: 80%;
+    max-width: 420px;
   }
 }
 @media (max-width: 480px) {

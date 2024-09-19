@@ -546,7 +546,6 @@ ul.payback_list_box li.nodata_list{
   }
   .pf_calendar_table tr > th {
     padding: 10px 5px;
-    font-size: 13px;
   }
   .pf_calendar_table tr > td {
     padding: 10px 4px;
@@ -708,13 +707,13 @@ ul.payback_list_box li.nodata_list{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
   }
-  .pf_calendar_table tr > th {
-    font-size: 13px;
-  }
   .pf_calendar_table tr > td {
     padding: 6px 2px;
-    font-size: 11px;
+    font-size: 13px;
   }
+  .pf_calendar_table tr > td em {
+    font-size: 12px;
+  } 
 }
 @media (max-width: 480px) {
   .mypage_wrap{

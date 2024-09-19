@@ -5,12 +5,12 @@
         :class="mainPath === 'payback' || mainPath === 'apply' ? 'active' : ''"
       >
         <div>
-          <router-link to="/payback" v-if="mainPath !== '404'"></router-link>
+          <router-link to="/payback"></router-link>
         </div>
       </li>
       <li :class="mainPath === 'mypage' ? 'active' : ''">
         <div>
-          <router-link to="/mypage" v-if="mainPath !== '404'"></router-link>
+          <router-link to="/mypage"></router-link>
         </div>
       </li>
     </ul>
@@ -52,7 +52,7 @@ const widthChange = () => {
   store.commit("referral/setIsMobile", mobile);
 };
 const changeRouter = (path) => {
-  if (mainPath.value == "404") return;
+  // if (mainPath.value == "404") return;
   router.push(`/${path}`);
 };
 onMounted(() => {

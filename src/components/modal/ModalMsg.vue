@@ -1,5 +1,5 @@
 <template>
-  <div class="modal_overlay" @click.self="closeModal">
+  <div class="modal_overlay" @click.self="closeModal(false)">
     <div class="modal_pop_small">
       <div class="smallPop popup_block">
         <div class="pop_title">
@@ -13,9 +13,9 @@
         </div>
         <div class="btn_bottom">
           <button @click="goTelegram" v-if="props.msg == 'modalExchange' && props.exchange.toLowerCase() =='toobit'">
-            고객센터
+           {{ $t("modal['center']")}}
           </button>
-          <button class="btn_gray" @click="closeModal">
+          <button class="btn_gray" @click="closeModal(true)">
             {{
               $t("common['confirm']")
             }}
@@ -35,12 +35,12 @@ const props = defineProps({
   msg: { type: String },
   exchange: { type: String },
 });
-const closeModal = () => {
+const closeModal = (boolean) => {
   store.commit("referral/changeModalState", false);
   if (props.msg == "noLogin") {
     redirect();
   }
-  if(props.exchange){
+  if(props.exchange && boolean){
     router.push("/apply");
   }
   if(props.msg == "msgCode01" || props.msg == "msgCode04"){

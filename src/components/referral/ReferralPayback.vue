@@ -37,21 +37,13 @@ import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { localeToUTCNow } from "@/utils/common";
 import exchangeList from "@/utils/exchangeList";
 import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 const store = useStore();
-const router =useRouter();
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
 const postStatus = computed(() => {
   return store.state.referral.postStatus;
-});
-const session_id = computed(()=>{
-  return store.state.referral.session_id;
-});
-const retri_id = computed(()=>{
-  return store.state.referral.retri_id;
 });
 let locale = navigator.language.split("-")[1];
 let reportDate = localeToUTCNow(locale);
@@ -76,9 +68,6 @@ const enrollCheck = async (exchange) => {
 };
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
-  if(!session_id.value || !retri_id.value){
-    router.push('/404');
-  }
 };
 store.watch((state) => {
   if (state.referral.setting) {
