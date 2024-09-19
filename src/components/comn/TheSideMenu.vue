@@ -48,7 +48,7 @@ const isMobile = computed(() => {
 });
 const widthChange = () => {
   const screenWidth = window.innerWidth;
-  let mobile = screenWidth < 480;
+  let mobile = screenWidth < 481;
   store.commit("referral/setIsMobile", mobile);
 };
 const changeRouter = (path) => {
