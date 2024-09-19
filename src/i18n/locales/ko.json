@@ -12,7 +12,10 @@
         "UIDInput": "거래소 본인 UID :",
         "connectBtn": "신청하기",
         "connectGuide": "신규회원 & 기존회원 가입방법",
-        "UIDCheckGuide": "UID 확인방법"
+        "UIDCheckGuide": "UID 확인방법",
+        "okxInfo" : "중국 국적의 분들은 OKX 가입을 원할 경우, 페이지에 있는 가입하기 버튼을 클릭하지 마시고 반드시 고객센터로 연락해주시기 바랍니다.",
+        "connected" : "연동 완료",
+        "notConnected" : "미 연동"
     },
     "modal" : {
         "dateWarnig" : "날짜를 정확하게 입력해주세요.",
@@ -68,6 +71,7 @@
         "referralPayback" : "레퍼럴 페이백",
         "expectedPayment" : "예상 지급",
         "paymentCompleted" : "지급 완료",
-        "notSubscribed" : "레퍼럴 미 가입"
+        "notSubscribed" : "레퍼럴 미 가입",
+        "subscribed" : "레퍼럴 가입 완료"
     }
 }

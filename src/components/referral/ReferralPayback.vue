@@ -3,7 +3,7 @@
     <div class="header_title">
       <h1>Referral Payback</h1>
       <div class="time_area">
-        <span >{{ reportDate }}</span>
+        <span>{{ reportDate }}</span>
       </div>
     </div>
     <div class="explan_area">
@@ -16,8 +16,8 @@
     </div>
     <ul class="exchange_area flex_row_c">
       <li
-        class="flex_row_c_c"
-        v-for="exchange in exchangeList"
+        class="flex_col_c_c ex_name"
+        v-for="exchange in exchangeArr"
         :key="exchange.name"
         @click="enrollCheck(exchange)"
       >
@@ -26,10 +26,13 @@
           :src="exchange.logo"
           :alt="`${exchange.name} logo`"
         />
+        <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
+          {{ exchange.payback !== "X" ?  $t("connectExc.connected") :  $t("connectExc.notConnected") }}
+        </p>
       </li>
     </ul>
   </div>
-  <ModalMsg v-if="modalState" :msg="msgCode" :exchange ="selectExchange" />
+  <ModalMsg v-if="modalState" :msg="msgCode" :exchange="selectExchange" />
 </template>
 
 <script setup>
@@ -44,6 +47,10 @@ const modalState = computed(() => {
 });
 const postStatus = computed(() => {
   return store.state.referral.postStatus;
+});
+const exchangeArr = ref([...exchangeList]);
+const profitInfo = computed(() => {
+  return store.state.referral.profitInfo;
 });
 let locale = navigator.language.split("-")[1];
 let reportDate = localeToUTCNow(locale);
@@ -68,6 +75,23 @@ const enrollCheck = async (exchange) => {
 };
 const createdFn = async () => {
   await store.dispatch("referral/postCheckLogin");
+  await store.dispatch("referral/getProfit");
+  exchangeArr.value.forEach((obj) => {
+    switch (obj.name) {
+      case "OKX":
+        obj.payback = profitInfo.value.okx_profit ?? 0;
+        break;
+      case "Toobit":
+        obj.payback = profitInfo.value.toobit_profit ?? 0;
+        break;
+      case "BingX":
+        obj.payback = profitInfo.value.bingx_profit ?? 0;
+        break;
+      case "Deepcoin":
+        obj.payback = profitInfo.value.deepcoin_profit ?? 0;
+        break;
+    }
+  });
 };
 store.watch((state) => {
   if (state.referral.setting) {

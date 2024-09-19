@@ -12,7 +12,10 @@
         "UIDInput": "Toobit取引所のご本人のUID:",
         "connectBtn": "申請する",
         "connectGuide": "新規会員&既存会員の登録の仕方",
-        "UIDCheckGuide": "UIDの確認の仕方"
+        "UIDCheckGuide": "UIDの確認の仕方",
+        "okxInfo" : "中国国籍の方が、OKXのご登録をご希望される場合、 ページにある「登録する」ボタンをクリックせず 必ずカスタマーセンターにご連絡ください。",
+        "connected" : "連動完了",
+        "notConnected" : "未連動"
     },
     "modal" : {
         "dateWarnig" : "日付を正確に入力してください。",
@@ -69,7 +72,8 @@
         "referralPayback" : "リファラル·ペイバック",
         "expectedPayment" : "支給(予想)",
         "paymentCompleted" : "支給完了",
-        "notSubscribed" : "指定されたリファラルリンクからの登録ではありません。"
+        "notSubscribed" : "指定されたリファラルリンクからの登録ではありません。",
+        "subscribed" : "リファラルの登録が完了しました。"
     }
 }
 

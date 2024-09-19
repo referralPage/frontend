@@ -12,7 +12,10 @@
         "UIDInput": "Toobit 交易所本人UID：",
         "connectBtn": "申请",
         "connectGuide": "如何注册新入会员和现有会员",
-        "UIDCheckGuide": "确认UID 方法 "
+        "UIDCheckGuide": "确认UID 方法 ",
+        "okxInfo" : "如果您是中国国籍并想加入OKX，不要点击网页上的注册按钮。请务必联系客服。”",
+        "connected" : "已链接",
+        "notConnected" : "未链接"
     },
     "modal" : {
         "dateWarnig" : "请输入正确日期",
@@ -69,6 +72,7 @@
         "referralPayback" : "推荐码回收成本",
         "expectedPayment" : "预期付款",
         "paymentCompleted" : "付款完成",
-        "notSubscribed" : "未注册推荐码"
+        "notSubscribed" : "未注册推荐码",
+        "subscribed" : "推荐码 注册 完成"
     }
 }

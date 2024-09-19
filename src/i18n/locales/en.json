@@ -12,7 +12,10 @@
         "UIDInput": " Exchange UID:",
         "connectBtn": "Apply",
         "connectGuide": "New & Existing Users Registration Method",
-        "UIDCheckGuide": "How to Check UID"
+        "UIDCheckGuide": "How to Check UID",
+        "okxInfo" : "If individuals with Chinese nationality want to join OKX, please contact customer service, Do NOT click the sign-up button on the page",
+        "connected" : "Connected Successfully",
+        "notConnected" : "not connected"
     },
     "modal" : {
         "dateWarnig" : "Please enter the date accurately.",
@@ -68,6 +71,7 @@
         "referralPayback" : "Referral Payback",
         "expectedPayment" : "Expected Payment",
         "paymentCompleted" : "Payment Completed",
-        "notSubscribed" : "Not joined through Referral link"
+        "notSubscribed" : "Not joined through Referral link",
+        "subscribed" : "Referral subscription completed"
     }
 }
