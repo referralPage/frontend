@@ -52,7 +52,7 @@ const exchangeArr = ref([...exchangeList]);
 const profitInfo = computed(() => {
   return store.state.referral.profitInfo;
 });
-let locale = navigator.language.split("-")[1];
+let locale = navigator.language.split("-")[1] || "en";
 let reportDate = localeToUTCNow(locale);
 let selectExchange = ref(null);
 let msgCode = "msgCode0"; //입력하지않았을 때

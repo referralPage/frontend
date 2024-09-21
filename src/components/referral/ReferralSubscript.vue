@@ -110,7 +110,7 @@ const uidState = computed(() => {
 const localLang = computed(() => {
   return store.state.referral.region_code;
 });
-let locale = navigator.language.split("-")[1];
+let locale = navigator.language.split("-")[1] || "en";
 let reportDate = localeToUTCNow(locale);
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";

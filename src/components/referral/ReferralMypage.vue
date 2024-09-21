@@ -159,10 +159,10 @@
         <span class="nodata">No data!</span>
       </li>
       <li v-for="data in paybackList" :key="data.date">
-        <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
+        <!-- <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em> -->
         <em>{{ data.exchange }}</em>
         <em>${{ formatNum(data.payment, 4) ?? 0 }}</em>
-        <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
+        <!-- <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em> -->
         <em>{{ $t("myPage.referralPayback") }}</em>
         <em>{{
           data.status == 1 ? $t("myPage.expectedPayment") : $t("myPage.paymentCompleted")
@@ -187,7 +187,7 @@ import exchangeList from "@/utils/exchangeList";
 import {
   autoLeftPad,
   formatNum,
-  kstToLocale,
+  // kstToLocale,
   localeToUTCNow,
   preDate,
 } from "@/utils/common";
@@ -198,7 +198,7 @@ const exchangeArr = ref([...exchangeList]);
 const exchangeArrWeekly = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
-let locale = navigator.language.split("-")[1];
+let locale = navigator.language.split("-")[1] || "en";
 let reportDate = localeToUTCNow(locale);
 const modalState = computed(() => {
   return store.state.referral.modalState;

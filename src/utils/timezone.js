@@ -192,9 +192,13 @@ function getTimeZone(regionCode) {
   return timeZoneMap[regionCode] || "UTC"; // Default to UTC if no mapping is found
 }
 
-function setTimeZone(utcDate, regionCode) {
+function setTimeZone(utcDate, regionCode,type) {
   const timeZone = getTimeZone(regionCode);
-  const dateInUTC = new Date(utcDate + "Z");
+  let dateInUTC = new Date(utcDate + "Z");
+  if (isNaN(dateInUTC.getTime())) {
+    console.error("Invalid UTC date:", utcDate);
+    return "Invalid Date"; // 유효하지 않은 날짜 처리
+  }
   const options = {
     timeZone: timeZone,
     year: "numeric",
@@ -205,7 +209,6 @@ function setTimeZone(utcDate, regionCode) {
     second: "2-digit",
     hour12: false,
   };
-
   const formatter = new Intl.DateTimeFormat("en-US", options);
   const formattedParts = formatter.formatToParts(dateInUTC);
   const year = formattedParts.find((part) => part.type === "year").value;
@@ -222,8 +225,14 @@ function setTimeZone(utcDate, regionCode) {
     .find((part) => part.type === "minute")
     .value.padStart(2, "0");
 
-  let changeDate = `${year}.${month}.${day} ${hour}:${minute} `;
-  return changeDate;
+  if(type == 0){
+    let changeDate = `${year}.${month}.${day} ${hour}:00 `;
+    return changeDate;
+  }else{
+    let changeDate = `${year}.${month}.${day} ${hour}:${minute} `;
+    return changeDate;
+  }
+
 }
 
 export { getTimeZone, setTimeZone };

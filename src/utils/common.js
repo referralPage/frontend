@@ -3,22 +3,34 @@ import { setTimeZone } from "@/utils/timezone.js";
 
 //현재 local시간을  utc로 변경
 export const localeToUTCNow = (country) => {
-  const date = new Date();
-  const offset = date.getTimezoneOffset() * 60 * 1000;
-  const utcDate = new Date(date.getTime() + offset);
-  const nowDate = setTimeZone(utcDate, country);
-  nowDate.split(":")[1] = "00";
-  let formatDate = `${nowDate.split(":")[0]}:00`;
-  return formatDate;
+  try {
+    const date = new Date();
+    const utcDate = new Date(
+      date.getTime() + date.getTimezoneOffset() * 60000
+    );
+    const nowDate = setTimeZone(utcDate, country,0);
+    if (!nowDate) {
+      throw new Error("Invalid time zone or date.");
+    }
+    return nowDate;
+  } catch (error) {
+    console.error("Error in getFormattedLocalTime:", error);
+    return null; // 오류 처리 방법에 맞게 조정
+  }
 };
 //kst -> utc -> locale
-export const kstToLocale = (localeTime) => {
-  let date = new Date(localeTime);
-  let utc = new Date(date.setHours(date.getHours()- 9)); //kst to utc
-  const locale = navigator.language.split("-")[1];
-  const localeDate = setTimeZone(utc,locale) // utc to locale
-  return localeDate.split(" ")[0];
-};
+// export const kstToLocale = (localeTime) => {
+//   let date = new Date(localeTime);
+//   if (isNaN(date.getTime())) {
+//     console.error("Invalid locale time:", localeTime);
+//     return "Invalid Date"; // 유효하지 않은 날짜 처리
+//   }
+//   let utc = new Date(date.setHours(date.getHours() - 9)); // KST to UTC
+//   const locale = navigator.language.split("-")[1] || "US";
+//   const localeDate = setTimeZone(utc.toISOString(), locale); // UTC to locale
+//   return localeDate.split(" ")[0]; // 날짜 부분 반환
+// };
+
 //type = year 1년 전, type = month 한달 전
 export const preDate = (selectDate, type) => {
   let result = new Date(selectDate);
@@ -57,28 +69,30 @@ export const numSign = (num, digit, type) => {
       const number = Number(num);
       const factor = Math.pow(10, digit);
       const floored = Math.floor(number * factor) / factor;
-      num = String(floored.toLocaleString('ko-KR',{maximumFractionDigits : digit}));
+      num = String(
+        floored.toLocaleString("ko-KR", { maximumFractionDigits: digit })
+      );
     }
-    if(type){
+    if (type) {
       if (String(num).charAt(0) != "-" && num != 0) return `+$${num}`;
       else return `-$${num.split("-")[1]}`;
     }
     if (String(num).charAt(0) != "-" && num != 0) return `+${num}`;
     else return num;
-  } else{
+  } else {
     return 0;
   }
 };
 
 //숫자 ,(콤마) , 소수점 내림
 export const formatNum = (num, digit) => {
- const number = Number(num);
- if (isNaN(number)) {
-   return '0';
- }
- const factor = Math.pow(10, digit);
- const floored = Math.floor(number * factor) / factor;
- return floored.toLocaleString('ko-KR', { maximumFractionDigits: digit });
+  const number = Number(num);
+  if (isNaN(number)) {
+    return "0";
+  }
+  const factor = Math.pow(10, digit);
+  const floored = Math.floor(number * factor) / factor;
+  return floored.toLocaleString("ko-KR", { maximumFractionDigits: digit });
 };
 
 // paging
