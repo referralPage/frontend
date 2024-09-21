@@ -2,9 +2,9 @@
   <div class="recieve_wrap">
     <div class="header_title">
       <h1>Referral Payback</h1>
-      <div class="time_area">
+      <!-- <div class="time_area">
         <span>{{ reportDate }}</span>
-      </div>
+      </div> -->
     </div>
     <div class="payback_sub_title flex_col_c_c">
       <img class="logo_l" :src="exchange.logo" :alt="`${exchange.name} 로고`" />
@@ -95,7 +95,7 @@ import { computed, ref } from "vue";
 import ModalMsg from "@/components/modal/ModalMsg.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { localeToUTCNow } from "@/utils/common";
+// import { localeToUTCNow } from "@/utils/common";
 const router = useRouter();
 const store = useStore();
 const exchange = computed(() => {
@@ -110,8 +110,8 @@ const uidState = computed(() => {
 const localLang = computed(() => {
   return store.state.referral.region_code;
 });
-let locale = navigator.language.split("-")[1] || "en";
-let reportDate = localeToUTCNow(locale);
+// let locale = navigator.language.split("-")[1] || "en";
+// let reportDate = localeToUTCNow(locale);
 let msgCode = "msgCode0"; //입력하지않았을 때
 let userUid = "";
 const checkNumber = (e) => {

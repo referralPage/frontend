@@ -2,9 +2,9 @@
   <div class="payback_main_wrap pr">
     <div class="header_title">
       <h1>Referral Payback</h1>
-      <div class="time_area">
+      <!-- <div class="time_area">
         <span>{{ reportDate }}</span>
-      </div>
+      </div> -->
     </div>
     <div class="explan_area">
       <p class="txt_main">{{ $t("dashboardPrev['referralSystem']") }}</p>
@@ -37,7 +37,7 @@
 
 <script setup>
 import ModalMsg from "@/components/modal/ModalMsg.vue";
-import { localeToUTCNow } from "@/utils/common";
+// import { localeToUTCNow } from "@/utils/common";
 import exchangeList from "@/utils/exchangeList";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
@@ -52,8 +52,8 @@ const exchangeArr = ref([...exchangeList]);
 const profitInfo = computed(() => {
   return store.state.referral.profitInfo;
 });
-let locale = navigator.language.split("-")[1] || "en";
-let reportDate = localeToUTCNow(locale);
+// let locale = navigator.language.split("-")[1] || "en";
+// let reportDate = localeToUTCNow(locale);
 let selectExchange = ref(null);
 let msgCode = "msgCode0"; //입력하지않았을 때
 const enrollCheck = async (exchange) => {

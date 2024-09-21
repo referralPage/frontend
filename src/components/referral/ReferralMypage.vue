@@ -16,9 +16,9 @@
   <div class="mypage_wrap" v-if="!allLoading">
     <div class="header_title">
       <h1>Referral Payback</h1>
-      <div class="time_area">
+      <!-- <div class="time_area">
         <span>{{ reportDate }}</span>
-      </div>
+      </div> -->
     </div>
     <ul class="mypage_ul" :class="{ nochart: monthlyInfo.monthly_data?.length < 1 }">
       <li>
@@ -198,8 +198,8 @@ const exchangeArr = ref([...exchangeList]);
 const exchangeArrWeekly = ref([...exchangeList]);
 const nowDate = new Date();
 const toDate = nowDate.toISOString().slice(0, 7);
-let locale = navigator.language.split("-")[1] || "en";
-let reportDate = localeToUTCNow(locale);
+// let locale = navigator.language.split("-")[1] || "en";
+// let reportDate = localeToUTCNow(locale);
 const modalState = computed(() => {
   return store.state.referral.modalState;
 });
