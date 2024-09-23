@@ -1,19 +1,13 @@
+// import moment from "moment";
 function getTimeZone(regionCode) {
-  if (regionCode === "korea") {
-    regionCode = "KR";
-  }
-  if (regionCode === "japan") {
-    regionCode = "JP";
-  }
-  if (regionCode === "chinese") {
-    regionCode = "CN";
-  }
-  if (regionCode === "english") {
-    regionCode = "US";
-  }
-  if (regionCode === "vietnam") {
-    regionCode = "VN";
-  }
+  const regionToCode = {
+    korea: "KR",
+    japan: "JP",
+    chinese: "CN",
+    english: "US",
+    vietnam: "VN",
+  };
+  regionCode = regionToCode[regionCode] || regionCode;
 
   const timeZoneMap = {
     CN: "Asia/Shanghai", // China
@@ -192,9 +186,9 @@ function getTimeZone(regionCode) {
   return timeZoneMap[regionCode] || "UTC"; // Default to UTC if no mapping is found
 }
 
-function setTimeZone(utcDate, regionCode,type) {
+function setTimeZone(utcDate, regionCode, type) {
   const timeZone = getTimeZone(regionCode);
-  let dateInUTC = new Date(utcDate + "Z");
+  let dateInUTC = new Date(utcDate); //날짜 객체로 변경
   if (isNaN(dateInUTC.getTime())) {
     console.error("Invalid UTC date:", utcDate);
     return "Invalid Date"; // 유효하지 않은 날짜 처리
@@ -213,26 +207,18 @@ function setTimeZone(utcDate, regionCode,type) {
   const formattedParts = formatter.formatToParts(dateInUTC);
   const year = formattedParts.find((part) => part.type === "year").value;
   const month = formattedParts
-    .find((part) => part.type === "month")
-    .value.padStart(2, "0");
-  const day = formattedParts
-    .find((part) => part.type === "day")
-    .value.padStart(2, "0");
-  const hour = formattedParts
-    .find((part) => part.type === "hour")
-    .value.padStart(2, "0");
-  const minute = formattedParts
-    .find((part) => part.type === "minute")
-    .value.padStart(2, "0");
+    .find((part) => part.type === "month").value.padStart(2, "0");
+  const day = formattedParts.find((part) => part.type === "day").value.padStart(2, "0");
+  const hour = formattedParts.find((part) => part.type === "hour").value.padStart(2, "0");
+  const minute = formattedParts.find((part) => part.type === "minute").value.padStart(2, "0");
 
-  if(type == 0){
+  if (type == 0) {
     let changeDate = `${year}.${month}.${day} ${hour}:00 `;
     return changeDate;
-  }else{
+  } else {
     let changeDate = `${year}.${month}.${day} ${hour}:${minute} `;
     return changeDate;
   }
-
 }
 
 export { getTimeZone, setTimeZone };
