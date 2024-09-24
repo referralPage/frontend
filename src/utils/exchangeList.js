@@ -32,7 +32,16 @@ const exchangeList = [
         videoVN : 'https://youtu.be/wlIvi3UwW9Y',
         videoCN : 'https://youtu.be/jL2eF1mvLxc',
         videoJP : 'https://youtu.be/jz_PiYEU6xo'
-    }
+    },
+    // {
+    //     name : 'Deepcoin',
+    //     logo : require('@/assets/image/ex/Deepcoin.svg'),
+    //     videoKR : 'https://youtu.be/zLhJa-Xw7-g',
+    //     videoEN : 'https://youtu.be/sh3LrqFxN9A',        
+    //     videoVN : 'https://youtu.be/wlIvi3UwW9Y',
+    //     videoCN : 'https://youtu.be/jL2eF1mvLxc',
+    //     videoJP : 'https://youtu.be/jz_PiYEU6xo'
+    // }
 ];
 
 export default exchangeList;

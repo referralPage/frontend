@@ -52,6 +52,7 @@
   padding: 30px;
   cursor: pointer;
   backdrop-filter: blur(5px);
+  flex: 0 0 auto;
 }
 .exchange_area li p{
   margin: 10px 0 0;
