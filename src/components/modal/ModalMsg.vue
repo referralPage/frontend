@@ -1,24 +1,38 @@
 <template>
-  <div class="modal_overlay" @click.self="closeModal(false)">
+  <div class="modal_overlay" @click.self="closeModal()">
     <div class="modal_pop_small">
-      <div class="smallPop popup_block" :class="{ex : props.msg == 'modalExchange' && props.exchange.toLowerCase() =='toobit'}">
+      <div
+        class="smallPop popup_block"
+        :class="{
+          ex:
+            props.msg == 'modalExchange' &&
+            props.exchange.toLowerCase() == 'toobit',
+        }"
+      >
         <div class="pop_title">
-          <p>ReTri Referral {{ props.exchange }}</p>
+          <p v-if="props.exchange">ReTri Referral {{ props.exchange }}</p>
+          <p v-else>ReTri Referral</p>
         </div>
         <div class="con_wrap" v-if="props.msg === 'modalExchange'">
-          <p v-html="$t(`modalExchange['${props.exchange.toLowerCase()}']`)"></p>
+          <p
+            v-html="$t(`modalExchange['${props.exchange.toLowerCase()}']`)"
+          ></p>
         </div>
         <div class="con_wrap" v-else>
           <p>{{ $t(`modal['${props.msg}']`) }}</p>
         </div>
         <div class="btn_bottom">
-          <button @click="goTelegram" v-if="props.msg == 'modalExchange' && props.exchange.toLowerCase() =='toobit'">
-           {{ $t("modal['center']")}}
+          <button
+            @click="goTelegram"
+            v-if="
+              props.msg == 'modalExchange' &&
+              props.exchange.toLowerCase() == 'toobit'
+            "
+          >
+            {{ $t("modal['center']") }}
           </button>
-          <button class="btn_gray" @click="closeModal(true)">
-            {{
-              $t("common['confirm']")
-            }}
+          <button class="btn_gray" @click="closeModal()">
+            {{ $t("common['confirm']") }}
           </button>
         </div>
       </div>
@@ -35,26 +49,22 @@ const props = defineProps({
   msg: { type: String },
   exchange: { type: String },
 });
-const closeModal = (boolean) => {
+const closeModal = () => {
   store.commit("referral/changeModalState", false);
   if (props.msg == "noLogin") {
     redirect();
   }
-  if(props.exchange && boolean){
+  if (props.exchange && props.msg !== "msgCode02") {
     router.push("/apply");
   }
-  if(props.msg == "msgCode03"){
-    router.push("/apply");
-  }
-  if(props.msg == "msgCode01" || props.msg == "msgCode04"){
+  if (props.msg == "msgCode01" || props.msg == "msgCode04") {
     router.push("/payback");
   }
 };
-const goTelegram = () =>{
+const goTelegram = () => {
   window.open("https://t.me/retrics");
   closeModal();
-
-}
+};
 const redirect = () => {
   const screenWidth = window.innerWidth;
   if (screenWidth < 640) {
@@ -63,7 +73,6 @@ const redirect = () => {
     location.href = "https://retri.io";
   }
 };
-
 </script>
 
 <style lang="scss" scoped></style>

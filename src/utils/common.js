@@ -1,35 +1,30 @@
 // 공통 함수
 import { setTimeZone } from "@/utils/timezone.js";
+import moment from "moment";
 
-//현재 local시간을  utc로 변경
+//표준시간대 상관없이 현지시간으로 변경
 export const localeToUTCNow = (country) => {
-  try {
-    const date = new Date();
-    const utcDate = new Date(
-      date.getTime() + date.getTimezoneOffset() * 60000
-    );
-    const nowDate = setTimeZone(utcDate, country,0);
-    if (!nowDate) {
-      throw new Error("Invalid time zone or date.");
-    }
-    return nowDate;
-  } catch (error) {
-    console.error("Error in getFormattedLocalTime:", error);
-    return null; // 오류 처리 방법에 맞게 조정
+  const date = moment().utc().toDate(); //표준 시간 -> utc 시간으로 변경
+  let localeTime = moment.utc(date).toDate();
+  localeTime = moment(localeTime).format("YYYY/MM/DD HH:mm:ss");
+  const nowDate = setTimeZone(localeTime, country, 0);
+  if (!nowDate) {
+    throw new Error("Invalid time zone or date.");
   }
+  return nowDate;
 };
 //kst -> utc -> locale
-// export const kstToLocale = (localeTime) => {
-//   let date = new Date(localeTime);
-//   if (isNaN(date.getTime())) {
-//     console.error("Invalid locale time:", localeTime);
-//     return "Invalid Date"; // 유효하지 않은 날짜 처리
-//   }
-//   let utc = new Date(date.setHours(date.getHours() - 9)); // KST to UTC
-//   const locale = navigator.language.split("-")[1] || "US";
-//   const localeDate = setTimeZone(utc.toISOString(), locale); // UTC to locale
-//   return localeDate.split(" ")[0]; // 날짜 부분 반환
-// };
+export const kstToLocale = (localeTime) => {
+  let date = moment(localeTime + "Z")
+    .subtract(9, "hours")
+    .format("YYYY/MM/DD HH:mm:ss"); //kst-> utc
+  const locale = navigator.language.split("-")[1] || "US";
+  const localeDate = setTimeZone(date, locale); // UTC to locale
+  if (!localeDate) {
+    throw new Error("Invalid time zone or date.");
+  }
+  return localeDate.split(" ")[0]; // 날짜 부분 반환
+};
 
 //type = year 1년 전, type = month 한달 전
 export const preDate = (selectDate, type) => {

@@ -62,8 +62,8 @@ const enrollCheck = async (exchange) => {
   store.commit("referral/setExchangeFlag");
   await store.dispatch("referral/getCheckApproval");
   store.commit("referral/changeModalState", true);
+  selectExchange.value = exchange.name;
   if (postStatus.value === 0) {
-    selectExchange.value = exchange.name;
     msgCode = `modalExchange`;
   } else {
     if (postStatus.value === 1) {
