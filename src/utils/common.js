@@ -15,10 +15,11 @@ export const localeToUTCNow = (country) => {
 };
 //kst -> utc -> locale
 export const kstToLocale = (localeTime) => {
-  let date = moment(localeTime + "Z")
+  let formatLocale = localeTime.replace(" ","T").replaceAll(".","-")
+  let date = moment(formatLocale + "Z")
     .subtract(9, "hours")
     .format("YYYY/MM/DD HH:mm:ss"); //kst-> utc
-  const locale = navigator.language.split("-")[1] || "US";
+  const locale = navigator.language.split("-")[1] || "en";
   const localeDate = setTimeZone(date, locale); // UTC to locale
   if (!localeDate) {
     throw new Error("Invalid time zone or date.");

@@ -2,7 +2,7 @@
   <div class="wrap">
     <div></div>
     <TheHeader></TheHeader>
-    <!-- <TheSideMenu></TheSideMenu> -->
+    <TheSideMenu></TheSideMenu>
     <div class="main_wrap" :class="{ payback: mainPath == 'payback' }">
       <router-view></router-view>
       <ModalMsg msg="noLogin" v-if="!loginStatus" />
@@ -15,7 +15,7 @@ import "@/assets/css/style.css";
 import "@/assets/css/font.css";
 import { useI18n } from "vue-i18n";
 import TheHeader from "./components/comn/TheHeader.vue";
-// import TheSideMenu from "./components/comn/TheSideMenu.vue";
+import TheSideMenu from "./components/comn/TheSideMenu.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 import ModalMsg from "./components/modal/ModalMsg.vue";

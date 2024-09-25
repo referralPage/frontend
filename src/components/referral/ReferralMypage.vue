@@ -20,14 +20,19 @@
         <span>{{ reportDate }}</span>
       </div> -->
     </div>
-    <ul class="mypage_ul" :class="{ nochart: monthlyInfo.monthly_data?.length < 1 }">
+    <ul
+      class="mypage_ul"
+      :class="{ nochart: monthlyInfo.monthly_data?.length < 1 }"
+    >
       <li>
         <h3 class="title">My Payback</h3>
         <div class="payback_info">
           <p class="totalp">
             {{ $t("myPage.totalPayback") }}
             <span class="txt_main"
-              >${{ formatNum(monthlyInfo.total_accumulated_profit, 4) ?? 0 }}</span
+              >${{
+                formatNum(monthlyInfo.total_accumulated_profit, 4) ?? 0
+              }}</span
             >
           </p>
           <p class="paybackp">
@@ -38,7 +43,11 @@
           </p>
           <div class="month_division">
             <ul class="flex_row_c_c">
-              <li class="flex_col_c_c" v-for="(exchange, i) in exchangeArr" :key="i">
+              <li
+                class="flex_col_c_c"
+                v-for="(exchange, i) in exchangeArr"
+                :key="i"
+              >
                 <img
                   class="logo_xs"
                   :src="exchange.logo"
@@ -94,7 +103,9 @@
     <div class="month_payback flex_row_c_c">
       <div class="month_txt">
         <p>{{ $t("myPage.weekPayback") }}</p>
-        <p class="txt_main">± ${{ formatNum(profitWeekInfo.total_profit, 4) ?? 0 }}</p>
+        <p class="txt_main">
+          ± ${{ formatNum(profitWeekInfo.total_profit, 4) ?? 0 }}
+        </p>
       </div>
       <div class="month_exchange">
         <ul class="flex_row_c_c">
@@ -103,7 +114,11 @@
             v-for="exchange in exchangeArrWeekly"
             :key="exchange.name"
           >
-            <img class="logo_s" :src="exchange.logo" :alt="`${exchange.name} logo`" />
+            <img
+              class="logo_s"
+              :src="exchange.logo"
+              :alt="`${exchange.name} logo`"
+            />
             <!-- <p>{{ exchange.name }}</p> -->
             <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
               {{
@@ -124,7 +139,9 @@
           <input type="month" v-model="start_date" :max="toDate" />
           <span class="input_hypen">-</span>
           <input type="month" v-model="end_date" :max="toDate" />
-          <button type="button" class="btn_search" @click="historySearch">Search</button>
+          <button type="button" class="btn_search" @click="historySearch">
+            Search
+          </button>
         </div>
       </div>
     </form>
@@ -159,13 +176,15 @@
         <span class="nodata">No data!</span>
       </li>
       <li v-for="data in paybackList" :key="data.date">
-        <!-- <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em> -->
+        <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
         <em>${{ formatNum(data.payment, 4) ?? 0 }}</em>
-        <!-- <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em> -->
+        <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
         <em>{{ $t("myPage.referralPayback") }}</em>
         <em>{{
-          data.status == 1 ? $t("myPage.expectedPayment") : $t("myPage.paymentCompleted")
+          data.status == 1
+            ? $t("myPage.expectedPayment")
+            : $t("myPage.paymentCompleted")
         }}</em>
       </li>
     </ul>
@@ -187,12 +206,13 @@ import exchangeList from "@/utils/exchangeList";
 import {
   autoLeftPad,
   formatNum,
-  // kstToLocale,
+  kstToLocale,
   // localeToUTCNow,
-  preDate,
+  // preDate,
 } from "@/utils/common";
 import { computed, reactive, ref } from "vue";
 import { useStore } from "vuex";
+import moment from "moment";
 const store = useStore();
 const exchangeArr = ref([...exchangeList]);
 const exchangeArrWeekly = ref([...exchangeList]);
@@ -206,6 +226,15 @@ const modalState = computed(() => {
 const monthlyInfo = computed(() => {
   return store.state.referral.monthlyInfo;
 });
+// const monthlyInfo = ref({
+//   monthly_data: [
+//     { total_profit: 5, month: "2024-09-01" },
+//     { total_profit: 5, month: "2024-09-01" },
+//     { total_profit: 5, month: "2024-09-01" },
+//     { total_profit: 5, month: "2024-09-01" },
+//     { total_profit: 5, month: "2024-09-01" },
+//   ],
+// });
 const profitInfo = computed(() => {
   return store.state.referral.profitInfo;
 });
@@ -244,8 +273,10 @@ let select = reactive({
   year: nowDate.getFullYear(),
   month: nowDate.getMonth() + 1,
 });
-let start_date = ref(preDate(new Date(), "month").toISOString().slice(0, 7));
-let end_date = ref(toDate);
+// let start_date = ref(preDate(new Date(), "month").toISOString().slice(0, 7));
+// let end_date = ref(toDate);
+let start_date = ref(moment().subtract(1, "months").format("YYYY-MM"));
+let end_date = ref(moment().format("YYYY-MM"));
 let yearArr = [nowDate.getFullYear(), nowDate.getFullYear() - 1];
 const styledObj = (profit) => {
   return {
@@ -320,6 +351,8 @@ const selectDateBtn = async (type) => {
 
 const changeDate = async () => {
   let date = new Date(end_date.value);
+  // let date = moment(end_date.value).format("YYYY/MM/DD HH:mm:ss");
+  // let date = moment(end_date.value).toDate(); //js객체로변경
   date.setMonth(date.getMonth() + 1);
   date.setDate(0);
   let eDate = date.toLocaleDateString().split(".")[2].trim();
@@ -352,7 +385,10 @@ let listContScroll = 0;
 function syncScroll(el1, el2) {
   const listHead = document.querySelector(".payback_list_head_area ");
   const listCont = document.querySelector(".payback_list_box ");
-  if (listHead.scrollLeft !== listHeadScroll || listCont.scrollLeft !== listContScroll) {
+  if (
+    listHead.scrollLeft !== listHeadScroll ||
+    listCont.scrollLeft !== listContScroll
+  ) {
     el1 == "head" ? (el1 = listHead) : (el1 = listCont);
     el2 == "head" ? (el2 = listHead) : (el2 = listCont);
     el2.scrollLeft = el1.scrollLeft;
