@@ -31,14 +31,14 @@
             {{ $t("myPage.totalPayback") }}
             <span class="txt_main"
               >${{
-                formatNum(monthlyInfo.total_accumulated_profit, 4) ?? 0
+                formatNum(monthlyInfo.total_accumulated_profit, 2) ?? 0
               }}</span
             >
           </p>
           <p class="paybackp">
             {{ $t("myPage.monthPayback") }}
             <span class="txt_main"
-              >±${{ formatNum(profitInfo.total_profit, 4) ?? 0 }}</span
+              >±${{ formatNum(profitInfo.total_profit, 2) ?? 0 }}</span
             >
           </p>
           <div class="month_division">
@@ -56,7 +56,7 @@
                 <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
                   {{
                     exchange.payback !== "X"
-                      ? `±${formatNum(exchange.payback, 4)}`
+                      ? `±${formatNum(exchange.payback, 2)}`
                       : $t("myPage.notSubscribed")
                   }}
                 </p>
@@ -104,7 +104,7 @@
       <div class="month_txt">
         <p>{{ $t("myPage.weekPayback") }}</p>
         <p class="txt_main">
-          ± ${{ formatNum(profitWeekInfo.total_profit, 4) ?? 0 }}
+          ± ${{ formatNum(profitWeekInfo.total_profit, 2) ?? 0 }}
         </p>
       </div>
       <div class="month_exchange">
@@ -123,7 +123,7 @@
             <p :class="exchange.payback !== 'X' ? 'txt_main' : 'txt_gray'">
               {{
                 exchange.payback !== "X"
-                  ? `±${formatNum(exchange.payback, 4) ?? 0}`
+                  ? `±${formatNum(exchange.payback, 2) ?? 0}`
                   : $t("myPage.notSubscribed")
               }}
             </p>
@@ -178,7 +178,7 @@
       <li v-for="data in paybackList" :key="data.date">
         <em>{{ kstToLocale(`${data.datetime} 00:00`) }}</em>
         <em>{{ data.exchange }}</em>
-        <em>${{ formatNum(data.payment, 4) ?? 0 }}</em>
+        <em>${{ formatNum(data.payment, 2) ?? 0 }}</em>
         <em>{{ kstToLocale(`${data.paymentdate} 00:00`) }}</em>
         <em>{{ $t("myPage.referralPayback") }}</em>
         <em>{{
