@@ -238,8 +238,8 @@ export default {
         context.state.session_id = response.result.session_id;
         context.state.retri_id = response.result.retri_id;
         let load = context.state.loadCheck
-        // 이전 접속 링크에 ref.retri.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
-        if (!document.referrer.includes('ref.retri.xyz')) {
+        // 이전 접속 링크에 ref.tryex.xyz 가 포함되어 있지 않으면 로컬 스토리지에 설정
+        if (!document.referrer.includes('ref.tryex.xyz')) {
           // if (!document.referrer.includes('local')) {
           let lang = changeLang(context.state.region_code)
           localStorage.setItem("localeLangDisplayed", context.state.region_code);
