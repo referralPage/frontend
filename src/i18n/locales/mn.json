@@ -28,7 +28,8 @@
         "msgCode05" : "For this exchange, Referral registration will be completed within 2 business days after application.",
         "msgCode06" : "This UID has already been applied.",
         "msgCode07" : "No referral application history exist for this UID.",
-        "noLogin" : "Duplicate login detected. This window will be closed."
+        "noLogin" : "Duplicate login detected. This window will be closed.",
+        "center" : "Help Center"
     },
     "modalExchange" : {
         "okx" : "Existing users can cancel their acounts once and complete KYC verification again in a new account. For members who have never canceled before, proceed with cancellation and enter the referral code to to make a new account. Once new account is made, enter your UID.",
@@ -39,7 +40,7 @@
     "noAccess" : {
         "msg01" : "We apologize for the inconvenience.",
         "msg02" : "Accessed through an unauthorized path",
-        "msg03" : "Clicking confirm will redirect you to the Retri page."
+        "msg03" : "Clicking confirm will redirect you to the Ex page."
     },
     "common" : {
         "confirm" : "confirm"
