@@ -2,7 +2,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 export const API = axios.create({
   // baseURL: "http://3.35.18.18/",
-  baseURL: "https://referral.retri.xyz/",
+  baseURL: "https://referral.tryex.xyz/",
   headers: {
     Accept: "*/*",
   },
