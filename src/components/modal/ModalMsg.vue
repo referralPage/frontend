@@ -10,8 +10,8 @@
         }"
       >
         <div class="pop_title">
-          <p v-if="props.exchange">ReTri Referral {{ props.exchange }}</p>
-          <p v-else>ReTri Referral</p>
+          <p v-if="props.exchange">Ex Referral {{ props.exchange }}</p>
+          <p v-else>Ex Referral</p>
         </div>
         <div class="con_wrap" v-if="props.msg === 'modalExchange'">
           <p
@@ -68,9 +68,9 @@ const goTelegram = () => {
 const redirect = () => {
   const screenWidth = window.innerWidth;
   if (screenWidth < 640) {
-    location.href = "https://www.retri.io/m/";
+    location.href = "https://www.tryex.io/m/";
   } else {
-    location.href = "https://retri.io";
+    location.href = "https://www.tryex.io/";
   }
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
   <header class="header_wrap">
     <div class="header_logo">
-      <a :href="isMobile ? 'https://www.retri.io/m/' : 'https://www.retri.io/'" target="blank">
-        <img src="@/assets/image/retri_logo.png" alt="retri logo" v-if="isMobile" />
-        <img src="@/assets/image/logo.png" alt="retri logo" v-else />
+      <a :href="isMobile ? 'https://www.tryex.io/m/' : 'https://www.tryex.io/'" target="blank">
+        <img src="@/assets/image/icon_logo.png" alt="ex logo" v-if="isMobile" />
+        <img src="@/assets/image/logo.png" alt="ex logo" v-else />
       </a>
     </div>
     <div class="header_locale">

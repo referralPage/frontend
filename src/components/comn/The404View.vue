@@ -11,9 +11,9 @@
 const confirmBtn = () => {
   const screenWidth = window.innerWidth;
   if (screenWidth < 640) {
-    location.href = "https://www.retri.io/m/";
+    location.href = "https://www.tryex.io//m/";
   } else {
-    location.href = "https://retri.io";
+    location.href = "https://www.tryex.io/";
   }
 }
 

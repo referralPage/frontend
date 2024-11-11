@@ -35,12 +35,12 @@
         "okx" : "Nếu bạn là thành viên hiện tại, bạn có thể nhận lại xác minh KYC nếu bạn hủy tư cách thành viên của mình chỉ một lần. Các thành viên hiện tại chưa có hồ sơ rút tiền có thể tiến hành rút tiền và nhập mã giới thiệu và UID của tài khoản mới đăng ký.",
         "bingx" : "Đối với các thành viên hiện tại, chúng tôi khuyên bạn nên tạo tài khoản mới có mã giới thiệu, nhập UID trước rồi chuyển KYC từ tài khoản hiện tại sang tài khoản mới (dự kiến ​​mất khoảng 7 ngày để chuyển KYC)",
         "deepcoin" : "Các thành viên hiện tại có thể nhận lại xác minh KYC nếu họ chỉ hủy tư cách thành viên một lần. Các thành viên hiện tại chưa có hồ sơ rút tiền có thể tiến hành rút tiền và nhập mã giới thiệu và UID của tài khoản mới đăng ký.",
-        "toobit" : "Nếu bạn đã đăng ký sàn giao dịch TooBit, vui lòng liên hệ với Trung tâm chăm sóc khách hàng Retri để yêu cầu thay đổi g cùng với UID của bạn."
+        "toobit" : "Nếu bạn đã đăng ký sàn giao dịch TooBit, vui lòng liên hệ với Trung tâm chăm sóc khách hàng Ex để yêu cầu thay đổi g cùng với UID của bạn."
     },
     "noAccess" : {
         "msg01" : "Chúng tôi xin lỗi vì sự bất tiện này.",
         "msg02" : "Truy cập được thực hiện thông qua một con đường bất thường.",
-        "msg03" : "Nhấn xác nhận và di chuyển đến trang Retri."
+        "msg03" : "Nhấn xác nhận và di chuyển đến trang Ex."
     },
     "common" : {
         "confirm" : "kiểm tra"
