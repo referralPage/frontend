@@ -62,7 +62,7 @@ const closeModal = () => {
   }
 };
 const goTelegram = () => {
-  window.open("https://t.me/retrics");
+  window.open("https://t.me/EXCSTEAM");
   closeModal();
 };
 const redirect = () => {

@@ -35,7 +35,7 @@
         "okx" : "Existing users can cancel their acounts once and complete KYC verification again in a new account. For members who have never canceled before, proceed with cancellation and enter the referral code to to make a new account. Once new account is made, enter your UID.",
         "bingx" : "Existing users are recommended to create a new account with a referral code first, then enter your UID. After entering UID of your new account, transfer KYC from the existing account to the new one (transferring KYC may take about 7 days).",
         "deepcoin" : "Existing users can re-register after cancellation and complete KYC verification again ( Only Once ). For members who have never canceled their accounts before, proceed with cancellation and enter the referral code to to make a new account. Once new account is made, enter your UID.",
-        "toobit" : "Existing users should check their UID and send it to us via Telegram: https://t.me/retrics for referral code change processing."
+        "toobit" : "Existing users should check their UID and send it to us via Telegram: https://t.me/EXCSTEAM for referral code change processing."
     },
     "noAccess" : {
         "msg01" : "We apologize for the inconvenience.",
